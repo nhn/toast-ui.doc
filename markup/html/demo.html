@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TOAST UI Doc's Demo</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/nhnent/tui.date-picker/v3.2.0/dist/tui-date-picker.css" />
+  </head>
+
+  <body>
+    <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+        <input type="text" id="datepicker-input" aria-label="Date-Time">
+        <span class="tui-ico-date"></span>
+        <!-- <div style="height:2000px;background-color:lime;"></div> -->
+    </div>
+    <div id="wrapper" style="margin-top: -1px;"></div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.rawgit.com/nhnent/tui.code-snippet/v1.4.0/dist/tui-code-snippet.js"></script>
+    <script src="https://cdn.rawgit.com/nhnent/tui.date-picker/v3.2.0/dist/tui-date-picker.js"></script>
+    <script type="text/javascript">
+
+      var datepicker = new tui.DatePicker('#wrapper', {
+        date: new Date(),
+        input: {
+            element: '#datepicker-input',
+            format: 'yyyy-MM-dd'
+        }
+      });
+
+    </script>
+  </body>
+</html>

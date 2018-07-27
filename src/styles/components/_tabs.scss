@@ -1,0 +1,28 @@
+.tab-buttons {
+  font-size: 0;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.tab {
+  position: relative;
+  padding: 20px 0;
+  color: #555;
+  font-size: 14px;
+
+  &.selected {
+    color: #515ce6;
+    font-weight: bold;
+  }
+
+  &:hover:after,
+  &.selected:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 4px;
+    background-color: #515ce6;
+  }
+}

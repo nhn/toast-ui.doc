@@ -1,0 +1,25 @@
+.footer {
+  margin-top: -60px;
+  padding: 23px 24px 22px 24px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0;
+  z-index: 2;
+
+  .info {
+    font-size: 13px;
+    color: #777;
+    vertical-align: middle;
+
+    a {
+      color: #777;
+      text-decoration: none;
+    }
+  }
+
+  .splitter {
+    margin: 0 11px;
+    height: 11px;
+    background-color: #777;
+  }
+}

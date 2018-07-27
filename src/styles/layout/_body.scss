@@ -1,0 +1,14 @@
+.body {
+  position: relative;
+  padding-left: 260px;
+  min-height: 100%;
+}
+
+.resize-handle {
+  text-indent: -9999px;
+  position: absolute;
+  top: 70px;
+  bottom: 60px;
+  width: 7px;
+  cursor: col-resize;
+}

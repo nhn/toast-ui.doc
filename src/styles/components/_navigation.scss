@@ -1,0 +1,85 @@
+.nav-group {
+  .title {
+    padding: 10px 24px 9px 24px;
+    color: #777;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+  }
+
+  &:first-child {
+    .title {
+      border-top: none;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 16px 24px;
+    background-color: #fff;
+
+    a {
+      color: #222;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        color: #515ce6;
+      }
+    }
+
+    &.selected {
+      background-color: rgba(81, 92, 230, 0.1)
+
+      a {
+        color: #515ce6;
+      }
+    }
+
+    &.has-button {
+      padding-right: 60px;
+    }
+
+    .btn-toggle {
+      position: absolute;
+      top: 15px;
+      right: 14px;
+    }
+  }
+
+}
+
+.subnav-group {
+  .title {
+    padding: 9px 24px;
+    color: #555;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #fff;
+    border-top: none;
+  }
+
+  .nav-item {
+    padding: 8px 24px 8px 44px;
+
+    a {
+      color: #777;
+      font-size: 14px;
+      font-weight: normal;
+      text-decoration: none;
+
+      &:hover {
+        color: #515ce6;
+      }
+    }
+
+    &.selected {
+      a {
+        color: #515ce6;
+        text-decoration: underline;
+      }
+    }
+  }
+}

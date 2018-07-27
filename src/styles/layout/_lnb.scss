@@ -1,0 +1,22 @@
+.lnb {
+  position: absolute;
+  top: 70px;
+  bottom: 60px;
+  left: 0;
+  width: 260px;
+  min-width: 212px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .btn-search {
+    position: absolute;
+    top: 14px;
+    left: 21px;
+  }
+
+  .tab {
+    width: 106px;
+  }
+}

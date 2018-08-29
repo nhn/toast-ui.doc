@@ -1,3 +1,42 @@
+.nav-item {
+  position: relative;
+  padding: 16px 24px;
+  background-color: #fff;
+
+  a {
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      color: #515ce6;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(81, 92, 230, 0.1);
+  }
+
+  &.selected {
+    background-color: rgba(81, 92, 230, 0.1);
+
+    a {
+      color: #515ce6;
+    }
+  }
+
+  &.has-button {
+    padding-right: 60px;
+  }
+
+  .btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 14px;
+  }
+}
+
 .nav-group {
   .title {
     padding: 10px 24px 9px 24px;
@@ -13,42 +52,6 @@
       border-top: none;
     }
   }
-
-  .nav-item {
-    position: relative;
-    padding: 16px 24px;
-    background-color: #fff;
-
-    a {
-      color: #222;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-
-      &:hover {
-        color: #515ce6;
-      }
-    }
-
-    &.selected {
-      background-color: rgba(81, 92, 230, 0.1)
-
-      a {
-        color: #515ce6;
-      }
-    }
-
-    &.has-button {
-      padding-right: 60px;
-    }
-
-    .btn-toggle {
-      position: absolute;
-      top: 15px;
-      right: 14px;
-    }
-  }
-
 }
 
 .subnav-group {
@@ -72,14 +75,30 @@
 
       &:hover {
         color: #515ce6;
-      }
-    }
-
-    &.selected {
-      a {
-        color: #515ce6;
         text-decoration: underline;
       }
+
+      &.selected {
+        background-color: #fff;
+
+        a {
+          color: #515ce6;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .selected {
+    background-color: #fff;
+
+    a {
+      color: #515ce6;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      background-color: rgba(81, 92, 230, 0.1);
     }
   }
 }

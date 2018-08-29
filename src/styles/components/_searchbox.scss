@@ -11,7 +11,6 @@
     background-color: #515ce6;
     border: 0;
     z-index: 3;
-    display: none;
   }
 
   &.searching {
@@ -22,10 +21,6 @@
       border-left: 1px solid #515ce6;
       border-right: 1px solid #515ce6;
       border-bottom: none;
-    }
-
-    .line, .search-list {
-      display: block;
     }
   }
 }
@@ -56,12 +51,12 @@
   border-bottom: 1px solid #515ce6;
   background-color: #fff;
   z-index: 2;
-  display: none;
 
   .item {
     padding: 16px 12px 16px 20px;
     font-size: 14px;
 
+    &.selected,
     &:hover {
       background-color: #f9f9f9;
     }
@@ -80,7 +75,7 @@
 
     strong {
       color: #515ce6;
-      text-decoration: underline;
+      font-weight: bold;
     }
 
     span {
@@ -88,5 +83,12 @@
       color: #999;
       vertical-align: middle;
     }
+  }
+
+  .no-result {
+    padding: 65px 0;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
   }
 }

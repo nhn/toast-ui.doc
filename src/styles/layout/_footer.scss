@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   margin-top: -60px;
   padding: 23px 24px 22px 24px;
   background-color: #f9f9f9;
@@ -15,11 +16,18 @@
       color: #777;
       text-decoration: none;
     }
-  }
 
-  .splitter {
-    margin: 0 11px;
-    height: 11px;
-    background-color: #777;
+    &:before {
+      content: "";
+      display: inline-block;
+      margin: 0 11px;
+      width: 1px;
+      height: 11px;
+      background-color: #777;
+    }
+
+    &:first-child:before {
+      display: none;
+    }
   }
 }

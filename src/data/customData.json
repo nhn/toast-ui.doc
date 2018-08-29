@@ -1,0 +1,18 @@
+{
+  "header": {
+    "logo": "https://uicdn.toast.com/toastui/img/tui-logo.png",
+    "link": "https://github.com/nhnent/tui.grid",
+    "title": "Grid",
+    "version": "1.0.0"
+  },
+  "footer": [
+    {
+      "title": "NHN Entertainment",
+      "link": "https://github.com/nhnent"
+    },
+    {
+      "title": "FE Development Lab",
+      "link": "https://github.com/nhnent/fe.javascript"
+    }
+  ]
+}

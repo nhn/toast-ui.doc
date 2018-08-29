@@ -3801,129 +3801,6 @@
           "children": [
             {
               "type": "text",
-              "value": "Remove whitespace from around a string.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 40,
-                  "offset": 39
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 40,
-              "offset": 39
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 40,
-          "offset": 39
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "param",
-        "description": null,
-        "lineNumber": 2,
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        "name": "str"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 42,
-        "column": 0
-      },
-      "end": {
-        "line": 45,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 46,
-          "column": 0
-        },
-        "end": {
-          "line": 46,
-          "column": 22
-        }
-      },
-      "file": "/Users/nhnent/Sites/tui-doc/demo/src/etc.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [
-      {
-        "title": "param",
-        "name": "str",
-        "lineNumber": 2,
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "trstr",
-    "kind": "function",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "trstr",
-        "kind": "function"
-      }
-    ],
-    "namespace": "trstr"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
               "value": "Externals & Type definition & borrow",
               "position": {
                 "start": {
@@ -4162,7 +4039,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Create a ROT13-encoded version of the string. Added by the ",
+              "value": "Remove whitespace from around a string.",
               "position": {
                 "start": {
                   "line": 1,
@@ -4171,42 +4048,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 60,
-                  "offset": 59
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "foo",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 60,
-                  "offset": 59
-                },
-                "end": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 64
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " package.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 64
-                },
-                "end": {
-                  "line": 1,
-                  "column": 74,
-                  "offset": 73
+                  "column": 40,
+                  "offset": 39
                 },
                 "indent": []
               }
@@ -4220,8 +4063,8 @@
             },
             "end": {
               "line": 1,
-              "column": 74,
-              "offset": 73
+              "column": 40,
+              "offset": 39
             },
             "indent": []
           }
@@ -4235,148 +4078,30 @@
         },
         "end": {
           "line": 1,
-          "column": 74,
-          "offset": 73
+          "column": 40,
+          "offset": 39
         }
       }
     },
     "tags": [
       {
-        "title": "function",
+        "title": "param",
         "description": null,
         "lineNumber": 2,
-        "name": "external:String#rot13"
-      },
-      {
-        "title": "example",
-        "description": "var greeting = new String('hello world');\nconsole.log( greeting.rot13() ); // uryyb jbeyq",
-        "lineNumber": 3
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "str"
       }
     ],
     "loc": {
       "start": {
-        "line": 13,
+        "line": 42,
         "column": 0
       },
       "end": {
-        "line": 19,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 46,
-          "column": 0
-        },
-        "end": {
-          "line": 46,
-          "column": 22
-        }
-      },
-      "file": "/Users/nhnent/Sites/tui-doc/demo/src/etc.js"
-    },
-    "augments": [],
-    "examples": [
-      {
-        "description": "var greeting = new String('hello world');\nconsole.log( greeting.rot13() ); // uryyb jbeyq"
-      }
-    ],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "kind": "function",
-    "name": "external:String#rot13",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "external:String#rot13",
-        "kind": "function"
-      }
-    ],
-    "namespace": "external:String#rot13"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "The jQuery plugin namespace.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 29,
-                  "offset": 28
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 29,
-              "offset": 28
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 29,
-          "offset": 28
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "external",
-        "description": "\"jQuery.fn\"",
-        "lineNumber": 2
-      },
-      {
-        "title": "see",
-        "description": "{@link http://learn.jquery.com/plugins/|jQuery Plugins}",
-        "lineNumber": 3
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 21,
-        "column": 0
-      },
-      "end": {
-        "line": 25,
+        "line": 45,
         "column": 3
       }
     },
@@ -4395,75 +4120,24 @@
     },
     "augments": [],
     "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [
+    "params": [
       {
-        "type": "root",
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "type": "link",
-                "url": "http://learn.jquery.com/plugins/",
-                "title": null,
-                "jsdoc": true,
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "jQuery Plugins"
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 56,
-                    "offset": 55
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 1,
-                "column": 56,
-                "offset": 55
-              },
-              "indent": []
-            }
-          }
-        ],
-        "position": {
-          "start": {
-            "line": 1,
-            "column": 1,
-            "offset": 0
-          },
-          "end": {
-            "line": 1,
-            "column": 56,
-            "offset": 55
-          }
+        "title": "param",
+        "name": "str",
+        "lineNumber": 2,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
         }
       }
     ],
+    "properties": [],
+    "returns": [],
+    "sees": [],
     "throws": [],
     "todos": [],
-    "kind": "external",
-    "name": "\"jQuery.fn\"",
+    "name": "trstr",
+    "kind": "function",
     "members": {
       "global": [],
       "inner": [],
@@ -4473,11 +4147,11 @@
     },
     "path": [
       {
-        "name": "\"jQuery.fn\"",
-        "kind": "external"
+        "name": "trstr",
+        "kind": "function"
       }
     ],
-    "namespace": "\"jQuery.fn\""
+    "namespace": "trstr"
   },
   {
     "description": {
@@ -4652,6 +4326,180 @@
       }
     ],
     "namespace": "String"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "The jQuery plugin namespace.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 29,
+                  "offset": 28
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 29,
+              "offset": 28
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 29,
+          "offset": 28
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "external",
+        "description": "\"jQuery.fn\"",
+        "lineNumber": 2
+      },
+      {
+        "title": "see",
+        "description": "{@link http://learn.jquery.com/plugins/|jQuery Plugins}",
+        "lineNumber": 3
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 21,
+        "column": 0
+      },
+      "end": {
+        "line": 25,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 22
+        }
+      },
+      "file": "/Users/nhnent/Sites/tui-doc/demo/src/etc.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [
+      {
+        "type": "root",
+        "children": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "link",
+                "url": "http://learn.jquery.com/plugins/",
+                "title": null,
+                "jsdoc": true,
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "jQuery Plugins"
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 56,
+                    "offset": 55
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 56,
+                "offset": 55
+              },
+              "indent": []
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 56,
+            "offset": 55
+          }
+        }
+      }
+    ],
+    "throws": [],
+    "todos": [],
+    "kind": "external",
+    "name": "\"jQuery.fn\"",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "\"jQuery.fn\"",
+        "kind": "external"
+      }
+    ],
+    "namespace": "\"jQuery.fn\""
   },
   {
     "description": {
@@ -4983,6 +4831,158 @@
       }
     ],
     "namespace": "Foo"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Create a ROT13-encoded version of the string. Added by the ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 60,
+                  "offset": 59
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "inlineCode",
+              "value": "foo",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 60,
+                  "offset": 59
+                },
+                "end": {
+                  "line": 1,
+                  "column": 65,
+                  "offset": 64
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " package.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 65,
+                  "offset": 64
+                },
+                "end": {
+                  "line": 1,
+                  "column": 74,
+                  "offset": 73
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 74,
+              "offset": 73
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 74,
+          "offset": 73
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "function",
+        "description": null,
+        "lineNumber": 2,
+        "name": "external:String#rot13"
+      },
+      {
+        "title": "example",
+        "description": "var greeting = new String('hello world');\nconsole.log( greeting.rot13() ); // uryyb jbeyq",
+        "lineNumber": 3
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 13,
+        "column": 0
+      },
+      "end": {
+        "line": 19,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 22
+        }
+      },
+      "file": "/Users/nhnent/Sites/tui-doc/demo/src/etc.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "var greeting = new String('hello world');\nconsole.log( greeting.rot13() ); // uryyb jbeyq"
+      }
+    ],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "kind": "function",
+    "name": "external:String#rot13",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "external:String#rot13",
+        "kind": "function"
+      }
+    ],
+    "namespace": "external:String#rot13"
   },
   {
     "description": {
@@ -5682,6 +5682,120 @@
     "namespace": "bar"
   },
   {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "In the following example, the Book class is documented as a static member, \"module:bookshelf.Book\", with one instance member, \"module:bookshelf.Book#title\".\nDefining exported symbols as a member of 'this'",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 48,
+                  "offset": 204
+                },
+                "indent": [
+                  1
+                ]
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 2,
+              "column": 48,
+              "offset": 204
+            },
+            "indent": [
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 48,
+          "offset": 204
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "lineNumber": 3,
+        "type": null,
+        "name": "bookshelf"
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 18,
+        "column": 0
+      },
+      "end": {
+        "line": 22,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 2
+        }
+      },
+      "file": "/Users/nhnent/Sites/tui-doc/demo/src/module.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "kind": "module",
+    "name": "bookshelf",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "bookshelf",
+        "kind": "module"
+      }
+    ],
+    "namespace": "bookshelf"
+  },
+  {
     "description": "",
     "tags": [
       {
@@ -5852,120 +5966,6 @@
       }
     ],
     "namespace": "Book"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "In the following example, the Book class is documented as a static member, \"module:bookshelf.Book\", with one instance member, \"module:bookshelf.Book#title\".\nDefining exported symbols as a member of 'this'",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 2,
-                  "column": 48,
-                  "offset": 204
-                },
-                "indent": [
-                  1
-                ]
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 2,
-              "column": 48,
-              "offset": 204
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 2,
-          "column": 48,
-          "offset": 204
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "module",
-        "description": null,
-        "lineNumber": 3,
-        "type": null,
-        "name": "bookshelf"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 18,
-        "column": 0
-      },
-      "end": {
-        "line": 22,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 24,
-          "column": 0
-        },
-        "end": {
-          "line": 27,
-          "column": 2
-        }
-      },
-      "file": "/Users/nhnent/Sites/tui-doc/demo/src/module.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "kind": "module",
-    "name": "bookshelf",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "bookshelf",
-        "kind": "module"
-      }
-    ],
-    "namespace": "bookshelf"
   },
   {
     "description": {
@@ -6794,6 +6794,125 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "A function in MyNamespace (MyNamespace.myFunction).",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 52,
+                        "offset": 51
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 52,
+                    "offset": 51
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 52,
+                "offset": 51
+              }
+            }
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "lineNumber": 2,
+              "name": "myFunction"
+            },
+            {
+              "title": "memberof",
+              "description": "MyNamespace",
+              "lineNumber": 3
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 23,
+              "column": 3
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 45,
+                "column": 0
+              },
+              "end": {
+                "line": 59,
+                "column": 34
+              }
+            },
+            "file": "/Users/nhnent/Sites/tui-doc/demo/src/namespace.js"
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "kind": "function",
+          "name": "myFunction",
+          "memberof": "MyNamespace",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "MyNamespace",
+              "kind": "namespace"
+            },
+            {
+              "name": "myFunction",
+              "kind": "function"
+            }
+          ],
+          "namespace": "MyNamespacemyFunction"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Typedef on MyNamespace",
                     "position": {
                       "start": {
@@ -7054,125 +7173,6 @@
             }
           ],
           "namespace": "MyNamespacemyTypeDef"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "A function in MyNamespace (MyNamespace.myFunction).",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 52,
-                        "offset": 51
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 52,
-                    "offset": 51
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 1,
-                "column": 52,
-                "offset": 51
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "function",
-              "description": null,
-              "lineNumber": 2,
-              "name": "myFunction"
-            },
-            {
-              "title": "memberof",
-              "description": "MyNamespace",
-              "lineNumber": 3
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 19,
-              "column": 0
-            },
-            "end": {
-              "line": 23,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 45,
-                "column": 0
-              },
-              "end": {
-                "line": 59,
-                "column": 34
-              }
-            },
-            "file": "/Users/nhnent/Sites/tui-doc/demo/src/namespace.js"
-          },
-          "augments": [],
-          "examples": [],
-          "params": [],
-          "properties": [],
-          "returns": [],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "kind": "function",
-          "name": "myFunction",
-          "memberof": "MyNamespace",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "MyNamespace",
-              "kind": "namespace"
-            },
-            {
-              "name": "myFunction",
-              "kind": "function"
-            }
-          ],
-          "namespace": "MyNamespacemyFunction"
         }
       ]
     },

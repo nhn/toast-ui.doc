@@ -10,8 +10,9 @@ import ExampleNavigation from '../components/ExampleNavigation';
 class LNB extends React.Component {
   render() {
     const {
+      useExample,
       tabIndex,
-      selectedId,
+      selectedNavItemId,
       width
     } = this.props;
 
@@ -21,26 +22,31 @@ class LNB extends React.Component {
         style={{width}}
       >
         <SearchBar />
-        <Tabs tabIndex={tabIndex}>
-          <TabContent name="API">
-            <ApiNavigation
-              selectedId={selectedId}
-            />
-          </TabContent>
-          <TabContent name="Examples">
-            <ExampleNavigation
-              selectedId={selectedId}
-            />
-          </TabContent>
-        </Tabs>
+        {useExample ?
+          <Tabs tabIndex={tabIndex}>
+            <TabContent name="API">
+              <ApiNavigation
+                selectedId={selectedNavItemId}
+              />
+            </TabContent>
+            <TabContent name="Examples">
+              <ExampleNavigation
+                selectedId={selectedNavItemId}
+              />
+            </TabContent>
+          </Tabs> :
+          <ApiNavigation
+            selectedId={selectedNavItemId}
+          />}
       </aside>
     );
   }
 }
 
 LNB.propTypes = {
+  useExample: PropTypes.bool,
   tabIndex: PropTypes.number,
-  selectedId: PropTypes.string,
+  selectedNavItemId: PropTypes.string,
   width: PropTypes.number
 };
 

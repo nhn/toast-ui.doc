@@ -29,7 +29,7 @@ class SearchList extends React.Component {
     const {
       pid,
       name,
-      parentType
+      parentPid
     } = item.node;
 
     return (
@@ -41,7 +41,7 @@ class SearchList extends React.Component {
           to={`/${pid}`}
           dangerouslySetInnerHTML={{__html: this.hightliging(name)}}
         />
-        <span>{TYPE_MAP[parentType] || parentType}</span>
+        <span>{TYPE_MAP[parentPid] || parentPid}</span>
       </li>
     );
   }

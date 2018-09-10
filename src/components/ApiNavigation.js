@@ -5,9 +5,9 @@ import {StaticQuery, graphql} from 'gatsby';
 import ListGroup from '../components/ListGroup';
 
 class ApiNavigation extends React.Component {
-  filterItems(kind) {
+  filterItems(type) {
     return this.props.items.filter(item => {
-      return item.node.kind === kind;
+      return item.node.parentPid === type;
     });
   }
 
@@ -61,8 +61,8 @@ const NavigationWrapper = (props) => (
           edges {
             node {
               pid
+              parentPid
               name
-              kind
               opened
               childNodes {
                 pid

@@ -6,11 +6,11 @@ import ToggleButton from '../components/ToggleButton';
 import SubListGroups from '../components/SubListGroups';
 
 class ListItem extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      opened: false
+      opened: this.isSelected()
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -28,7 +28,7 @@ class ListItem extends React.Component {
       pid
     } = this.props;
 
-    return selectedId ? selectedId.split('#')[0] === pid : false;
+    return selectedId ? (selectedId.split('#').shift() === pid) : false;
   }
 
   render() {
@@ -40,9 +40,7 @@ class ListItem extends React.Component {
     } = this.props;
     const {opened} = this.state;
     const hasChildNodes = !!(childNodes && childNodes.length);
-
     const selected = this.isSelected();
-    const isOpened = opened || selected;
 
     return (
       <li>
@@ -51,7 +49,7 @@ class ListItem extends React.Component {
           {hasChildNodes &&
             <ToggleButton
               hasChildNodes={hasChildNodes}
-              opened={isOpened}
+              opened={opened}
               handleClick={this.handleClick}
             />}
         </p>
@@ -59,7 +57,7 @@ class ListItem extends React.Component {
           <SubListGroups
             selectedId={selectedId}
             hasChildNodes={hasChildNodes}
-            opened={isOpened}
+            opened={opened}
             items={childNodes}
           />}
       </li>

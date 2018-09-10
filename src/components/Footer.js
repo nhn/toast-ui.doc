@@ -1,52 +1,38 @@
 import React from 'react';
-import {StaticQuery, graphql} from 'gatsby';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allDataJson {
-          edges {
-            node {
-              footer {
-                title
-                link
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={data => {
-      const infoList = data.allDataJson.edges[0].node.footer;
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer className="footer">
+        {this.props.infoList.map((item, index) => {
+          const {
+            linkUrl,
+            title
+          } = item;
 
-      return (
-        <footer className="footer">
-          {infoList.map((item, index) => {
-            const {
-              link,
-              title
-            } = item;
-
-            return (
-              <span
-                className="info"
-                key={`footer-info-${index}`}
+          return (
+            <span
+              className="info"
+              key={`footer-info-${index}`}
+            >
+              <a
+                href={linkUrl}
+                target="_blank"
+                rel="noreferrer noopener"
               >
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {title}
-                </a>
-              </span>
-            );
-          })}
-        </footer>
-      );
-    }}
-  />
-);
+                {title}
+              </a>
+            </span>
+          );
+        })}
+      </footer>
+    );
+  }
+}
+
+Footer.propTypes = {
+  infoList: PropTypes.array
+};
 
 export default Footer;

@@ -1,0 +1,179 @@
+.description {
+  font-size: 16px;
+  font-weight: normal;
+  color: #777;
+  line-height: 1.4em;
+}
+
+.hr {
+  margin: 0 52px;
+  height: 1px;
+  border: none;
+  background-color: #ccc;
+}
+
+.overview {
+  margin: 0 20px;
+  padding: 32px;
+  background-color: #f9f9f9;
+
+  .subsection {
+    margin: 0;
+    padding: 0px;
+  }
+
+  .subsection-term {
+    .name {
+      font-size: 32px;
+    }
+  }
+
+  .code-info {
+    top: 7px;
+  }
+}
+
+.subsection {
+  margin: 0 52px;
+  padding: 40px 0;
+
+  .definition-list {
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+
+    &.first-child {
+      border-top: none;
+    }
+  }
+
+  .title {
+    padding: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+
+    .types {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .items {
+    margin-top: 14px;
+    margin-left: 18px;
+    line-height: 1.4em;
+    list-style: disc;
+  }
+
+  .item,
+  .item a {
+    font-size: 16px;
+    font-weight: normal;
+    color: #777;
+  }
+
+  .item.inline {
+    margin-top: 4px;
+  }
+
+  .subsection-term .signiture {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #aaa;
+    border: 2px solid #aaa;
+    border-radius: 14px;
+    vertical-align: middle;
+  }
+}
+
+.subsection-term {
+  .title {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 0;
+    padding-right: 200px;
+    font-size: 0;
+  }
+
+  .signiture {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #aaa;
+    border: 2px solid #aaa;
+    border-radius: 14px;
+    vertical-align: middle;
+  }
+
+  .name,
+  .name a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    vertical-align: middle;
+  }
+
+  .type {
+    font-size: 16px;
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+  .code-info {
+    position: absolute;
+    right: 0;
+    top: 2px;
+  }
+
+  .code,
+  .code a {
+    display: inline-block;
+    padding-left: 4px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #777;
+    vertical-align: middle;
+  }
+}
+
+.subsection-description {
+  .title {
+    padding: 24px 0 6px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .params-wrapper {
+    overflow-x: auto;
+  }
+}
+
+.returns {
+  .title {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .description {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  .types {
+    display: inline-block;
+  }
+}
+
+.main-category {
+  border-bottom: 1px solid #ccc;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

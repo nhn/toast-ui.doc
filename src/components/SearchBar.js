@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StaticQuery} from 'gatsby';
+import {StaticQuery, graphql} from 'gatsby';
 
 import SearchList from '../components/SearchList';
 
@@ -123,11 +123,11 @@ class SearchBar extends React.Component {
     this.setState({
       searching: true,
       value: query,
-      result: this.findMachingValues(query)
+      result: this.findMatchingValues(query)
     });
   }
 
-  findMachingValues(value) {
+  findMatchingValues(value) {
     return this.props.data.filter(item => {
       const foundValue = toLowerCase(item.node.name);
 
@@ -199,8 +199,8 @@ const SearchBarWrapper = () => (
           edges {
             node {
               pid
+              parentPid
               name
-              parentType
             }
           }
         }

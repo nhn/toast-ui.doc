@@ -1,6 +1,9 @@
 @import '../../node_modules/reset-css/sass/reset';
 
 @import 'base/reset';
+@import 'base/common';
+@import 'base/highlight';
+@import 'base/markdown';
 
 @import 'layout/header';
 @import 'layout/body';
@@ -8,10 +11,11 @@
 @import 'layout/footer';
 
 @import 'components/buttons';
-@import 'components/searchbox';
+@import 'components/searchbar';
 @import 'components/tabs';
 @import 'components/navigation';
+@import 'components/types';
+@import 'components/table';
 
-@import 'pages/main';
 @import 'pages/api';
 @import 'pages/examples';

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {StaticQuery, graphql} from 'gatsby';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -30,25 +31,32 @@ class Layout extends React.Component {
 
   render() {
     const {
+      data,
       tabIndex,
-      selectedId,
+      selectedNavItemId,
       children
     } = this.props;
+    const {
+      header,
+      footer,
+      useExample
+    } = data;
     const lnbWidth = this.state.width;
 
     return (
       <div className="wrapper">
-        <Header />
-        <main className="body">
+        <Header data={header} />
+        <main
+          className="body"
+          style={{paddingLeft: lnbWidth}}
+        >
           <LNB
+            useExample={useExample}
             tabIndex={tabIndex}
-            selectedId={selectedId}
+            selectedNavItemId={selectedNavItemId}
             width={lnbWidth}
           />
-          <section
-            className="content"
-            style={{paddingLeft: lnbWidth}}
-          >
+          <section className="content">
             {children}
           </section>
           <Resizable
@@ -56,16 +64,47 @@ class Layout extends React.Component {
             handleMouseMove={this.handleMouseMove}
           />
         </main>
-        <Footer />
+        <Footer infoList={footer} />
       </div>
     );
   }
 }
 
+const LayoutWrapper = (props) => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allLayoutJson {
+          edges {
+            node {
+              header {
+                logo
+                linkUrl
+                title
+                version
+              }
+              footer {
+                title
+                linkUrl
+              }
+              useExample
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Layout data={data.allLayoutJson.edges[0].node} {...props} />}
+  />
+);
+
 Layout.propTypes = {
+  data: PropTypes.object,
   tabIndex: PropTypes.number,
-  selectedId: PropTypes.string,
-  children: PropTypes.object
+  selectedNavItemId: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
 };
 
-export default Layout;
+export default LayoutWrapper;

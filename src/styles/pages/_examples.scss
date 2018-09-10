@@ -1,0 +1,22 @@
+.content {
+  .tab-buttons {
+    padding: 0 51px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+  }
+
+  .tab {
+    margin-right: 10px;
+    padding: 23px 8px 17px 8px;
+  }
+
+  .tab-content {
+    padding: 20px 52px;
+
+    &.iframe {
+      padding: 0px 20px;
+      height: calc(100vh - 284px);
+    }
+  }
+}

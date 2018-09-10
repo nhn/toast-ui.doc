@@ -1,0 +1,88 @@
+
+.params {
+  width: 100%;
+  min-width: 1200px;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+
+  th {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    text-align: left;
+    vertical-align: middle;
+    background-color: #ddd;
+    border-left: 1px solid #ccc;
+  }
+
+  tr {
+    border-top: 1px solid #ccc;
+  }
+
+  tr:first-child {
+    border-top: none;
+  }
+
+  td {
+    padding: 12px 0;
+    vertical-align: middle;
+    border-left: 1px solid #ccc;
+  }
+
+  th:first-child,
+  td:first-child {
+    border-left: none;
+  }
+
+  .first-column {
+    width: 190px;
+  }
+
+  .second-column {
+    width: 160px;
+  }
+
+  .name {
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+  }
+
+  .types {
+    padding: 0 12px;
+  }
+
+  .description {
+    margin: 0;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #222;
+  }
+
+  .properties {
+    margin: 6px 0 0 12px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    th {
+      padding: 6px 12px;
+      background-color: #f4f4f4
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .title {
+      margin: 0;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+      background-color: #e5e5e5;
+    }
+  }
+}

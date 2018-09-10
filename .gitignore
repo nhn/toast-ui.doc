@@ -60,3 +60,4 @@ typings/
 .cache/
 public
 yarn-error.log
+src/data/*

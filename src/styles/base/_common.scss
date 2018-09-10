@@ -1,0 +1,25 @@
+.wrapper {
+  min-width: 1024px;
+  height: 100%;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.splitter {
+  display: inline-block;
+  width: 1px;
+  text-indent: -9999px;
+  vertical-align: middle;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

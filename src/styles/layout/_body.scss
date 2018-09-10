@@ -12,3 +12,15 @@
   width: 7px;
   cursor: col-resize;
 }
+
+.content {
+  padding-top: 70px;
+  padding-bottom: 60px;
+
+  .title {
+    padding: 27px 52px;
+    color: #515ce6;
+    font-size: 42px;
+    font-weight: bold;
+  }
+}

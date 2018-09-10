@@ -1,0 +1,42 @@
+.types {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4em;
+
+  .splitter {
+    margin: 0 6px;
+    height: 10px;
+    background-color: #ccc;
+  }
+}
+
+.type {
+  &.number {
+    color: #ffbc00;
+  }
+
+  &.string {
+    color: #ff6618;
+  }
+
+  &.boolean {
+    color: #03bd9e;
+  }
+
+  &.array {
+    color: #9bbd1f;
+  }
+
+  &.object {
+    color: #dc322f;
+  }
+
+  &.function {
+    color: #00a9ff;
+  }
+
+  &.etc {
+    color: #b25fff;
+  }
+}

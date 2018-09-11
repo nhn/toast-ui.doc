@@ -14,7 +14,11 @@ const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tui-doc-config.json'));
 
 const {version} = pkg || '1.0.0';
-const {filePath, main} = config;
+const {
+  filePath,
+  main,
+  fileLink
+} = config;
 
 // path of data files
 const BASE_DATA_PATH = path.resolve(__dirname, '../src/data');
@@ -51,6 +55,7 @@ function makeLayoutData() {
   const data = {
     header,
     footer,
+    fileLink,
     useExample: !!examples
   };
 

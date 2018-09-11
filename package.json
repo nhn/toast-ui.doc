@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "develop": "gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "tuidoc": "node ./bin/build"
   },

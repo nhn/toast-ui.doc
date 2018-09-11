@@ -13,6 +13,10 @@
   "bin": {
     "tuidoc": "./bin/build.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.nhnent.com/fe/tui.doc.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-rc.3",
     "@babel/plugin-proposal-class-properties": "^7.0.0-rc.3",

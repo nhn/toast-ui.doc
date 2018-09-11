@@ -21,8 +21,6 @@ class ParamsTable extends React.Component {
         props.pop(); // must remove last item
       }
 
-      console.log(defaultVal);
-
       return (
         <tr key={`tr-${index}`} className="comment">
           <td>

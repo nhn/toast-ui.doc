@@ -34,7 +34,7 @@ class ExamplePage extends React.Component {
               name="Result"
               hasIframe={true}
             >
-              <Iframe src={file.publicURL} />
+              <Iframe src={file.relativePath} />
             </TabContent>
             <TabContent name="JavaScript">
               <CodeBlock code={codeJs}/>
@@ -76,10 +76,7 @@ export const query = graphql`
       extension: {eq: "html"}
       name: {eq: $filename}
     ) {
-      absolutePath
-      publicURL
-      dir
-      relativeDirectory
+      relativePath
     }
   }
 `;

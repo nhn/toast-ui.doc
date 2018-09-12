@@ -74,7 +74,10 @@ class Types extends React.Component {
 
 Types.propTypes = {
   data: PropTypes.object.isRequired,
-  defaultVal: PropTypes.bool
+  defaultVal: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ])
 };
 
 export default Types;

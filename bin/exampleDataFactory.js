@@ -2,21 +2,24 @@ const path = require('path');
 
 const fs = require('fs-extra'); // to create folder and file
 const mkdirp = require('mkdirp'); // to create folder
-const dir = require('node-dir'); // to read
+const nodedir = require('node-dir'); // to read files
+const copydir = require('copy-dir'); // to copy folder
 
 const cheerio = require('cheerio');
 const Prism = require('prismjs');
 
 const pwd = process.cwd();
 const config = require(path.resolve(pwd, 'tui-doc-config.json'));
+const examples = config.examples || false;
 
 const {
   filePath,
   titles
-} = config.examples;
+} = examples;
 
-const ORIGIN_FILES_PATH = path.resolve(pwd, filePath);
-const COPY_FILES_PATH = path.resolve(__dirname, `../static/examples`);
+const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
+const BUNDLE_FILES_PATH = path.resolve(pwd, `dist`);
+const COPY_FILES_PATH = path.resolve(__dirname, `../static`);
 const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/examplePage`);
 
 const navItems = [];
@@ -107,7 +110,7 @@ function makeExamplePageDataFile(data) {
  * Read example files
  */
 function readExampleFiles() {
-  dir.readFiles(ORIGIN_FILES_PATH, {
+  nodedir.readFiles(EXAMPLE_FILES_PATH, {
     match: /.html$/,
     recursive: true
   }, (err, content, filename, next) => {
@@ -127,7 +130,7 @@ function readExampleFiles() {
  * Copy example files to static folder
  */
 function copyExampleFiles() {
-  fs.copy(ORIGIN_FILES_PATH, COPY_FILES_PATH, err => {
+  copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, err => {
     if (err) {
       throw err;
     }
@@ -137,10 +140,21 @@ function copyExampleFiles() {
 }
 
 /**
+ * Copy bundle files of dist to static folder
+ */
+function copyBundleFiles() {
+  copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
+    if (err) {
+      throw err;
+    }
+  });
+}
+
+/**
  * Make data of navigation and search keywords
  */
 function makeNavAndSearchData() {
-  const files = dir.files(ORIGIN_FILES_PATH, {sync: true});
+  const files = nodedir.files(EXAMPLE_FILES_PATH, {sync: true});
 
   files.forEach(file => {
     if (file.match(/.html$/)) {
@@ -166,8 +180,20 @@ function makeNavAndSearchData() {
 
 module.exports = {
   createData: function() {
-    copyExampleFiles();
-    makeNavAndSearchData();
+    if (examples) {
+      fs.emptyDirSync(COPY_FILES_PATH);
+
+      copyBundleFiles();
+      copyExampleFiles();
+      makeNavAndSearchData();
+    } else { // make dummy file for graphql
+      makeExamplePageDataFile({
+        pid: 'example-dummy',
+        title: '',
+        codeJs: '',
+        codeHtml: ''
+      });
+    }
 
     return {
       navigation: navItems,

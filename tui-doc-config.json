@@ -1,9 +1,5 @@
 {
   "filePath": "demo/js/**",
-  "fileLink": {
-    "repository": "https://github.nhnent.com/fe/tui.doc",
-    "ref": "feature/add-pages"
-  },
   "header": {
     "logo": "https://uicdn.toast.com/toastui/img/tui-bi-white.png",
     "linkUrl": "https://github.com/nhnent/tui.grid",
@@ -19,12 +15,16 @@
       "linkUrl": "https://github.com/nhnent/fe.javascript"
     }
   ],
+  "fileLink": {
+    "repository": "https://github.nhnent.com/fe/tui.doc",
+    "ref": "feature/add-pages"
+  },
   "main": "demo/README.md",
   "examples": {
-    "filePath": "demo/samples",
+    "filePath": "demo/examples",
     "titles": {
-      "chart": "TOUAST UI Chart example",
-      "grid": "TOUAST UI Grid example (custom title)"
+      "example01": "TOUAST UI Chart example",
+      "example02": "TOUAST UI Grid example (custom title)"
     }
   }
 }

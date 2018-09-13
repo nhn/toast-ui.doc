@@ -8,6 +8,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
+    "tuidoc:dev": "node ./bin/build --dev",
     "tuidoc": "node ./bin/build"
   },
   "bin": {
@@ -40,7 +41,7 @@
     "documentation": "^8.0.2",
     "fs-extra": "^7.0.0",
     "gatsby": "^2.0.0-rc.0",
-    "gatsby-plugin-sass": "^2.0.0-rc.0",
+    "gatsby-plugin-sass": "^2.0.0",
     "gatsby-remark-prismjs": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.1-rc.1",
     "gatsby-transformer-json": "^2.1.1-rc.0",

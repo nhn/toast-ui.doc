@@ -3,13 +3,14 @@
 const path = require('path');
 const fs = require('fs-extra');
 const documentation = require('documentation');
-// const runScript = require('runscript');
+const runScript = require('runscript');
 
 const apiDataFactory = require('./apiDataFactory.js');
 const exampleDataFactory = require('./exampleDataFactory.js');
 
 const pwd = process.cwd();
 const isDev = process.argv.indexOf('--dev') > -1;
+
 const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tui-doc-config.json'));
 
@@ -97,13 +98,16 @@ function makeAllData() {
 
       makeJsonFile(NAV_DATA_PATH, allNavData);
       makeJsonFile(SEARCH_DATA_PATH, allSearchData);
+    })
+    .then(() => {
+      build();
     });
 }
 
 /**
  * Create data and removing all data files to create
  */
-function createData() {
+function init() {
   fs.emptyDir(BASE_DATA_PATH, err => {
     if (err) {
       throw err;
@@ -118,16 +122,26 @@ function createData() {
 /**
  * Build gatsby script
  */
-// function build() {
-//   runScript(`npm run build && cp -r public ${pwd}/docs`)
-//     .then(() => {
-//       console.log('build success');
-//     });
-// }
-//
+function build() {
+  try {
+    let cwd = path.resolve(pwd, `doc`);
+    let cmd;
 
-createData();
+    if (isDev) {
+      cmd = `npm run develop`;
+    } else {
+      cmd = `npm run build && cp -r public ${cwd}`;
+    }
 
-if (!isDev) {
-  // build();
+    process.chdir(path.resolve(__dirname, '../'));
+
+    runScript(cmd)
+      .then(() => {
+        console.log('build success');
+      });
+  } catch (err) {
+    console.error(`chdir: ${err}`);
+  }
 }
+
+init();

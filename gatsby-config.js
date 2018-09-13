@@ -1,10 +1,14 @@
 const path = require('path');
 const pwd = process.cwd();
-const options = require(path.resolve(pwd, 'src/data/layout.json'));
+const pkg = require(path.resolve(pwd, 'package.json'));
+const config = require(path.resolve(pwd, 'tui-doc-config.json'));
 
-const {header, fileLink} = options[0];
-const {version} = header;
-const repoName = fileLink.repository.split('/').pop().replace('.git', '');
+const {version, repository} = pkg;
+const {fileLink} = config;
+
+let repoName = fileLink ? fileLink.repository : (repository.url || repository);
+
+repoName = repoName.split('/').pop().replace('.git', '');
 
 module.exports = {
   pathPrefix: `/${repoName}/${version}`,

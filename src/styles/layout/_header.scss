@@ -1,12 +1,12 @@
 .header {
   position: fixed;
-  padding: 23px 24px;
+  padding: 22px 24px;
   top: 0;
   left: 0;
   right: 0;
   background-color: #515ce6;
   font-size: 0;
-  z-index: 2;
+  z-index: 10;
 
   .logo {
     display: inline-block;
@@ -14,7 +14,7 @@
     vertical-align: middle;
 
     img {
-      height: 22px;
+      height: 23px;
     }
   }
 

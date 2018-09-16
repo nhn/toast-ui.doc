@@ -44,8 +44,8 @@ exports.createPages = ({
 
         let filename = '';
 
-        if (type === 'example') {
-          filename = pid.replace('example-', '');
+        if (type === 'example') { // for static file using in iframe
+          filename = pid.replace('tutorial-', '');
         }
 
         createPage({

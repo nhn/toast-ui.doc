@@ -35,12 +35,12 @@ function getFileName(longname) {
 }
 
 /**
- * Get pid (foramt: example-foo)
+ * Get pid (foramt: tutorial-foo)
  * @param {string} filename - file name to create pid
  * @returns {string} pid
  */
 function getPid(filename) {
-  return `example-${filename}`;
+  return `tutorial-${filename}`;
 }
 
 /**
@@ -188,7 +188,7 @@ module.exports = {
       makeNavAndSearchData();
     } else { // make dummy file for graphql
       makeExamplePageDataFile({
-        pid: 'example-dummy',
+        pid: 'tutorial-dummy',
         title: '',
         codeJs: '',
         codeHtml: ''

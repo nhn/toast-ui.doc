@@ -16,7 +16,7 @@ class ExampleItems extends React.Component {
             } = item;
 
             return (
-              <div key={`example-${index}`}>
+              <div key={`tutorial-${index}`}>
                 {description ? <p className="description">{description}</p> : null}
                 <pre className="codeblock tui-language-javascript">
                   <code dangerouslySetInnerHTML={{__html: code}} />

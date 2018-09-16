@@ -124,7 +124,7 @@ function init() {
  */
 function build() {
   try {
-    let versionDir = path.resolve(pwd, version);
+    let versionDir = path.resolve(pwd, `_${version}`);
     let latestDir = path.resolve(pwd, '_latest');
     let cmd;
 

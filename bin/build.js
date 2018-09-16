@@ -125,7 +125,7 @@ function init() {
 function build() {
   try {
     let versionDir = path.resolve(pwd, version);
-    let latestDir = path.resolve(pwd, `latest`);
+    let latestDir = path.resolve(pwd, '_latest');
     let cmd;
 
     if (isDev) {

@@ -6,8 +6,11 @@ const {header, fileLink} = options[0];
 const {version} = header;
 const repoName = fileLink.repository.split('/').pop().replace('.git', '');
 
+const isLatest = process.argv.indexOf('latest');
+const folderName = isLatest ? 'latest' : version;
+
 module.exports = {
-  pathPrefix: `/${repoName}/${version}`,
+  pathPrefix: `/${repoName}/${folderName}`,
   plugins: [
     `gatsby-plugin-sass`,
     {

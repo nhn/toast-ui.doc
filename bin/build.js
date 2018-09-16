@@ -124,16 +124,18 @@ function init() {
  */
 function build() {
   try {
-    let cwd = path.resolve(pwd, `doc`);
+    let versionDir = path.resolve(pwd, version);
+    let latestDir = path.resolve(pwd, `latest`);
     let cmd;
 
     if (isDev) {
       cmd = `npm run develop`;
     } else {
-      cmd = `npm run build && cp -r public ${cwd}`;
+      cmd = `npm run build && cp -r public ${versionDir} &&`;
+      cmd += `npm run build latest && cp -r public ${latestDir}`;
     }
 
-    process.chdir(path.resolve(__dirname, '../'));
+    process.chdir(path.resolve(__dirname, '../')); // change working directory
 
     runScript(cmd)
       .then(() => {

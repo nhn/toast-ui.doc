@@ -10,6 +10,9 @@ import CodeBlock from '../components/CodeBlock';
 
 import '../styles/main.scss';
 
+/* global __PATH_PREFIX__*/
+const pathPrefix = __PATH_PREFIX__;
+
 class ExamplePage extends React.Component {
   render() {
     const {pathname, hash} = this.props.location;
@@ -34,7 +37,7 @@ class ExamplePage extends React.Component {
               name="Result"
               hasIframe={true}
             >
-              <Iframe src={file.relativePath} />
+              <Iframe src={`${pathPrefix}/${file.relativePath}`} />
             </TabContent>
             <TabContent name="JavaScript">
               <CodeBlock code={codeJs}/>

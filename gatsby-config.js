@@ -6,7 +6,7 @@ const {header, fileLink} = options[0];
 const {version} = header;
 const repoName = fileLink.repository.split('/').pop().replace('.git', '');
 
-const isLatest = process.argv.indexOf('latest');
+const isLatest = process.argv.indexOf('latest') > -1;
 const folderName = isLatest ? 'latest' : version;
 
 module.exports = {

@@ -27,8 +27,17 @@ const LAYOUT_DATA_PATH = `${BASE_DATA_PATH}/layout.json`;
 const NAV_DATA_PATH = `${BASE_DATA_PATH}/navigation.json`;
 const SEARCH_DATA_PATH = `${BASE_DATA_PATH}/searchKeywords.json`;
 
-const SRC_FILES_PATH = path.resolve(pwd, filePath);
 const MAIN_DATA_PATH = path.resolve(pwd, main);
+
+let srcFilePath;
+
+if (typeof filePath === 'string') {
+  srcFilePath = path.resolve(pwd, filePath);
+} else {
+  srcFilePath = filePath.map(file => {
+    return path.resolve(pwd, file);
+  });
+}
 
 /**
  * Make json file
@@ -80,9 +89,8 @@ function makeMainPageData() {
  * Make all data using in component via documentation.js
  */
 function makeAllData() {
-  documentation.build(SRC_FILES_PATH, {
-    shallow: true,
-    extension: ['js', 'es6']
+  documentation.build(srcFilePath, {
+    shallow: true
   }).then(documentation.formats.json)
     .then(output => {
       let navigation = [];

@@ -233,9 +233,8 @@ function makeCodeInfo(context) {
     file,
     loc
   } = context;
-  const replacedPath = config.filePath.replace(/(\*|\**)/g, '');
   const githubPath = file.split(`${pwd}/`).pop();
-  const filename = file.split(`${replacedPath}`).pop();
+  const filename = file.split(`/`).pop();
   const lineNum = loc.start.line;
 
   return {

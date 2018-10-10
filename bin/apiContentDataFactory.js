@@ -228,15 +228,21 @@ function makePid(name, kind) {
 function makeDescription(data) {
   if (data.children && data.children.length) {
     return data.children[0].children.map(child => {
-      let text;
+      const {
+        type,
+        value,
+        url,
+        children
+      } = child;
+      let text = '';
 
-      if (child.type === 'text') {
-        text = child.value;
-      } else if (child.type === 'link') {
-        text = `<a href="${child.url}">${child.children[0].value}</a>`;
+      if (type === 'text') {
+        text = value;
+      } else if (type === 'link' || type === 'linkReference') {
+        text = `<a href="${url}">${children[0].value}</a>`;
       }
 
-      return text;
+      return text.replace(/\n/g, '<br>');
     }).join('');
   }
 

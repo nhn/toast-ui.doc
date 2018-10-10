@@ -55,8 +55,13 @@ function makeLayoutData() {
   const {
     header,
     footer,
-    examples
+    examples,
+    destPrefix // using for gatsby-node.js
   } = config;
+
+  if (!header.linkUrl) {
+    header.linkUrl = '/';
+  }
 
   if (!header.version) {
     header.version = version;
@@ -66,6 +71,7 @@ function makeLayoutData() {
     header,
     footer,
     fileLink,
+    destPrefix: destPrefix || pkg.name,
     useExample: !!examples
   };
 
@@ -106,8 +112,6 @@ function makeAllData() {
 
       makeJsonFile(NAV_DATA_PATH, allNavData);
       makeJsonFile(SEARCH_DATA_PATH, allSearchData);
-
-      makeJsonFile(`${BASE_DATA_PATH}/output.json`, JSON.parse(output));
     })
     .then(() => {
       build();

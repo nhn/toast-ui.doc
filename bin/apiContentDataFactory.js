@@ -34,7 +34,7 @@ function makeGithubLink() {
       version
     } = pkg;
 
-    baseRepo = repository;
+    baseRepo = (repository.url || repository).replace('.git', '');
     customRef = `v${version}`;
   }
 

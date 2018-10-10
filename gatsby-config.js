@@ -2,15 +2,14 @@ const path = require('path');
 const pwd = process.cwd();
 const options = require(path.resolve(pwd, 'src/data/layout.json'));
 
-const {header, fileLink} = options[0];
+const {header, destPrefix} = options[0];
 const {version} = header;
-const repoName = fileLink.repository.split('/').pop().replace('.git', '');
 
 const isLatest = process.argv.indexOf('latest') > -1;
 const folderName = isLatest ? 'latest' : version;
 
 module.exports = {
-  pathPrefix: `/${repoName}/${folderName}`,
+  pathPrefix: `/${destPrefix}/${folderName}`,
   plugins: [
     `gatsby-plugin-sass`,
     {

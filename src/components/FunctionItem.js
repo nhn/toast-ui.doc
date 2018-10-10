@@ -5,7 +5,7 @@ import CodeInfo from '../components/CodeInfo';
 import ParamsTable from '../components/ParamsTable';
 import ReturnItem from '../components/ReturnItem';
 import ExampleItems from '../components/ExampleItems';
-import SubCategory from '../components/SubCategory';
+import NormalList from '../components/NormalList';
 
 class FunctionItem extends React.Component {
   render() { // eslint-disable-line complexity
@@ -56,22 +56,23 @@ class FunctionItem extends React.Component {
             </h4>
           </dt>
           <dd className="subsection-description">
-            <p className="description">{description}</p>
+            <p
+              className="description"
+              dangerouslySetInnerHTML={{__html: description}}
+            />
             {popItems[0].length ?
-              <SubCategory
+              <NormalList
                 title={'SEES'}
-                listType={'mixed'}
                 items={popItems[0]}
               /> : null}
             {popItems[1].length ?
-              <SubCategory
+              <NormalList
                 title={'TODOS'}
-                listType={'normal'}
                 items={popItems[1]}
               /> : null}
             <ParamsTable
               properties={popItems[2]}
-              isEvent={type === 'event'}
+              isPropertyTitle={type === 'event'}
             />
             {popItems[3].length ?
               <ReturnItem data={popItems[3][0]} /> : null}

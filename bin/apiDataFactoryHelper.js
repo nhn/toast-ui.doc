@@ -30,8 +30,8 @@ module.exports = {
       defaultVal: '',
       types: {
         prefix: '',
-        type: '',
-        names: ['']
+        names: [''],
+        isOptional: false
       },
       properties: [
         {
@@ -40,8 +40,8 @@ module.exports = {
           defaultVal: '',
           types: {
             prefix: '',
-            type: '',
-            names: ['']
+            names: [''],
+            isOptional: false
           },
           properties: [
             {
@@ -50,8 +50,8 @@ module.exports = {
               defaultVal: '',
               types: {
                 prefix: '',
-                type: '',
-                names: ['']
+                names: [''],
+                isOptional: false
               },
               properties: [
                 {
@@ -60,8 +60,8 @@ module.exports = {
                   defaultVal: '',
                   types: {
                     prefix: '',
-                    type: '',
-                    names: ['']
+                    names: [''],
+                    isOptional: false
                   }
                 }
               ]

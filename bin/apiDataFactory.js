@@ -97,7 +97,8 @@ function circulateItems(items) {
 
     if (kind === 'module' || kind === 'external' ||
       kind === 'class' || kind === 'namespace' ||
-      kind === 'mixin' || kind === 'global') {
+      kind === 'mixin' || kind === 'global' ||
+      kind === 'typedef') {
       const data = makeBaseData(item);
 
       addNavItem(data);
@@ -142,6 +143,12 @@ function addEachChildItem(name, parentPid, item) {
     contentMap[parentPid] = {
       items: []
     };
+
+    if (parentPid === 'global') {
+      contentMap[parentPid].pid = 'global';
+      contentMap[parentPid].parentPid = 'global';
+      contentMap[parentPid].title = 'Global';
+    }
   }
 
   contentMap[parentPid].items.push(contentItem);
@@ -160,6 +167,7 @@ function postProccessing() {
     const isModule = !!(memberof && memberof.split('module:').length > 1);
     const isExternal = !!(name && name.split('external:').length > 1);
     const isEvent = kind === 'event';
+    const isTypedef = kind === 'typedef';
     const isMember = contentMap[memberof];
 
     if (isModule) {
@@ -179,6 +187,8 @@ function postProccessing() {
       const itemName = splitedName[1];
 
       addEachChildItem(itemName, parentPid, item);
+    } else if (isTypedef) {
+      addEachChildItem(name, 'global', item);
     } else if (isMember) {
       addEachChildItem(name, memberof, item);
     }
@@ -198,6 +208,16 @@ function makeNavigationData() {
   });
 
   navItems = helper.sort(navItems);
+
+  if (navMap.global) {
+    navItems.push({
+      pid: 'global',
+      parentPid: 'global',
+      name: 'global',
+      opened: false,
+      type: 'api'
+    });
+  }
 }
 
 /**

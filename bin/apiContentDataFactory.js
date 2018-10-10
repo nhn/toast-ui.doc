@@ -79,7 +79,17 @@ function makeExpressionNames(data) {
   let names;
 
   if (elements) {
-    names = elements.map(item => item.name);
+    names = elements.map(item => {
+      let itemName;
+
+      if (item.type === 'TypeApplication') {
+        itemName = makeTypeApplicationName(item.applications, item.expression);
+      } else {
+        itemName = item.name;
+      }
+
+      return itemName;
+    });
   } else if (expression) {
     names = [expression.name || ''];
   } else {
@@ -164,8 +174,8 @@ function makeTypes(data) { // eslint-disable-line complexity
 
   return {
     prefix,
-    type: type || '',
-    names: names || ['']
+    names: names || [''],
+    isOptional: type === 'OptionalType'
   };
 }
 
@@ -187,6 +197,8 @@ function makeName(name, kind, params) {
     customName = `${name}(${joinedParams})`;
   } else if (kind === 'event') {
     customName = name.split('#').pop();
+  } else if (kind === 'typedef') {
+    customName = name;
   }
 
   return customName;
@@ -214,13 +226,21 @@ function makePid(name, kind) {
  * @returns {string} description
  */
 function makeDescription(data) {
-  let childList = data;
+  if (data.children && data.children.length) {
+    return data.children[0].children.map(child => {
+      let text;
 
-  while (childList.children && childList.children.length) {
-    childList = childList.children[0];
+      if (child.type === 'text') {
+        text = child.value;
+      } else if (child.type === 'link') {
+        text = `<a href="${child.url}">${child.children[0].value}</a>`;
+      }
+
+      return text;
+    }).join('');
   }
 
-  return childList.value || '';
+  return '';
 }
 
 /**
@@ -250,32 +270,9 @@ function makeCodeInfo(context) {
  * @returns {Array.<Object>} view data list
  */
 function makeSeeItems(items) {
-  let customItems = items.map(item => {
-    let currentItem = item;
-    let description = '';
-    let url;
+  let customItems = items.map(item => makeDescription(item));
 
-    while (currentItem.children && currentItem.children.length) {
-      if (currentItem.children[1] && currentItem.children[1].value) {
-        description = currentItem.children[1].value;
-      }
-
-      currentItem = currentItem.children[0];
-      url = currentItem.url || '';
-    }
-
-    return {
-      url,
-      value: currentItem.value,
-      description
-    };
-  });
-
-  customItems.push({
-    url: '',
-    value: '',
-    description: ''
-  });
+  customItems.push('');
 
   return customItems;
 }
@@ -444,7 +441,7 @@ function makeFunctionItem(data, itemType) {
     examples
   } = data;
 
-  if (kind === 'event') {
+  if (kind === 'event' || kind === 'typedef') {
     params = properties;
   }
 
@@ -512,10 +509,7 @@ function makeInstanceItems(items) {
  * @returns {Object} customizing content data
  */
 function makeContentData(pid, parentPid, item) {
-  const {
-    name,
-    members
-  } = item;
+  const {members} = item;
   const overview = makeFunctionItem(item, 'overview');
   const staticMethods = makeStaticItems(members['static']);
   const instanceMethods = makeInstanceItems(members.instance);
@@ -526,7 +520,7 @@ function makeContentData(pid, parentPid, item) {
   return {
     pid,
     parentPid,
-    title: name,
+    title: parentPid.charAt(0).toUpperCase() + parentPid.slice(1),
     items: items.concat(staticMethods).concat(instanceMethods)
   };
 }
@@ -561,6 +555,8 @@ function makeMemberItem(data) {
 
   if (kind === 'event') {
     item = makeFunctionItem(data, `event`);
+  } else if (kind === 'typedef') {
+    item = makeFunctionItem(data, `typedef`);
   } else if (kind === 'function') {
     item = makeFunctionItem(data, `${type}-function`);
   } else {

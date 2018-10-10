@@ -1,4 +1,5 @@
-.description {
+.description,
+.description a {
   font-size: 16px;
   font-weight: normal;
   color: #777;
@@ -10,27 +11,6 @@
   height: 1px;
   border: none;
   background-color: #ccc;
-}
-
-.overview {
-  margin: 0 20px;
-  padding: 32px;
-  background-color: #f9f9f9;
-
-  .subsection {
-    margin: 0;
-    padding: 0px;
-  }
-
-  .subsection-term {
-    .name {
-      font-size: 32px;
-    }
-  }
-
-  .code-info {
-    top: 7px;
-  }
 }
 
 .subsection {
@@ -175,5 +155,26 @@
 
   &:last-child {
     border-bottom: none;
+  }
+}
+
+.overview {
+  margin: 0 20px;
+  padding: 32px;
+  background-color: #f9f9f9;
+
+  .subsection {
+    margin: 0;
+    padding: 0px;
+  }
+
+  .subsection-term {
+    .name {
+      font-size: 32px;
+    }
+  }
+
+  .code-info {
+    top: 7px;
   }
 }

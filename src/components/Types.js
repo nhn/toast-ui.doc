@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
 
 const TYPE_NAME = [
   'number',
@@ -7,9 +8,11 @@ const TYPE_NAME = [
   'string',
   'array',
   'object',
-  'function'
+  'function',
+  'htmlelement',
+  'jquery',
+  'any'
 ];
-const SPLITTER = `<span class="splitter">|</span>`;
 
 const getClassName = (name) => {
   let replacedName = name.toLowerCase();
@@ -18,57 +21,92 @@ const getClassName = (name) => {
 };
 
 class Types extends React.Component {
+  makeType(name) {
+    const className = getClassName(name);
+
+    let component;
+
+    if (className === 'etc') {
+      component = (
+        <Link
+          to={`/${name}`}
+          className={`type ${className}`}
+        >
+          {name}
+        </Link>
+      );
+    } else {
+      component = (
+        <span className={`type ${className}`}>
+          {name}
+        </span>
+      );
+    }
+
+    return component;
+  }
+
   makeTypeApplicationName(name) {
     const splited = name.split('.');
     const prefix = splited[0]; // 'Array' or 'Object'
-    const joinedName = splited[1].split(',').map(item => {
-      let className = getClassName(item);
+    const joinedName = splited[1].split(',').map(item => this.makeType(item));
 
-      return `<span class="type ${className}">${item}</span>`;
-    }).join(SPLITTER);
-
-    return `${prefix}.<${joinedName}>`;
+    return (
+      <span>{prefix}.&lt;{joinedName}&gt;</span>
+    );
   }
 
-  makeTypes() {
+  makeOptionalType(types) {
     const {
-      data,
-      defaultVal
+      defaultVal,
+      data
     } = this.props;
     const {
-      type,
       prefix,
-      names
+      isOptional
     } = data;
+    const defaultValue = defaultVal ? `= ${this.props.defaultVal}` : '';
+
+    let wrapperComponent;
+
+    if (isOptional) {
+      wrapperComponent = (
+        <span className="types-wrapper">
+          [ {prefix}{types} ]
+          {defaultValue}
+        </span>
+      );
+    } else {
+      wrapperComponent = (
+        <span className="types-wrapper">
+          {prefix}{types}{defaultValue}
+        </span>
+      );
+    }
+
+    return wrapperComponent;
+  }
+
+  render() {
+    const {names} = this.props.data;
 
     if (names) {
-      let joinedNames = names.map(name => {
+      const types = names.map(name => {
         if (name.indexOf('.') > -1) {
           return this.makeTypeApplicationName(name);
         }
 
-        let className = getClassName(name);
-        let replcedName = `${prefix}<span class="type ${className}">${name}</span>`;
+        return this.makeType(name);
+      });
 
-        if (type === 'OptionalType') {
-          replcedName = `[ ${replcedName} ]`;
-        }
-
-        return replcedName;
-      }).join(SPLITTER);
-
-      let defaultValue = defaultVal ? ` = ${defaultVal}` : '';
-
-      return `${joinedNames}${defaultValue}`;
+      return (
+        <p className="types">
+          {this.makeOptionalType(types)}
+        </p>
+      );
     }
 
-    return '';
-  }
-
-  render() {
-    return (
-      <p className="types" dangerouslySetInnerHTML={{__html: this.makeTypes()}} />
-    );
+    return null;
   }
 }
 

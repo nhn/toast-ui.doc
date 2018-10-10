@@ -106,6 +106,8 @@ function makeAllData() {
 
       makeJsonFile(NAV_DATA_PATH, allNavData);
       makeJsonFile(SEARCH_DATA_PATH, allSearchData);
+
+      makeJsonFile(`${BASE_DATA_PATH}/output.json`, JSON.parse(output));
     })
     .then(() => {
       build();

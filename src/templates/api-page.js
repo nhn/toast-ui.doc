@@ -11,7 +11,7 @@ import FunctionItem from '../components/FunctionItem';
 import '../styles/main.scss';
 
 class ApiPage extends React.Component {
-  render() {
+  render() { // eslint-disable-line complexity
     const {
       pathname,
       hash
@@ -24,11 +24,12 @@ class ApiPage extends React.Component {
 
     const selectedNavItemId = `${pathname.replace('/', '')}${hash}`;
 
-    const overview = items.filter(item => item.type === 'overview')[0];
+    const overview = items.filter(item => item.type === 'overview');
     const staticProperies = items.filter(item => item.type === 'static-property');
     const staticMethods = items.filter(item => item.type === 'static-function');
     const instanceMethods = items.filter(item => item.type === 'instance-function');
     const events = items.filter(item => item.type === 'event');
+    const typedef = items.filter(item => item.type === 'typedef');
 
     return (
       <Layout
@@ -39,10 +40,11 @@ class ApiPage extends React.Component {
           <h2 className="title">{title}</h2>
         </header>
         <article>
-          <Overview
-            data={overview}
-            isClass={parentPid === 'class'}
-          />
+          {overview.length ?
+            <Overview
+              data={overview[0]}
+              hasProperties={parentPid === 'typedef'}
+            /> : null}
           {staticProperies.length ?
             <MainCategory title="Static Properties">
               {staticProperies.map((item, index) => (
@@ -83,6 +85,16 @@ class ApiPage extends React.Component {
                 />
               ))}
             </MainCategory> : null}
+          {typedef.length ?
+            <MainCategory title="Typedef">
+              {typedef.map((item, index) => (
+                <FunctionItem
+                  key={`${index}`}
+                  isFirstItem={index === 0}
+                  data={item}
+                />
+              ))}
+            </MainCategory> : null}
         </article>
       </Layout>
     );
@@ -115,8 +127,8 @@ export const query = graphql`
         name
         types {
           prefix
-          type
           names
+          isOptional
         }
         description
         codeInfo {
@@ -124,11 +136,7 @@ export const query = graphql`
           lineNum
           linkUrl
         }
-        sees {
-          url
-          value
-          description
-        }
+        sees
         todos
         augments
         params {
@@ -137,8 +145,8 @@ export const query = graphql`
           defaultVal
           types {
             prefix
-            type
             names
+            isOptional
           }
           properties {
             name
@@ -146,8 +154,8 @@ export const query = graphql`
             defaultVal
             types {
               prefix
-              type
               names
+              isOptional
             }
             properties {
               name
@@ -155,8 +163,8 @@ export const query = graphql`
               defaultVal
               types {
                 prefix
-                type
                 names
+                isOptional
               }
               properties {
                 name
@@ -164,8 +172,8 @@ export const query = graphql`
                 defaultVal
                 types {
                   prefix
-                  type
                   names
+                  isOptional
                 }
               }
             }
@@ -178,8 +186,8 @@ export const query = graphql`
         returns {
           types {
             prefix
-            type
             names
+            isOptional
           }
           description
         }

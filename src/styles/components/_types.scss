@@ -9,6 +9,19 @@
     height: 10px;
     background-color: #ccc;
   }
+
+  .type:before {
+    content: '';
+    display: inline-block;
+    margin: 0 6px;
+    width: 1px;
+    height: 10px;
+    background-color: #ccc;
+  }
+
+  .type:first-child:before {
+    display: none;
+  }
 }
 
 .type {
@@ -21,19 +34,27 @@
   }
 
   &.boolean {
-    color: #03bd9e;
+    color: #dc322f;
   }
 
   &.array {
-    color: #9bbd1f;
+    color: #ff5883;
   }
 
   &.object {
-    color: #dc322f;
+    color: #515ce6;
   }
 
   &.function {
     color: #00a9ff;
+  }
+
+  &.htmlelement {
+    color: #03bd9e;
+  }
+
+  &.jquery {
+    color: #9bbd1f;
   }
 
   &.etc {

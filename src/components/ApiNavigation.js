@@ -45,6 +45,11 @@ class ApiNavigation extends React.Component {
         />
         <ListGroup
           selectedId={selectedId}
+          title={'TYPEDEF'}
+          items={this.filterItems('typedef')}
+        />
+        <ListGroup
+          selectedId={selectedId}
           title={'GLOBAL'}
           items={this.filterItems('global')}
         />

@@ -45,13 +45,13 @@ class ParamsTable extends React.Component {
     const {
       properties,
       isProperties,
-      isEvent
+      isPropertyTitle
     } = this.props;
 
     if (properties.length) {
       return (
         <div className={isProperties ? 'properties' : 'params-wrapper'}>
-          <h5 className="title">{isProperties || isEvent ? 'PROPERTIES' : 'PARAMETERS'}</h5>
+          <h5 className="title">{isProperties || isPropertyTitle ? 'PROPERTIES' : 'PARAMETERS'}</h5>
           <table className={isProperties ? '' : 'params'}>
             <colgroup>
               <col className="first-column" />
@@ -80,7 +80,7 @@ class ParamsTable extends React.Component {
 ParamsTable.propTypes = {
   properties: PropTypes.array,
   isProperties: PropTypes.bool,
-  isEvent: PropTypes.bool
+  isPropertyTitle: PropTypes.bool
 };
 
 export default ParamsTable;

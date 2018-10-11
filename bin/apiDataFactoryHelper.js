@@ -1,11 +1,3 @@
-function handleSort(a, b) {
-  const before = a.name;
-  const after = b.name;
-  const falsy = before > after ? 1 : 0;
-
-  return before < after ? -1 : falsy;
-}
-
 module.exports = {
   makePid: function(name) {
     return `${name}`.replace('/', '_');
@@ -21,7 +13,13 @@ module.exports = {
     });
   },
   sort: function(items) {
-    return items.sort(handleSort);
+    return items.sort((a, b) => {
+      const before = a.name;
+      const after = b.name;
+      const falsy = before > after ? 1 : 0;
+
+      return before < after ? -1 : falsy;
+    });
   },
   getDefaultParam: function() {
     return {

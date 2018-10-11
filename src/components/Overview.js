@@ -63,7 +63,7 @@ class Overview extends React.Component {
                 /> : null}
               {popItems[2].length ?
                 <NormalList
-                  title={'AUGMENTS'}
+                  title={'EXTENDS'}
                   items={popItems[2]}
                 /> : null}
               <ParamsTable

@@ -39,12 +39,14 @@ class ExamplePage extends React.Component {
             >
               <Iframe src={`${pathPrefix}/${file.relativePath}`} />
             </TabContent>
-            <TabContent name="JavaScript">
-              <CodeBlock code={codeJs}/>
-            </TabContent>
-            <TabContent name="HTML">
-              <CodeBlock code={codeHtml}/>
-            </TabContent>
+            {codeJs ?
+              <TabContent name="JavaScript">
+                <CodeBlock code={codeJs}/>
+              </TabContent> : null}
+            {codeHtml ?
+              <TabContent name="HTML">
+                <CodeBlock code={codeHtml}/>
+              </TabContent> : null}
           </Tabs>
         </article>
       </Layout>

@@ -16,18 +16,6 @@ class Tabs extends React.Component {
     });
   }
 
-  getTabButtonComponent(name, index) {
-    return (
-      <button
-        key={`tab-${index}`}
-        className={`tab${this.state.selected === index ? ' selected' : ''}`}
-        onClick={() => (this.selectTab(index))}
-      >
-        {name}
-      </button>
-    );
-  }
-
   render() {
     const {
       children
@@ -36,9 +24,21 @@ class Tabs extends React.Component {
     return (
       <div className="tabs">
         <div className="tab-buttons">
-          {children.map((child, index) => (
-            this.getTabButtonComponent(child.props.name, index)
-          ))}
+          {children.map((child, index) => {
+            if (child) {
+              return (
+                <button
+                  key={`tab-${index}`}
+                  className={`tab${this.state.selected === index ? ' selected' : ''}`}
+                  onClick={() => (this.selectTab(index))}
+                >
+                  {child.props.name}
+                </button>
+              );
+            }
+
+            return null;
+          })}
         </div>
         {children[this.state.selected]}
       </div>

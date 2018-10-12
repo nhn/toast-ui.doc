@@ -55,18 +55,6 @@
   .item.inline {
     margin-top: 4px;
   }
-
-  .subsection-term .signiture {
-    display: inline-block;
-    margin-right: 5px;
-    padding: 0 10px;
-    font-size: 14px;
-    font-weight: normal;
-    color: #aaa;
-    border: 2px solid #aaa;
-    border-radius: 14px;
-    vertical-align: middle;
-  }
 }
 
 .subsection-term {
@@ -76,18 +64,32 @@
     padding: 0;
     padding-right: 200px;
     font-size: 0;
+
+    .param {
+      color: #777;
+    }
   }
 
   .signiture {
     display: inline-block;
     margin-right: 5px;
-    padding: 0 10px;
+    padding: 1px 10px;
     font-size: 14px;
     font-weight: normal;
-    color: #aaa;
-    border: 2px solid #aaa;
     border-radius: 14px;
     vertical-align: middle;
+
+    &.deprecated {
+      color: #aaa;
+      border: 2px solid #aaa;
+    }
+
+    &.override {
+      padding: 3px 12px;
+      border: none;
+      background-color: rgba(81, 92, 230, 0.2);
+      color: #515ce6;
+    }
   }
 
   .name,

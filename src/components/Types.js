@@ -21,7 +21,7 @@ const getClassName = (name) => {
 };
 
 class Types extends React.Component {
-  makeType(name) {
+  makeType(name, index) {
     const className = getClassName(name);
 
     let component;
@@ -30,6 +30,7 @@ class Types extends React.Component {
       component = (
         <Link
           to={`/${name}`}
+          key={`type-${index}`}
           className={`type ${className}`}
         >
           {name}
@@ -37,7 +38,10 @@ class Types extends React.Component {
       );
     } else {
       component = (
-        <span className={`type ${className}`}>
+        <span
+          key={`type-${index}`}
+          className={`type ${className}`}
+        >
           {name}
         </span>
       );
@@ -46,13 +50,15 @@ class Types extends React.Component {
     return component;
   }
 
-  makeTypeApplicationName(name) {
+  makeTypeApplicationName(name, index) {
     const splited = name.split('.');
     const prefix = splited[0]; // 'Array' or 'Object'
-    const joinedName = splited[1].split(',').map(item => this.makeType(item));
+    const joinedName = splited[1].split(',').map((item, idx) => this.makeType(item, idx));
 
     return (
-      <span>{prefix}.&lt;{joinedName}&gt;</span>
+      <span key={`type-${index}`}>
+        {prefix}.&lt;{joinedName}&gt;
+      </span>
     );
   }
 
@@ -65,7 +71,7 @@ class Types extends React.Component {
       prefix,
       isOptional
     } = data;
-    const defaultValue = defaultVal ? `= ${this.props.defaultVal}` : '';
+    const defaultValue = defaultVal ? ` = ${this.props.defaultVal}` : '';
 
     let wrapperComponent;
 
@@ -91,12 +97,12 @@ class Types extends React.Component {
     const {names} = this.props.data;
 
     if (names) {
-      const types = names.map(name => {
+      const types = names.map((name, index) => {
         if (name.indexOf('.') > -1) {
           return this.makeTypeApplicationName(name);
         }
 
-        return this.makeType(name);
+        return this.makeType(name, index);
       });
 
       return (

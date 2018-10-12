@@ -27,8 +27,15 @@ class SubListGroups extends React.Component {
 
               return (
                 <li key={`nav-item-${index}`}>
-                  <p className={`nav-item ellipsis${selectedId === pid ? ' selected' : ''}`}>
-                    <Link to={`/${pid}`}>{name}</Link>
+                  <p className={`nav-item${selectedId === pid ? ' selected' : ''}`}>
+                    <Link
+                      to={`/${pid}`}
+                      className="ellipsis"
+                    >
+                      <span>
+                        {name}
+                      </span>
+                    </Link>
                   </p>
                 </li>
               );

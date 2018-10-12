@@ -53,7 +53,6 @@
   z-index: 2;
 
   .item {
-    padding: 16px 12px 16px 20px;
     font-size: 14px;
 
     &.selected,
@@ -62,15 +61,11 @@
     }
 
     a {
-      margin-right: 12px;
+      display: block;
+      padding: 16px 12px 16px 20px;
       font-size: 14px;
       color: #222;
       text-decoration: none;
-      vertical-align: middle;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
 
     strong {
@@ -78,10 +73,10 @@
       font-weight: bold;
     }
 
-    span {
+    .nav-group-title {
+      margin-left: 12px;
       font-size: 12px;
       color: #999;
-      vertical-align: middle;
     }
   }
 

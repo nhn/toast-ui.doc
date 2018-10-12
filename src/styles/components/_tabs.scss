@@ -10,12 +10,12 @@
   color: #555;
   font-size: 14px;
 
+  &:hover,
   &.selected {
     color: #515ce6;
     font-weight: bold;
   }
 
-  &:hover:after,
   &.selected:after {
     content: '';
     position: absolute;

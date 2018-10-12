@@ -16,9 +16,13 @@ class SearchList extends React.Component {
   hightliging(fullText) {
     let pattern = new RegExp(this.props.value, 'ig');
 
-    return fullText.replace(pattern, (text) => {
+    const joined = fullText.replace(pattern, (text) => {
       return `<strong>${text}</strong>`;
     });
+
+    return (
+      <span dangerouslySetInnerHTML={{__html: joined}} />
+    );
   }
 
   getListItemComponent(item, index) {
@@ -34,14 +38,18 @@ class SearchList extends React.Component {
 
     return (
       <li
-        className={`item ellipsis${movedIndex === index ? ' selected' : ''}`}
+        className={`item${movedIndex === index ? ' selected' : ''}`}
         key={`search-item-${index}`}
       >
         <Link
           to={`/${pid}`}
-          dangerouslySetInnerHTML={{__html: this.hightliging(name)}}
-        />
-        <span>{TYPE_MAP[parentPid] || parentPid}</span>
+          className="ellipsis"
+        >
+          {this.hightliging(name)}
+          <span className="nav-group-title">
+            {TYPE_MAP[parentPid] || parentPid}
+          </span>
+        </Link>
       </li>
     );
   }

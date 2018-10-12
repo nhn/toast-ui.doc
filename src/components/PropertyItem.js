@@ -30,8 +30,8 @@ class PropertyItem extends React.Component {
         <dl>
           <dt className="subsection-term">
             <h4 className="title">
-              {deprecated ? <span className="signiture">deprecated</span> : null}
-              {override ? <span className="signiture">override</span> : null}
+              {deprecated ? <span className="signiture deprecated">deprecated</span> : null}
+              {override ? <span className="signiture override">override</span> : null}
               <span className="name">{name}: </span> <Types data={types} />
               <CodeInfo data={codeInfo} />
             </h4>

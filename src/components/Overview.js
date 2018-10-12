@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CodeInfo from '../components/CodeInfo';
+import FunctionTerm from '../components/FunctionTerm';
 import ParamsTable from '../components/ParamsTable';
 import ExampleItems from '../components/ExampleItems';
 import NormalList from '../components/NormalList';
@@ -13,6 +13,7 @@ class Overview extends React.Component {
       hasProperties
     } = this.props;
     const {
+      deprecated,
       name,
       description,
       codeInfo,
@@ -41,10 +42,11 @@ class Overview extends React.Component {
         <div className="subsection">
           <dl>
             <dt className="subsection-term">
-              <h4 className="title">
-                <span className="name">{name}</span>
-                <CodeInfo data={codeInfo} />
-              </h4>
+              <FunctionTerm
+                deprecated={deprecated}
+                name={name}
+                codeInfo={codeInfo}
+              />
             </dt>
             <dd className="subsection-description">
               <p

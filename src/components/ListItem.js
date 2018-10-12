@@ -44,8 +44,15 @@ class ListItem extends React.Component {
 
     return (
       <li>
-        <p className={`nav-item ellipsis${selected ? ' selected' : ''}`}>
-          <Link to={`/${pid}`}>{name}</Link>
+        <p className={`nav-item${selected ? ' selected' : ''}`}>
+          <Link
+            to={`/${pid}`}
+            className="ellipsis"
+          >
+            <span>
+              {name}
+            </span>
+          </Link>
           {hasChildNodes &&
             <ToggleButton
               hasChildNodes={hasChildNodes}

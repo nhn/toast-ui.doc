@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CodeInfo from '../components/CodeInfo';
+import FunctionTerm from '../components/FunctionTerm';
 import ParamsTable from '../components/ParamsTable';
 import ReturnItem from '../components/ReturnItem';
 import ExampleItems from '../components/ExampleItems';
@@ -48,12 +48,12 @@ class FunctionItem extends React.Component {
       >
         <dl>
           <dt className="subsection-term">
-            <h4 className="title">
-              {deprecated ? <span className="signiture">deprecated</span> : null}
-              {override ? <span className="signiture">override</span> : null}
-              <span className="name">{name}</span>
-              <CodeInfo data={codeInfo} />
-            </h4>
+            <FunctionTerm
+              deprecated={deprecated}
+              override={override}
+              name={name}
+              codeInfo={codeInfo}
+            />
           </dt>
           <dd className="subsection-description">
             <p

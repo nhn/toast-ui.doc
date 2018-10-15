@@ -1,9 +1,10 @@
 .lnb {
-  position: absolute;
+  position: fixed;
   top: 70px;
   bottom: 60px;
   left: 0;
   width: 260px;
+  height: 100%;
   min-width: 212px;
   background-color: #fff;
   border-right: 1px solid #ccc;

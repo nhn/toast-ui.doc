@@ -8,9 +8,15 @@
     color: #222;
     font-size: 14px;
     text-decoration: none;
+  }
 
-    &:hover {
+  &:hover {
+    a {
       color: #515ce6;
+    }
+
+    .btn-toggle .icon {
+      border-top-color: #515ce6;
     }
   }
 
@@ -18,10 +24,6 @@
     a {
       color: #515ce6;
       font-weight: bold;
-    }
-
-    &:hover {
-      background-color: rgba(81, 92, 230, 0.1);
     }
   }
 
@@ -66,24 +68,34 @@
   .nav-item {
     a {
       padding: 16px 24px 16px 61px;
-      color: #555;
+      color: #777;
       font-size: 14px;
-      font-weight: normal;
       text-decoration: none;
+    }
 
-      &:hover {
+    &:hover,
+    &.selected {
+      background-color: #edeefc;
+
+      a {
         color: #515ce6;
-        font-weight: normal;
       }
+    }
+  }
+}
 
-      &.selected {
-        background-color: #fff;
+.nav-api {
 
-        a {
-          color: #515ce6;
-          font-weight: bold;
-        }
-      }
+}
+
+.nav-example {
+  .nav-item {
+    a {
+      font-weight: bold;
+    }
+
+    &.selected {
+      background-color: #edeefc;
     }
   }
 }

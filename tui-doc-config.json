@@ -1,9 +1,10 @@
 {
-  "filePath": "demo/js/**",
+  "filePath": [
+    "demo/calendar.js"
+  ],
   "header": {
     "logo": "https://uicdn.toast.com/toastui/img/tui-bi-white.png",
-    "linkUrl": "https://github.com/nhnent/tui.grid",
-    "title": "Grid"
+    "linkUrl": "https://github.com/nhnent/tui.grid"
   },
   "footer": [
     {
@@ -23,8 +24,8 @@
   "examples": {
     "filePath": "demo/examples",
     "titles": {
-      "example01": "TOUAST UI Chart example",
-      "example02": "TOUAST UI Grid example (custom title)"
+      "example01-basic": "1. demo",
+      "example02-formatter": "2. demo"
     }
   }
 }

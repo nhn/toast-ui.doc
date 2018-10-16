@@ -11,7 +11,6 @@
 
   .logo {
     display: inline-block;
-    margin-right: 14px;
     vertical-align: middle;
 
     img {
@@ -21,6 +20,7 @@
 
   .project-name {
     display: inline-block;
+    margin-left: 14px;
     font-size: 30px;
     color: #fff;
     vertical-align: middle;
@@ -36,13 +36,13 @@
   .version {
     display: inline-block;
     font-size: 16px;
-    color: #3039AB;
+    color: #3039ab;
     vertical-align: bottom;
   }
 
   .splitter {
     margin: 0 14px;
     height: 22px;
-    background-color: #282153;
+    background-color: #3039ab;
   }
 }

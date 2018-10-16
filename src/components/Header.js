@@ -18,15 +18,16 @@ class Header extends React.Component {
             <img src={logo} alt="logo" />
           </Link>
         </h1>
-        <span className="info project-name">
-          <a
-            href={linkUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {title}
-          </a>
-        </span>
+        {title ?
+          <span className="info project-name">
+            <a
+              href={linkUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {title}
+            </a>
+          </span> : null}
         <span className="splitter">|</span>
         <span className="version">v{version}</span>
       </header>

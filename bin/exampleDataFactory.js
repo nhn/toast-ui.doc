@@ -180,9 +180,9 @@ function makeNavAndSearchData() {
 
 module.exports = {
   createData: function() {
-    if (examples) {
-      fs.emptyDirSync(COPY_FILES_PATH);
+    fs.emptyDirSync(COPY_FILES_PATH);
 
+    if (examples) {
       copyBundleFiles();
       copyExampleFiles();
       makeNavAndSearchData();

@@ -22,7 +22,7 @@ class ApiPage extends React.Component {
       items
     } = this.props.data.apiPageJson;
 
-    const selectedNavItemId = `${pathname.replace('/', '')}${hash}`;
+    const selectedNavItemId = `${pathname.split('/').pop()}${hash}`;
 
     const overview = items.filter(item => item.type === 'overview');
     const staticProperies = items.filter(item => item.type === 'static-property');

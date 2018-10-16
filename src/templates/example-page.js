@@ -23,7 +23,7 @@ class ExamplePage extends React.Component {
       codeHtml
     } = examplePageJson;
 
-    const selectedNavItemId = `${pathname.replace('/', '')}${hash}`;
+    const selectedNavItemId = `${pathname.split('/').pop()}${hash}`;
 
     return (
       <Layout

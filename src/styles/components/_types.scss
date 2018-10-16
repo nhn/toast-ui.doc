@@ -49,12 +49,14 @@
     color: #00a9ff;
   }
 
-  &.htmlelement {
-    color: #03bd9e;
+  &.date {
+    color: #9bbd1f;
   }
 
-  &.jquery {
-    color: #9bbd1f;
+  &.htmlelement,
+  &.jquery,
+  &.jqueryevent {
+    color: #03bd9e;
   }
 
   &.etc {

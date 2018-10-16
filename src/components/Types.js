@@ -9,8 +9,10 @@ const TYPE_NAME = [
   'array',
   'object',
   'function',
+  'date',
   'htmlelement',
   'jquery',
+  'jqueryevent',
   'any'
 ];
 

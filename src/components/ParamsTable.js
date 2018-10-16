@@ -33,7 +33,10 @@ class ParamsTable extends React.Component {
             />
           </td>
           <td>
-            <p className="description">{description}</p>
+            <p
+              className="description"
+              dangerouslySetInnerHTML={{__html: description}}
+            />
             {props && <ParamsTable properties={props} isProperties={true} />}
           </td>
         </tr>

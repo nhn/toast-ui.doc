@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StaticQuery, graphql} from 'gatsby';
+import {StaticQuery, graphql, navigate} from 'gatsby';
 
 import SearchList from '../components/SearchList';
 
@@ -137,7 +137,7 @@ class SearchBar extends React.Component {
 
   moveToPage(url) {
     if (url) {
-      window.location = url;
+      navigate(url);
     }
 
     this.resetState();

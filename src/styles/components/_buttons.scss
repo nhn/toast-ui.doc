@@ -47,8 +47,8 @@
 }
 
 .btn-toggle {
-  width: 20px;
-  height: 20px;
+  width: 48px;
+  height: 48px;
 
   .icon {
     display: inline-block;
@@ -61,7 +61,7 @@
 
   &.opened {
     .icon {
-      border-bottom: 6px solid #515ce6;
+      border-bottom: 6px solid #777;
       border-top: none;
     }
   }

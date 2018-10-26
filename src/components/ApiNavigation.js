@@ -17,7 +17,7 @@ class ApiNavigation extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="nav">
         <ListGroup
           selectedId={selectedId}
           title={'MODULES'}

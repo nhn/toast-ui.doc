@@ -1,10 +1,9 @@
 .lnb {
   position: fixed;
   top: 70px;
-  bottom: 60px;
   left: 0;
   width: 260px;
-  height: 100%;
+  height: calc(100vh - 70px);
   min-width: 212px;
   background-color: #fff;
   border-right: 1px solid #ccc;

@@ -1,22 +1,26 @@
+.nav {
+  padding-bottom: 60px;
+}
+
 .nav-item {
   position: relative;
   background-color: #fff;
 
   a {
     display: block;
-    padding: 16px 24px;
+    padding: 17px 24px;
     color: #222;
     font-size: 14px;
     text-decoration: none;
-  }
 
-  &:hover {
-    a {
+    &:hover {
       color: #515ce6;
     }
 
-    .btn-toggle .icon {
-      border-top-color: #515ce6;
+    &:hover + .btn-toggle {
+      .icon {
+        border-top-color: #515ce6;
+      }
     }
   }
 
@@ -26,8 +30,16 @@
       font-weight: bold;
     }
 
-    .btn-toggle .icon {
-      border-top-color: #515ce6;
+    .btn-toggle {
+      .icon {
+        border-top-color: #515ce6;
+      }
+
+      &.opened {
+        .icon {
+          border-bottom-color: #515ce6;
+        }
+      }
     }
   }
 
@@ -37,8 +49,20 @@
 
   .btn-toggle {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 0px;
+    right: 0px;
+
+    &:hover {
+      .icon {
+        border-top-color: #515ce6;
+      }
+    }
+
+    &.opened:hover {
+      .icon {
+        border-bottom-color: #515ce6;
+      }
+    }
   }
 }
 
@@ -86,10 +110,6 @@
       }
     }
   }
-}
-
-.nav-api {
-
 }
 
 .nav-example {

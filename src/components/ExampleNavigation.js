@@ -12,7 +12,7 @@ class ExampleNavigation extends React.Component {
     } = this.props;
 
     return (
-      <div className="nav-example">
+      <div className="nav nav-example">
         <ListGroup
           selectedId={selectedId}
           items={items}

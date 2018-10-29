@@ -1,7 +1,7 @@
 .header {
   position: fixed;
-  padding: 22px 24px;
-  height: 26px;
+  padding: 13px 24px;
+  height: 44px;
   top: 0;
   left: 0;
   right: 0;
@@ -14,20 +14,32 @@
     vertical-align: middle;
 
     img {
-      height: 23px;
+      height: 42px;
+    }
+  }
+
+  .info-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+
+    &.has-title {
+      .splitter {
+        margin: 0 11px;
+        visibility: hidden;
+      }
     }
   }
 
   .project-name {
     display: inline-block;
     margin-left: 14px;
-    font-size: 30px;
-    color: #fff;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
     vertical-align: middle;
     line-height: 0.8em;
 
     a {
-      color: #fff;
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       vertical-align: middle;
     }
@@ -35,6 +47,7 @@
 
   .version {
     display: inline-block;
+    line-height: 0.7em;
     font-size: 16px;
     color: #3039ab;
     vertical-align: bottom;
@@ -42,6 +55,7 @@
 
   .splitter {
     margin: 0 14px;
+    width: 2px;
     height: 22px;
     background-color: #3039ab;
   }

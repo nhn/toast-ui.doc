@@ -19,17 +19,22 @@ class Header extends React.Component {
           </Link>
         </h1>
         {title ?
-          <span className="info project-name">
-            <a
-              href={linkUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {title}
-            </a>
+          <span className="info-wrapper">
+            <span className="project-name">/</span>
+            <span className="project-name">
+              <a
+                href={linkUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {title}
+              </a>
+            </span>
           </span> : null}
-        <span className="splitter">|</span>
-        <span className="version">v{version}</span>
+        <span className={`info-wrapper${title ? ' has-title' : ''}`}>
+          <span className="splitter">|</span>
+          <span className="version">v{version}</span>
+        </span>
       </header>
     );
   }

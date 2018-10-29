@@ -3,7 +3,8 @@
     "demo/calendar.js"
   ],
   "header": {
-    "logo": "https://uicdn.toast.com/toastui/img/tui-bi-white.png",
+    "logo": "https://uicdn.toast.com/toastui/img/tui-component-white.png",
+    "title": "doc",
     "linkUrl": "https://github.com/nhnent/tui.grid"
   },
   "footer": [

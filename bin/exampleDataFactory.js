@@ -49,7 +49,11 @@ function getPid(filename) {
  * @returns {string} title
  */
 function getTitle(filename) {
-  return titles[filename] || filename;
+  if (titles) {
+    return titles[filename] || filename;
+  }
+
+  return '';
 }
 
 /**

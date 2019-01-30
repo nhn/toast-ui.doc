@@ -39,7 +39,7 @@
     "acorn": "^6.0.0",
     "cheerio": "^1.0.0-rc.2",
     "copy-dir": "^0.4.0",
-    "documentation": "^8.0.2",
+    "documentation": "^9.0.0",
     "fs-extra": "^7.0.0",
     "gatsby": "^2.0.0",
     "gatsby-plugin-sass": "^2.0.1",

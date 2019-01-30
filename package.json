@@ -36,6 +36,7 @@
     "react-test-renderer": "^16.4.2"
   },
   "dependencies": {
+    "acorn": "^6.0.0",
     "cheerio": "^1.0.0-rc.2",
     "copy-dir": "^0.4.0",
     "documentation": "^8.0.2",

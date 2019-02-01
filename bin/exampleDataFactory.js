@@ -4,6 +4,7 @@ const fs = require('fs-extra'); // to create folder and file
 const mkdirp = require('mkdirp'); // to create folder
 const nodedir = require('node-dir'); // to read files
 const copydir = require('copy-dir'); // to copy folder
+const directoryExists = require('directory-exists');
 
 const cheerio = require('cheerio');
 const Prism = require('prismjs');
@@ -19,6 +20,7 @@ const {
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
 const BUNDLE_FILES_PATH = path.resolve(pwd, `dist`);
+const LIB_FILES_PATH = path.resolve(pwd, `lib`);
 const COPY_FILES_PATH = path.resolve(__dirname, `../static`);
 const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/examplePage`);
 
@@ -147,10 +149,33 @@ function copyExampleFiles() {
  * Copy bundle files of dist to static folder
  */
 function copyBundleFiles() {
-  copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
-    if (err) {
-      throw err;
+  directoryExists(BUNDLE_FILES_PATH, (error, result) => {
+    if (!result) {
+      return;
     }
+
+    copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
+      if (err) {
+        throw err;
+      }
+    });
+  });
+}
+
+/**
+ * Copy library files on lib to static folder
+ */
+function copyLibraryFiles() {
+  directoryExists(LIB_FILES_PATH, (error, result) => {
+    if (!result) {
+      return;
+    }
+
+    copydir(LIB_FILES_PATH, `${COPY_FILES_PATH}/lib`, err => {
+      if (err) {
+        throw err;
+      }
+    });
   });
 }
 
@@ -189,6 +214,7 @@ module.exports = {
     if (examples) {
       copyBundleFiles();
       copyExampleFiles();
+      copyLibraryFiles();
       makeNavAndSearchData();
     } else { // make dummy file for graphql
       makeExamplePageDataFile({

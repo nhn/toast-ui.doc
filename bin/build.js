@@ -2,8 +2,8 @@
 
 const path = require('path');
 const fs = require('fs-extra');
-const documentation = require('documentation');
 const runScript = require('runscript');
+const documentation = require('documentation');
 
 const apiDataFactory = require('./apiDataFactory.js');
 const exampleDataFactory = require('./exampleDataFactory.js');

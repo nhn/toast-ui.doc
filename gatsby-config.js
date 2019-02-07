@@ -1,15 +1,14 @@
 const path = require('path');
-const pwd = process.cwd();
-const options = require(path.resolve(pwd, 'src/data/layout.json'));
+const options = require(path.resolve(process.cwd(), 'src/data/layout.json'));
 
-const {header, destPrefix} = options[0];
+const {header, pathPrefix} = options[0];
 const {version} = header;
 
 const isLatest = process.argv.indexOf('latest') > -1;
 const folderName = isLatest ? 'latest' : version;
 
 module.exports = {
-  pathPrefix: `/${destPrefix}/${folderName}`,
+  pathPrefix: `/${pathPrefix}/${folderName}`,
   plugins: [
     `gatsby-plugin-sass`,
     {

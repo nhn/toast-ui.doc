@@ -1,15 +1,12 @@
 {
-  "filePath": [
-    "demo/calendar.js"
-  ],
   "header": {
     "logo": {
       "src": "https://uicdn.toast.com/toastui/img/tui-component-white.png",
       "linkUrl": "/"
     },
     "title": {
-      "text": "Animation",
-      "linkUrl": "https://github.com/nhnent/tui.grid"
+      "text": "Doc",
+      "linkUrl": "https://github.com/nhnent/tui.doc"
     },
     "version": true
   },
@@ -23,11 +20,18 @@
       "linkUrl": "https://github.com/nhnent/fe.javascript"
     }
   ],
-  "fileLink": {
-    "repository": "https://github.nhnent.com/fe/tui.doc",
-    "ref": "feature/add-pages"
+  "main": {
+    "filePath": "demo/README.md"
   },
-  "main": "demo/README.md",
+  "api": {
+    "filePath": [
+      "demo/calendar.js"
+    ],
+    "fileLink": {
+      "repository": "https://github.nhnent.com/fe/tui.doc",
+      "ref": "feature/add-pages"
+    }
+  },
   "examples": {
     "filePath": "demo/examples",
     "titles": {
@@ -35,5 +39,5 @@
       "example02-formatter": "2. demo"
     }
   },
-  "destPrefix": false
+  "pathPrefix": false
 }

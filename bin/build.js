@@ -15,29 +15,14 @@ const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 
 const {version} = pkg || '1.0.0';
-const {
-  filePath,
-  main,
-  fileLink
-} = config;
+const {main: {filePath: main}} = config;
 
 // path of data files
 const BASE_DATA_PATH = path.resolve(__dirname, '../src/data');
+const MAIN_DATA_PATH = path.resolve(pwd, main);
 const LAYOUT_DATA_PATH = `${BASE_DATA_PATH}/layout.json`;
 const NAV_DATA_PATH = `${BASE_DATA_PATH}/navigation.json`;
 const SEARCH_DATA_PATH = `${BASE_DATA_PATH}/searchKeywords.json`;
-
-const MAIN_DATA_PATH = path.resolve(pwd, main);
-
-let srcFilePath;
-
-if (typeof filePath === 'string') {
-  srcFilePath = path.resolve(pwd, filePath);
-} else {
-  srcFilePath = filePath.map(file => {
-    return path.resolve(pwd, file);
-  });
-}
 
 /**
  * Make json file
@@ -55,8 +40,9 @@ function makeLayoutData() {
   const {
     header,
     footer,
+    api: {fileLink},
     examples,
-    destPrefix // using for gatsby-node.js
+    pathPrefix // using for gatsby-config.js
   } = config;
 
   if (!header.logo.linkUrl) {
@@ -76,7 +62,7 @@ function makeLayoutData() {
     header,
     footer,
     fileLink,
-    destPrefix: destPrefix || pkg.name,
+    pathPrefix: pathPrefix || pkg.name,
     useExample: !!examples
   };
 
@@ -97,10 +83,26 @@ function makeMainPageData() {
 }
 
 /**
+ * Make path of parsing file
+ * @returns {string} file path
+ */
+function makeParsingFilePath() {
+  const {api: {filePath}} = config;
+
+  if (typeof filePath === 'string') {
+    return path.resolve(pwd, filePath);
+  }
+
+  return filePath.map(file => path.resolve(pwd, file));
+}
+
+/**
  * Make all data using in component via documentation.js
  */
 function makeAllData() {
-  documentation.build(srcFilePath, {
+  const filePath = makeParsingFilePath();
+
+  documentation.build(filePath, {
     shallow: true
   }).then(documentation.formats.json)
     .then(output => {
@@ -156,10 +158,9 @@ function build() {
 
     process.chdir(path.resolve(__dirname, '../')); // change working directory
 
-    runScript(cmd)
-      .then(() => {
-        console.log('build success');
-      });
+    runScript(cmd).then(() => {
+      console.log('build success');
+    });
   } catch (err) {
     console.error(`chdir: ${err}`);
   }

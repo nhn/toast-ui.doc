@@ -197,7 +197,7 @@ function makeName(name, kind, params) {
     customName = `${name}(${joinedParams})`;
   } else if (kind === 'event') {
     customName = name.split('#').pop();
-  } else if (kind === 'typedef') {
+  } else if (kind === 'typedef' || kind === 'namespace') {
     customName = name;
   }
 

@@ -78,9 +78,14 @@ const LayoutWrapper = (props) => (
           edges {
             node {
               header {
-                logo
-                linkUrl
-                title
+                logo {
+                  src
+                  linkUrl
+                }
+                title {
+                  text
+                  linkUrl
+                }
                 version
               }
               footer {

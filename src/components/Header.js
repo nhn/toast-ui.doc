@@ -6,7 +6,6 @@ class Header extends React.Component {
   render() {
     const {
       logo,
-      linkUrl,
       title,
       version
     } = this.props.data;
@@ -14,27 +13,28 @@ class Header extends React.Component {
     return (
       <header className="header">
         <h1 className="logo">
-          <Link to={`/`}>
-            <img src={logo} alt="logo" />
+          <Link to={logo.linkUrl}>
+            <img src={logo.src} alt="logo" />
           </Link>
         </h1>
-        {title ?
+        {title && title.text ?
           <span className="info-wrapper">
             <span className="project-name">/</span>
             <span className="project-name">
               <a
-                href={linkUrl}
+                href={title.linkUrl}
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                {title}
+                {title.text}
               </a>
             </span>
           </span> : null}
-        <span className={`info-wrapper${title ? ' has-title' : ''}`}>
-          <span className="splitter">|</span>
-          <span className="version">v{version}</span>
-        </span>
+        {version ?
+          <span className={`info-wrapper${title && title.text ? ' has-title' : ''}`}>
+            <span className="splitter">|</span>
+            <span className="version">{version}</span>
+          </span> : null}
       </header>
     );
   }

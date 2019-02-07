@@ -59,15 +59,21 @@ function makeLayoutData() {
     destPrefix // using for gatsby-node.js
   } = config;
 
-  const customHeader = Object.assign({
-    logo: '',
-    linkUrl: '/',
-    title: '',
-    version: version || ''
-  }, header);
+  if (!header.logo.linkUrl) {
+    header.logo.linkUrl = '/';
+  }
+
+  if (!header.title) {
+    header.title = {
+      text: '',
+      linkUrl: ''
+    };
+  }
+
+  header.version = header.version === false ? false : `v${version}`;
 
   const data = {
-    header: customHeader,
+    header,
     footer,
     fileLink,
     destPrefix: destPrefix || pkg.name,

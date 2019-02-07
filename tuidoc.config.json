@@ -3,9 +3,15 @@
     "demo/calendar.js"
   ],
   "header": {
-    "logo": "https://uicdn.toast.com/toastui/img/tui-component-white.png",
-    "title": "doc",
-    "linkUrl": "https://github.com/nhnent/tui.grid"
+    "logo": {
+      "src": "https://uicdn.toast.com/toastui/img/tui-component-white.png",
+      "linkUrl": "/"
+    },
+    "title": {
+      "text": "Animation",
+      "linkUrl": "https://github.com/nhnent/tui.grid"
+    },
+    "version": true
   },
   "footer": [
     {
@@ -28,5 +34,6 @@
       "example01-basic": "1. demo",
       "example02-formatter": "2. demo"
     }
-  }
+  },
+  "destPrefix": false
 }

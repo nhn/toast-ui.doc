@@ -14,8 +14,8 @@ module.exports = {
   },
   sort: function(items) {
     return items.sort((a, b) => {
-      const before = a.name;
-      const after = b.name;
+      const before = a.name.toUpperCase();
+      const after = b.name.toUpperCase();
       const falsy = before > after ? 1 : 0;
 
       return before < after ? -1 : falsy;

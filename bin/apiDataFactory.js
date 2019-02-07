@@ -253,6 +253,7 @@ function makeSearchData(items) {
 function makeContentData() {
   for (let pid in contentMap) {
     if ({}.hasOwnProperty.call(contentMap, pid)) {
+      contentMap[pid].items = helper.sort(contentMap[pid].items);
       contentDataFactory.makeApiPageDataFile(contentMap[pid]);
     }
   }

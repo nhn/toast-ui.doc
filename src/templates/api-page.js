@@ -50,7 +50,6 @@ class ApiPage extends React.Component {
               {staticProperies.map((item, index) => (
                 <PropertyItem
                   key={`static-method-${index}`}
-                  isFirstItem={index === 0}
                   data={item}
                 />
               ))}
@@ -60,7 +59,6 @@ class ApiPage extends React.Component {
               {staticMethods.map((item, index) => (
                 <FunctionItem
                   key={`static-method-${index}`}
-                  isFirstItem={index === 0}
                   data={item}
                 />
               ))}
@@ -70,7 +68,6 @@ class ApiPage extends React.Component {
               {instanceMethods.map((item, index) => (
                 <FunctionItem
                   key={`instance-method-${index}`}
-                  isFirstItem={index === 0}
                   data={item}
                 />
               ))}
@@ -80,7 +77,6 @@ class ApiPage extends React.Component {
               {events.map((item, index) => (
                 <FunctionItem
                   key={`event-${index}`}
-                  isFirstItem={index === 0}
                   data={item}
                 />
               ))}
@@ -90,7 +86,6 @@ class ApiPage extends React.Component {
               {typedef.map((item, index) => (
                 <FunctionItem
                   key={`${index}`}
-                  isFirstItem={index === 0}
                   data={item}
                 />
               ))}

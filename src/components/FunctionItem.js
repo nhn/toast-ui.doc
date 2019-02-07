@@ -9,10 +9,7 @@ import NormalList from '../components/NormalList';
 
 class FunctionItem extends React.Component {
   render() { // eslint-disable-line complexity
-    const {
-      data,
-      isFirstItem
-    } = this.props;
+    const {data} = this.props;
     const {
       type,
       pid,
@@ -44,7 +41,7 @@ class FunctionItem extends React.Component {
     return (
       <div
         id={pid}
-        className={`definition-list${isFirstItem ? ' first-child' : ''}`}
+        className="definition-list"
       >
         <dl>
           <dt className="subsection-term">
@@ -86,8 +83,7 @@ class FunctionItem extends React.Component {
 }
 
 FunctionItem.propTypes = {
-  data: PropTypes.object,
-  isFirstItem: PropTypes.bool
+  data: PropTypes.object
 };
 
 export default FunctionItem;

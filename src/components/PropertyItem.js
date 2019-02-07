@@ -8,8 +8,7 @@ import ExampleItems from '../components/ExampleItems';
 class PropertyItem extends React.Component {
   render() {
     const {
-      data,
-      isFirstItem
+      data
     } = this.props;
     const {
       pid,
@@ -25,7 +24,7 @@ class PropertyItem extends React.Component {
     return (
       <div
         id={pid}
-        className={`definition-list${isFirstItem ? ' first-child' : ''}`}
+        className="definition-list"
       >
         <dl>
           <dt className="subsection-term">
@@ -47,8 +46,7 @@ class PropertyItem extends React.Component {
 }
 
 PropertyItem.propTypes = {
-  data: PropTypes.object,
-  isFirstItem: PropTypes.bool
+  data: PropTypes.object
 };
 
 export default PropertyItem;

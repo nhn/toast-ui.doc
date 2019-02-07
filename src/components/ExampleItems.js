@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 class ExampleItems extends React.Component {
   render() {
     const {items} = this.props;
+    const customItems = items.slice(0).pop();
 
-    if (items.length) {
+    if (customItems.length) {
       return (
         <div>
           <h5 className="title">EXAMPLES</h5>
-          {items.map((item, index) => {
+          {customItems.map((item, index) => {
             const {
               description,
               code

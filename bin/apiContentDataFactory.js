@@ -374,7 +374,7 @@ function makeReturnItems(items) {
  * @returns {Array.<Object>} view data list
  */
 function makeExampleItems(items) {
-  return items.map(item => {
+  const customItems = items.map(item => {
     const {
       caption,
       description
@@ -385,6 +385,13 @@ function makeExampleItems(items) {
       code: Prism.highlight(description, Prism.languages.javascript, 'javascript')
     };
   });
+
+  customItems.push({
+    description: '',
+    code: ''
+  });
+
+  return customItems;
 }
 
 /**

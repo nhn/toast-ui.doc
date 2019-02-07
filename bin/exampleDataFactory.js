@@ -10,7 +10,7 @@ const cheerio = require('cheerio');
 const Prism = require('prismjs');
 
 const pwd = process.cwd();
-const config = require(path.resolve(pwd, 'tui-doc-config.json'));
+const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 const examples = config.examples || false;
 
 const {

@@ -12,7 +12,7 @@ const pwd = process.cwd();
 const isDev = process.argv.indexOf('--dev') > -1;
 
 const pkg = require(path.resolve(pwd, 'package.json'));
-const config = require(path.resolve(pwd, 'tui-doc-config.json'));
+const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 
 const {version} = pkg || '1.0.0';
 const {

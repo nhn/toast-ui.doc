@@ -6,7 +6,7 @@ const helper = require('./apiDataFactoryHelper');
 
 const pwd = process.cwd();
 const pkg = require(path.resolve(pwd, 'package.json'));
-const config = require(path.resolve(pwd, 'tui-doc-config.json'));
+const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 
 const GITHUB_LINK = makeGithubLink();
 const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/apiPage`);

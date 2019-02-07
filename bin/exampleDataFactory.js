@@ -151,6 +151,8 @@ function copyExampleFiles() {
 function copyBundleFiles() {
   directoryExists(BUNDLE_FILES_PATH, (error, result) => {
     if (!result) {
+      console.log('create bundle files on dist folder.');
+
       return;
     }
 

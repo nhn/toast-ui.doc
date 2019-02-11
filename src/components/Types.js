@@ -37,16 +37,41 @@ class Types extends React.Component {
 
   makeTypeApplicationName(name, index) {
     const splited = name.split('.');
-    const prefix = splited[0]; // 'Array' or 'Object'
-    const joinedName = splited[1].split('|').map((item, idx) => this.makeType(item, idx));
+    const matrix = splited.length > 2;
 
-    return (
-      <span
-        className="type"
-        key={`type-${index}`}>
-        {prefix}.&lt;{joinedName}&gt;
-      </span>
-    );
+    let prefix = splited[0]; // 'Array' or 'Object'
+    let types = splited[1];
+
+    let subPrefix;
+
+    if (matrix) {
+      subPrefix = splited[1];
+      types = splited[2];
+    }
+
+    const joinedName = types.split('|').map((item, idx) => this.makeType(item, idx));
+
+    let component;
+
+    if (matrix) {
+      component = (
+        <span
+          className="type"
+          key={`type-${index}`}>
+          {prefix}.&lt;{subPrefix}.&lt;{joinedName}&gt;&gt;
+        </span>
+      );
+    } else {
+      component = (
+        <span
+          className="type"
+          key={`type-${index}`}>
+          {prefix}.&lt;{joinedName}&gt;
+        </span>
+      );
+    }
+
+    return component;
   }
 
   makeOptionalType(types) {

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 class ExampleItems extends React.Component {
   render() {
     const {items} = this.props;
-    const customItems = items.slice(0).pop();
+    const customItems = items.slice(0);
+
+    customItems.pop();
 
     if (customItems.length) {
       return (

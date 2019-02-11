@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 
 const TYPE_NAME = [
   'number',
@@ -26,39 +25,25 @@ class Types extends React.Component {
   makeType(name, index) {
     const className = getClassName(name);
 
-    let component;
-
-    if (className === 'etc') {
-      component = (
-        <Link
-          to={`/${name}`}
-          key={`type-${index}`}
-          className={`type ${className}`}
-        >
-          {name}
-        </Link>
-      );
-    } else {
-      component = (
-        <span
-          key={`type-${index}`}
-          className={`type ${className}`}
-        >
-          {name}
-        </span>
-      );
-    }
-
-    return component;
+    return (
+      <span
+        key={`type-${index}`}
+        className={`type ${className}`}
+      >
+        {name}
+      </span>
+    );
   }
 
   makeTypeApplicationName(name, index) {
     const splited = name.split('.');
     const prefix = splited[0]; // 'Array' or 'Object'
-    const joinedName = splited[1].split(',').map((item, idx) => this.makeType(item, idx));
+    const joinedName = splited[1].split('|').map((item, idx) => this.makeType(item, idx));
 
     return (
-      <span key={`type-${index}`}>
+      <span
+        className="type"
+        key={`type-${index}`}>
         {prefix}.&lt;{joinedName}&gt;
       </span>
     );

@@ -65,7 +65,7 @@ function makeTypePrefix(data) {
 }
 
 /**
- * Make name of type including expression
+ * Make name of type including expression (ex: {?string})
  * @param {Object} data - type information
  * @returns {Array.<String>} name list
  */
@@ -106,7 +106,34 @@ function makeExpressionNames(data) {
  * @returns {string} name
  */
 function makeTypeApplicationName(items, expression) {
-  let joinedNames = items.map(item => item.name || 'undefined').join(',');
+  let joinedNames = items.map(item => {
+    let customName;
+
+    if (item.type && item.fields) {
+      const fullStr = item.fields.map(field => {
+        const {key, value} = field;
+        const {name} = value;
+
+        let customValue = value;
+
+        if (value.prefix) {
+          const prefix = makeTypePrefix(value);
+
+          customValue = `${prefix}${value.expression.name}`;
+        } else {
+          customValue = name;
+        }
+
+        return `${key}: ${customValue}`;
+      }).join(', ');
+
+      customName = `{${fullStr}}`;
+    } else {
+      customName = item.name || 'undefined';
+    }
+
+    return customName;
+  }).join('|');
 
   return `${expression.name}.${joinedNames}`;
 }
@@ -122,7 +149,7 @@ function makeUnionTypeNames(items) {
       expression,
       applications,
       fields,
-      name
+      type
     } = item;
 
     if (applications) {
@@ -133,18 +160,30 @@ function makeUnionTypeNames(items) {
       return 'Object';
     }
 
-    return name || 'undefined';
+    let name;
+
+    if (type === 'NameExpression') {
+      name = item.name;
+    } else if (type === 'StringLiteralType') {
+      name = `'${item.value}'`;
+    } else if (type === 'NullLiteral') {
+      name = 'null';
+    } else {
+      name = 'undefined';
+    }
+
+    return name;
   });
 }
 
 /**
  * Make data of parameter type
- * @param {object} data - data of type
+ * @param {object} [data] - data of type
  * @returns {object} type information
  * @link http://usejsdoc.org/tags-type.html
  */
 function makeTypes(data) { // eslint-disable-line complexity
-  data = data || '';
+  data = data || {};
 
   const {
     type,
@@ -186,7 +225,7 @@ function makeTypes(data) { // eslint-disable-line complexity
  * @param {Array.<Object>} params - list of @param
  * @returns {string} function formatted name
  */
-function makeName(name, kind, params) {
+function makeName(name, kind, params) { // eslint-disable-line complexity
   let joinedParams = params.map(param => param.name).join(', ');
   let customName = `${name}(${joinedParams})`;
 
@@ -197,7 +236,8 @@ function makeName(name, kind, params) {
     customName = `${name}(${joinedParams})`;
   } else if (kind === 'event') {
     customName = name.split('#').pop();
-  } else if (kind === 'typedef' || kind === 'namespace') {
+  } else if (kind === 'typedef' || kind === 'namespace' ||
+    kind === 'module') {
     customName = name;
   }
 
@@ -226,7 +266,8 @@ function makePid(name, kind) {
  * @returns {string} description
  */
 function makeDescription(data) {
-  if (data.children && data.children.length) {
+  if (data.children && data.children.length &&
+    data.children[0].children) {
     return data.children[0].children.map(child => {
       const {
         type,
@@ -357,11 +398,7 @@ function makeReturnItems(items) {
   });
 
   customItems.push({
-    types: {
-      prefix: '',
-      type: '',
-      names: ['']
-    },
+    types: makeTypes(),
     description: ''
   });
 

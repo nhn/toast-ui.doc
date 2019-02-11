@@ -19,6 +19,7 @@ const {main: {filePath: main}} = config;
 
 // path of data files
 const BASE_DATA_PATH = path.resolve(__dirname, '../src/data');
+const PUBLIC_FOLDER_PATH = path.resolve(__dirname, '../public');
 const MAIN_DATA_PATH = path.resolve(pwd, main);
 const LAYOUT_DATA_PATH = `${BASE_DATA_PATH}/layout.json`;
 const NAV_DATA_PATH = `${BASE_DATA_PATH}/navigation.json`;
@@ -129,14 +130,20 @@ function makeAllData() {
  * Create data and removing all data files to create
  */
 function init() {
-  fs.emptyDir(BASE_DATA_PATH, err => {
+  fs.emptyDir(PUBLIC_FOLDER_PATH, err => {
     if (err) {
       throw err;
     }
 
-    makeLayoutData();
-    makeMainPageData();
-    makeAllData();
+    fs.emptyDir(BASE_DATA_PATH, err => {
+      if (err) {
+        throw err;
+      }
+
+      makeLayoutData();
+      makeMainPageData();
+      makeAllData();
+    });
   });
 }
 

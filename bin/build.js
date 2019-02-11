@@ -127,7 +127,7 @@ function makeAllData() {
 }
 
 /**
- * Create data and removing all data files to create
+ * Init
  */
 function init() {
   fs.emptyDir(PUBLIC_FOLDER_PATH, err => {
@@ -135,15 +135,22 @@ function init() {
       throw err;
     }
 
-    fs.emptyDir(BASE_DATA_PATH, err => {
-      if (err) {
-        throw err;
-      }
+    createData();
+  });
+}
 
-      makeLayoutData();
-      makeMainPageData();
-      makeAllData();
-    });
+/**
+ * Create data
+ */
+function createData() {
+  fs.emptyDir(BASE_DATA_PATH, err => {
+    if (err) {
+      throw err;
+    }
+
+    makeLayoutData();
+    makeMainPageData();
+    makeAllData();
   });
 }
 
@@ -159,8 +166,8 @@ function build() {
     if (isDev) {
       cmd = `npm run develop`;
     } else {
-      cmd = `npm run build && cp -r public ${versionDir} &&`;
-      cmd += `npm run build latest && cp -r public ${latestDir}`;
+      cmd = `rm -rf .cache && npm run build && cp -r public ${versionDir} &&`;
+      cmd += `rm -rf .cache && npm run build latest && cp -r public ${latestDir}`;
     }
 
     process.chdir(path.resolve(__dirname, '../')); // change working directory

@@ -101,7 +101,7 @@ function makeExpressionNames(data) {
 
 /**
  * Make name of type-application type (ex: {Array.<string>}, {Array.<{foo: string, bar: number}>})
- * @param {Object} items - type list
+ * @param {Array} items - type list
  * @param {Object} expression - expression data
  * @returns {string} name
  */
@@ -131,7 +131,7 @@ function makeTypeApplicationName(items, expression) {
     } else if (item.applications) {
       const types = makeUnionTypeNames(item.applications[0].elements);
 
-      customName = `${item.expression.name}.<(${types.join('|')})>`;
+      customName = `${item.expression.name}.${types.join('|')}`;
     } else {
       customName = item.name || 'undefined';
     }
@@ -144,10 +144,10 @@ function makeTypeApplicationName(items, expression) {
 
 /**
  * Make name of union type (ex: {string|number})
- * @param {Object} items - type list
+ * @param {Array} items - type list
  * @returns {Array.<String>} name list
  */
-function makeUnionTypeNames(items) {
+function makeUnionTypeNames(items = []) {
   return items.map(item => {
     const {
       expression,

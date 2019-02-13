@@ -149,18 +149,10 @@ function copyExampleFiles() {
  * Copy bundle files of dist to static folder
  */
 function copyBundleFiles() {
-  directoryExists(BUNDLE_FILES_PATH, (error, result) => {
-    if (!result) {
-      console.warning('create bundle files on dist folder.');
-
-      return;
+  copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
+    if (err) {
+      throw err;
     }
-
-    copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
-      if (err) {
-        throw err;
-      }
-    });
   });
 }
 

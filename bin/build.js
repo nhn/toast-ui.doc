@@ -164,7 +164,7 @@ function build() {
     let cmd;
 
     if (isDev) {
-      cmd = `npm run develop`;
+      cmd = `rm -rf .cache && npm run develop`;
     } else {
       cmd = `rm -rf .cache && npm run build && cp -r public ${versionDir} &&`;
       cmd += `rm -rf .cache && npm run build latest && cp -r public ${latestDir}`;

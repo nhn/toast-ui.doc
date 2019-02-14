@@ -38,6 +38,12 @@ module.exports = {
         ]
       }
     },
-    `gatsby-transformer-json`
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [`Map`, `Set`, `requestAnimationFrame`]
+      }
+    }
   ]
 };

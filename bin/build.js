@@ -57,7 +57,7 @@ function makeLayoutData() {
     };
   }
 
-  header.version = header.version === false ? false : `v${version}`;
+  header.version = header.version === false ? '' : version;
 
   const data = {
     header,

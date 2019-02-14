@@ -33,7 +33,7 @@ class Header extends React.Component {
         {version ?
           <span className={`info-wrapper${title && title.text ? ' has-title' : ''}`}>
             <span className="splitter">|</span>
-            <span className="version">{version}</span>
+            <span className="version">v{version}</span>
           </span> : null}
       </header>
     );

@@ -12,9 +12,14 @@ const TYPE_MAP = {
   'example': 'Examples'
 };
 
+const REPLACED_PATTERN = /[-[\]/{}()*+?.\\^$|]/g;
+const REPLACED_VALUE = '\\$&';
+
 class SearchList extends React.Component {
   hightliging(fullText) {
-    let pattern = new RegExp(this.props.value, 'ig');
+    const escapeValue = this.props.value.replace(REPLACED_PATTERN, REPLACED_VALUE);
+
+    let pattern = new RegExp(escapeValue, 'ig');
 
     const joined = fullText.replace(pattern, (text) => {
       return `<strong>${text}</strong>`;

@@ -230,7 +230,11 @@ function makeTypes(data) { // eslint-disable-line complexity
  * @returns {string} function formatted name
  */
 function makeName(name, kind, params) { // eslint-disable-line complexity
-  let joinedParams = params.map(param => param.name).join(', ');
+  const customParams = params.slice()
+
+  customParams.pop()
+
+  let joinedParams = customParams.map(({name}) => name).join(', ')
   let customName = `${name}(${joinedParams})`;
 
   if (kind === 'class') {

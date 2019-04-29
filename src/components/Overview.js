@@ -2,11 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FunctionTerm from '../components/FunctionTerm';
+import PropertyTerm from '../components/PropertyTerm';
 import ParamsTable from '../components/ParamsTable';
 import ExampleItems from '../components/ExampleItems';
 import NormalList from '../components/NormalList';
 
 class Overview extends React.Component {
+  getTitleComponent(isTypedef) {
+    const {
+      deprecated,
+      name,
+      types,
+      codeInfo
+    } = this.props.data;
+
+    let component = null;
+
+    if (isTypedef) {
+      component = (
+        <PropertyTerm
+          deprecated={deprecated}
+          types={types}
+          codeInfo={codeInfo}
+        />
+      );
+    } else {
+      component = (
+        <FunctionTerm
+          deprecated={deprecated}
+          name={name}
+          codeInfo={codeInfo}
+        />
+      );
+    }
+
+    return component;
+  }
+
   render() {
     const {
       data,
@@ -42,11 +74,7 @@ class Overview extends React.Component {
         <div className="subsection">
           <dl>
             <dt className="subsection-term">
-              <FunctionTerm
-                deprecated={deprecated}
-                name={name}
-                codeInfo={codeInfo}
-              />
+              {this.getTitleComponent(hasProperties)}
             </dt>
             <dd className="subsection-description">
               <p

@@ -184,6 +184,14 @@
     .name {
       font-size: 32px;
     }
+
+    .type {
+      font-size: 32px;
+
+      &:before {
+        height: 20px;
+      }
+    }
   }
 
   .code-info {

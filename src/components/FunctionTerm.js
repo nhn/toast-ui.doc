@@ -5,8 +5,8 @@ import CodeInfo from '../components/CodeInfo';
 
 class FunctionTerm extends React.Component {
   getFunctionNameComponent(name) {
-    return name.replace(/\((.*?)\)/g, function(value, params) {
-      const replacedName = params.split(',').map(function(param) {
+    return name.replace(/\((.*?)\)/g, (value, params) => {
+      const replacedName = params.split(',').map(param => {
         return `<span class="param">${param}</span>`;
       });
 

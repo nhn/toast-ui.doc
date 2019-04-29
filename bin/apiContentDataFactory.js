@@ -384,6 +384,54 @@ function makeParams(items) {
 }
 
 /**
+ * Make data via parsing @property
+ * @param {Array.<Object>} properties - property items
+ * @param {Array.<Object>} tags - tag items
+ * @returns {Array.<Object>} view data list
+ */
+function makeProperties(properties, tags) {
+  let customProperites = properties.map(item => {
+    const {
+      name,
+      type,
+      description,
+      properties
+    } = item;
+    const defaultValue = findDefaultValueInTags(tags, name)
+
+    return {
+      name: name.split('.').pop(),
+      types: makeTypes(type),
+      defaultVal: defaultValue,
+      description: makeDescription(description || []),
+      properties: null
+    };
+  });
+
+  customProperites.push(helper.getDefaultParam());
+
+  return customProperites;
+}
+
+/**
+ * @param {Array.<Object>} tags - tag items
+ * @param {Object} foundName - property's name
+ * @returns {string} default value string
+ */
+function findDefaultValueInTags(tags, foundName) {
+  const found = tags.find(tag => {
+    const {
+      title = '',
+      name = ''
+    } = tag
+
+    return (title === 'property' && name === foundName)
+  }) || {}
+
+  return found['default'] || ''
+}
+
+/**
  * Make data via parsing @returns
  * @param {Array.<Object>} items - return items
  * @returns {Array.<Object>} view data list
@@ -479,6 +527,7 @@ function makePropertyItem(data, itemType) {
  */
 function makeFunctionItem(data, itemType) {
   let {
+    tags,
     override,
     deprecated,
     name,
@@ -496,7 +545,9 @@ function makeFunctionItem(data, itemType) {
   } = data;
 
   if (kind === 'event' || kind === 'typedef') {
-    params = properties;
+    params = makeProperties(properties, tags);
+  } else {
+    params = makeParams(params);
   }
 
   return {
@@ -511,7 +562,7 @@ function makeFunctionItem(data, itemType) {
     sees: makeSeeItems(sees),
     augments: makeAugmentItems(augments),
     todos: makeTodoItems(todos),
-    params: makeParams(params), // only have in method
+    params, // only have in method
     returns: makeReturnItems(returns), // only have in method
     examples: makeExampleItems(examples)
   };

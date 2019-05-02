@@ -22,6 +22,7 @@ class Overview extends React.Component {
       component = (
         <PropertyTerm
           deprecated={deprecated}
+          name={name}
           types={types}
           codeInfo={codeInfo}
         />
@@ -41,6 +42,7 @@ class Overview extends React.Component {
 
   render() {
     const {
+      parentPid,
       data,
       hasProperties
     } = this.props;
@@ -74,7 +76,7 @@ class Overview extends React.Component {
         <div className="subsection">
           <dl>
             <dt className="subsection-term">
-              {this.getTitleComponent(hasProperties)}
+              {this.getTitleComponent(parentPid === 'typedef')}
             </dt>
             <dd className="subsection-description">
               <p
@@ -111,6 +113,7 @@ class Overview extends React.Component {
 }
 
 Overview.propTypes = {
+  parentPid: PropTypes.string,
   data: PropTypes.object,
   hasProperties: PropTypes.bool
 };

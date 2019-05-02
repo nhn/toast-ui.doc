@@ -11,6 +11,16 @@ import FunctionItem from '../components/FunctionItem';
 import '../styles/main.scss';
 
 class ApiPage extends React.Component {
+  hasProperties(type, overview) {
+    let hasProperties = false;
+
+    if (type === 'typedef') {
+      hasProperties = !!overview.types.names.find(type => type === 'object')
+    }
+
+    return hasProperties;
+  }
+
   render() { // eslint-disable-line complexity
     const {
       pathname,
@@ -31,6 +41,8 @@ class ApiPage extends React.Component {
     const events = items.filter(item => item.type === 'event');
     const typedef = items.filter(item => item.type === 'typedef');
 
+    const hasProperties = this.hasProperties(parentPid, overview[0])
+
     return (
       <Layout
         tabIndex={0}
@@ -42,8 +54,9 @@ class ApiPage extends React.Component {
         <article>
           {overview.length ?
             <Overview
+              parentPid={parentPid}
               data={overview[0]}
-              hasProperties={parentPid === 'typedef'}
+              hasProperties={hasProperties}
             /> : null}
           {staticProperies.length ?
             <MainCategory title="Static Properties">

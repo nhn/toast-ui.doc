@@ -530,7 +530,7 @@ function makePropertyItem(data, itemType) {
  * @returns {Object} view data
  */
 function makeFunctionItem(data, itemType) {
-  let {
+  const {
     tags,
     override,
     deprecated,
@@ -548,10 +548,12 @@ function makeFunctionItem(data, itemType) {
     examples
   } = data;
 
-  if (kind === 'event' || kind === 'typedef') {
-    params = makeProperties(properties, tags);
+  let customParams;
+
+  if (kind === 'event' || (kind === 'typedef' && type.name === 'object')) {
+    customParams = makeProperties(properties, tags);
   } else {
-    params = makeParams(params);
+    customParams = makeParams(params);
   }
 
   return {
@@ -559,14 +561,14 @@ function makeFunctionItem(data, itemType) {
     pid: makePid(name, kind),
     override: !!override,
     deprecated: !!deprecated,
-    name: makeName(name, kind, params),
+    name: makeName(name, kind, customParams),
     types: makeTypes(type),
     description: makeDescription(description),
     codeInfo: makeCodeInfo(context),
     sees: makeSeeItems(sees),
     augments: makeAugmentItems(augments),
     todos: makeTodoItems(todos),
-    params, // only have in method
+    params: customParams, // only have in method
     returns: makeReturnItems(returns), // only have in method
     examples: makeExampleItems(examples)
   };

@@ -16,19 +16,17 @@ const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/apiPage`);
  * @returns {string} github's permanent link base
  */
 function makeGithubLink() {
-  const {fileLink} = config;
+  const {
+    api: {fileLink}
+  } = config;
+
+  if (fileLink === false) {
+    return false;
+  }
 
   let baseRepo, customRef;
 
-  if (fileLink) {
-    const {
-      repository,
-      ref
-    } = fileLink;
-
-    baseRepo = repository;
-    customRef = ref;
-  } else {
+  if (fileLink === true) {
     const {
       repository,
       version
@@ -36,6 +34,14 @@ function makeGithubLink() {
 
     baseRepo = (repository.url || repository).replace('.git', '');
     customRef = `v${version}`;
+  } else {
+    const {
+      repository,
+      ref
+    } = fileLink;
+
+    baseRepo = repository;
+    customRef = ref;
   }
 
   return `${baseRepo}/blob/${customRef}/`;
@@ -230,11 +236,11 @@ function makeTypes(data) { // eslint-disable-line complexity
  * @returns {string} function formatted name
  */
 function makeName(name, kind, params) { // eslint-disable-line complexity
-  const customParams = params.slice()
+  const customParams = params.slice();
 
-  customParams.pop()
+  customParams.pop();
 
-  let joinedParams = customParams.map(({name}) => name).join(', ')
+  let joinedParams = customParams.map((param) => param.name).join(', ');
   let customName = `${name}(${joinedParams})`;
 
   if (kind === 'class') {
@@ -315,7 +321,7 @@ function makeCodeInfo(context) {
   return {
     filename,
     lineNum,
-    linkUrl: `${GITHUB_LINK}${githubPath}`
+    linkUrl: GITHUB_LINK ? `${GITHUB_LINK}${githubPath}` : ''
   };
 }
 
@@ -398,10 +404,9 @@ function makeProperties(properties, tags) {
     const {
       name,
       type,
-      description,
-      properties
+      description
     } = item;
-    const defaultValue = findDefaultValueInTags(tags, name)
+    const defaultValue = findDefaultValueInTags(tags, name);
 
     return {
       name: name.split('.').pop(),
@@ -427,12 +432,12 @@ function findDefaultValueInTags(tags, foundName) {
     const {
       title = '',
       name = ''
-    } = tag
+    } = tag;
 
-    return (title === 'property' && name === foundName)
-  }) || {}
+    return (title === 'property' && name === foundName);
+  }) || {};
 
-  return found['default'] || ''
+  return found['default'] || '';
 }
 
 /**

@@ -9,7 +9,7 @@ class CodeInfo extends React.Component {
       linkUrl
     } = this.props.data;
 
-    return (
+    return linkUrl && (
       <span className="code-info">
         <span className="code">
           <a

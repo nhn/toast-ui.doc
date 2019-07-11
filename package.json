@@ -47,7 +47,7 @@
     "gatsby-plugin-polyfill-io": "^1.0.5",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-remark-prismjs": "^3.0.0",
-    "gatsby-source-filesystem": "^2.0.1",
+    "gatsby-source-filesystem": "2.0.1",
     "gatsby-transformer-json": "^2.1.1",
     "gatsby-transformer-remark": "^2.1.1",
     "mkdirp": "^0.5.1",

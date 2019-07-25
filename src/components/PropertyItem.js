@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Types from '../components/Types';
 import CodeInfo from '../components/CodeInfo';
+import ParamsTable from '../components/ParamsTable';
 import ExampleItems from '../components/ExampleItems';
 
 class PropertyItem extends React.Component {
@@ -18,8 +19,13 @@ class PropertyItem extends React.Component {
       types,
       description,
       codeInfo,
-      examples
+      examples,
+      params
     } = data;
+
+    const properties = params.slice();
+
+    properties.pop();
 
     return (
       <div
@@ -37,6 +43,10 @@ class PropertyItem extends React.Component {
           </dt>
           <dd className="subsection-description">
             <p className="description">{description}</p>
+            <ParamsTable
+              properties={properties}
+              isPropertyTitle={true}
+            />
             <ExampleItems items={examples} />
           </dd>
         </dl>

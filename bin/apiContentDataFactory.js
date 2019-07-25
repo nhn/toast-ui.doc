@@ -500,6 +500,7 @@ function makeExampleItems(items) {
  */
 function makePropertyItem(data, itemType) {
   const {
+    tags,
     override,
     deprecated,
     name,
@@ -508,6 +509,7 @@ function makePropertyItem(data, itemType) {
     context,
     sees,
     augments,
+    properties,
     todos,
     examples
   } = data;
@@ -523,6 +525,7 @@ function makePropertyItem(data, itemType) {
     codeInfo: makeCodeInfo(context),
     sees: makeSeeItems(sees),
     augments: makeAugmentItems(augments),
+    params: makeProperties(properties, tags), // when type is object
     todos: makeTodoItems(todos),
     examples: makeExampleItems(examples)
   };
@@ -573,7 +576,7 @@ function makeFunctionItem(data, itemType) {
     sees: makeSeeItems(sees),
     augments: makeAugmentItems(augments),
     todos: makeTodoItems(todos),
-    params: customParams, // only have in method
+    params: customParams,
     returns: makeReturnItems(returns), // only have in method
     examples: makeExampleItems(examples)
   };

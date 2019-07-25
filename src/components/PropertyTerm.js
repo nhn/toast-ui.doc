@@ -8,7 +8,6 @@ class PropertyTerm extends React.Component {
   render() {
     const {
       deprecated,
-      override,
       name,
       types,
       codeInfo

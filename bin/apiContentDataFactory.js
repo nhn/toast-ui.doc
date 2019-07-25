@@ -26,7 +26,7 @@ function makeGithubLink() {
 
   let baseRepo, customRef;
 
-  if (fileLink === true) {
+  if (typeof fileLink === 'undefined' || fileLink === true) {
     const {
       repository,
       version

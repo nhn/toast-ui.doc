@@ -591,7 +591,7 @@ function makeStaticItems(items) {
     let custumItem;
 
     if (kind === 'function') {
-      custumItem = makeFunctionItem(item, 'static-function');
+      custumItem = makeFunctionItem(item, 'static-method');
     } else {
       custumItem = makePropertyItem(item, 'static-property');
     }
@@ -610,7 +610,7 @@ function makeInstanceItems(items) {
 
   items.forEach(item => {
     if (item.kind === 'function') {
-      functionItems.push(makeFunctionItem(item, 'instance-function'));
+      functionItems.push(makeFunctionItem(item, 'instance-method'));
     }
   });
 
@@ -674,7 +674,7 @@ function makeMemberItem(data) {
   } else if (kind === 'typedef') {
     item = makeFunctionItem(data, `typedef`);
   } else if (kind === 'function') {
-    item = makeFunctionItem(data, `${type}-function`);
+    item = makeFunctionItem(data, `${type}-method`);
   } else {
     item = makePropertyItem(data, `${type}-property`);
   }

@@ -105,7 +105,7 @@ function makeStaticMemberData(name, parentPid, kind) {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
     name: name,
-    kind: `static-${kind}`
+    kind: kind === 'function' ? 'static-method' : 'static-property'
   };
 }
 
@@ -138,7 +138,7 @@ function makeInstanceMemberData(name, parentPid, kind) {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
     name: name,
-    kind: `instance-${kind}`
+    kind: kind === 'function' ? 'instance-method' : 'instance-property'
   };
 }
 
@@ -204,7 +204,7 @@ function makeMemberItem(data) {
   if (kind === 'event') {
     item = makeEventData(name, parentPid);
   } else {
-    const type = kind === 'function' ? 'function' : 'property';
+    const type = kind === 'function' ? 'method' : 'property';
 
     if (scope === 'instance') {
       item = makeInstanceMemberData(name, parentPid, type);

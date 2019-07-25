@@ -58,8 +58,8 @@ class SubListGroups extends React.Component {
         {this.getSubListGroupComponent('EXTENDS', this.filter('augment'))}
         {this.getSubListGroupComponent('MIXES', this.filter('mix'))}
         {this.getSubListGroupComponent('STATIC PROPERTIES', this.filter('static-property'))}
-        {this.getSubListGroupComponent('STATIC METHODS', this.filter('static-function'))}
-        {this.getSubListGroupComponent('INSTANCE METHODS', this.filter('instance-function'))}
+        {this.getSubListGroupComponent('STATIC METHODS', this.filter('static-method'))}
+        {this.getSubListGroupComponent('INSTANCE METHODS', this.filter('instance-method'))}
         {this.getSubListGroupComponent('EVENTS', this.filter('event'))}
       </div>
     );

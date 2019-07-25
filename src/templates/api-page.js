@@ -11,16 +11,6 @@ import FunctionItem from '../components/FunctionItem';
 import '../styles/main.scss';
 
 class ApiPage extends React.Component {
-  hasProperties(type, overview) {
-    let hasProperties = false;
-
-    if (type === 'typedef') {
-      hasProperties = !!overview.types.names.find(type => type === 'object')
-    }
-
-    return hasProperties;
-  }
-
   render() { // eslint-disable-line complexity
     const {
       pathname,
@@ -36,12 +26,12 @@ class ApiPage extends React.Component {
 
     const overview = items.filter(item => item.type === 'overview');
     const staticProperies = items.filter(item => item.type === 'static-property');
-    const staticMethods = items.filter(item => item.type === 'static-function');
-    const instanceMethods = items.filter(item => item.type === 'instance-function');
+    const staticMethods = items.filter(item => item.type === 'static-method');
+    const instanceMethods = items.filter(item => item.type === 'instance-method');
     const events = items.filter(item => item.type === 'event');
     const typedef = items.filter(item => item.type === 'typedef');
 
-    const hasProperties = this.hasProperties(parentPid, overview[0])
+    const hasProperties = parentPid === 'typedef' ? !!overview[0].types.names.find(type => type === 'object') : false;
 
     return (
       <Layout

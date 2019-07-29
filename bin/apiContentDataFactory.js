@@ -138,6 +138,8 @@ function makeTypeApplicationName(items, expression) {
       const types = makeUnionTypeNames(item.applications[0].elements);
 
       customName = `${item.expression.name}.${types.join('|')}`;
+    } else if (item.elements) {
+      customName = makeUnionTypeNames(item.elements).join('|');
     } else {
       customName = item.name || 'undefined';
     }

@@ -10,6 +10,7 @@ const exampleDataFactory = require('./exampleDataFactory.js');
 
 const pwd = process.cwd();
 const isDev = process.argv.indexOf('--dev') > -1;
+const isServe = process.argv.indexOf('--serv') > -1;
 
 const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tuidoc.config.json'));
@@ -164,10 +165,12 @@ function build() {
     let cmd;
 
     if (isDev) {
-      cmd = `rm -rf .cache && npm run develop`;
+      cmd = `npm run clean && npm run develop`;
+    } else if (isServe) {
+      cmd = `npm run serve`;
     } else {
-      cmd = `rm -rf .cache && npm run build && cp -r public ${versionDir} &&`;
-      cmd += `rm -rf .cache && npm run build latest && cp -r public ${latestDir}`;
+      cmd = `npm run clean && npm run build && cp -r public ${latestDir} &&`;
+      cmd += `npm run clean && npm run build && cp -r public ${versionDir}`;
     }
 
     process.chdir(path.resolve(__dirname, '../')); // change working directory

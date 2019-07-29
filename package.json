@@ -5,11 +5,13 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "clean": "gatsby clean",
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve --prefix-paths",
     "tuidoc:dev": "node ./bin/build --dev",
-    "tuidoc": "node ./bin/build"
+    "tuidoc": "node ./bin/build",
+    "tuidoc:serve": "node ./bin/build --serv"
   },
   "bin": {
     "tuidoc": "./bin/build.js"
@@ -39,17 +41,16 @@
     "acorn": "^6.0.0",
     "cheerio": "^1.0.0-rc.2",
     "copy-dir": "^0.4.0",
-    "core-js": "^2.6.5",
     "directory-exists": "^2.0.1",
     "documentation": "^9.0.0",
     "fs-extra": "^7.0.0",
-    "gatsby": "2.0.65",
+    "gatsby": "^2.13.0",
     "gatsby-plugin-polyfill-io": "^1.0.5",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-remark-prismjs": "^3.0.0",
-    "gatsby-source-filesystem": "2.0.1",
+    "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-json": "^2.1.1",
-    "gatsby-transformer-remark": "2.1.1",
+    "gatsby-transformer-remark": "^2.1.1",
     "mkdirp": "^0.5.1",
     "node-dir": "^0.1.17",
     "node-sass": "^4.9.2",

@@ -27,7 +27,7 @@
     "filePath": [
       "demo/calendar.js"
     ],
-    "fileLink": {
+    "permalink": {
       "repository": "https://github.nhnent.com/fe/tui.doc",
       "ref": "feature/add-pages"
     }

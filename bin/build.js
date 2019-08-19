@@ -42,7 +42,7 @@ function makeLayoutData() {
   const {
     header,
     footer,
-    api: {fileLink},
+    api: {permalink},
     examples,
     pathPrefix // using for gatsby-config.js
   } = config;
@@ -63,7 +63,7 @@ function makeLayoutData() {
   const data = {
     header,
     footer,
-    fileLink,
+    permalink,
     pathPrefix: pathPrefix || pkg.name,
     useExample: !!examples
   };

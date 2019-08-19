@@ -17,16 +17,16 @@ const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/apiPage`);
  */
 function makeGithubLink() {
   const {
-    api: {fileLink}
+    api: {permalink}
   } = config;
 
-  if (fileLink === false) {
+  if (permalink === false) {
     return false;
   }
 
   let baseRepo, customRef;
 
-  if (typeof fileLink === 'undefined' || fileLink === true) {
+  if (typeof permalink === 'undefined' || permalink === true) {
     const {
       repository,
       version
@@ -38,7 +38,7 @@ function makeGithubLink() {
     const {
       repository,
       ref
-    } = fileLink;
+    } = permalink;
 
     baseRepo = repository;
     customRef = ref;

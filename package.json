@@ -7,11 +7,12 @@
     "test": "jest",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "build": "gatsby build --prefix-paths",
-    "serve": "gatsby serve --prefix-paths",
+    "build": "gatsby build",
+    "build:prefix": "gatsby build --prefix-paths",
+    "serve": "gatsby serve",
     "tuidoc:dev": "node ./bin/build --dev",
-    "tuidoc": "node ./bin/build",
-    "tuidoc:serve": "node ./bin/build --serv"
+    "tuidoc:serve": "node ./bin/build --serv",
+    "tuidoc": "node ./bin/build"
   },
   "bin": {
     "tuidoc": "./bin/build.js"

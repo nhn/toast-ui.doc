@@ -42,7 +42,7 @@ describe('SubListGroups component', () => {
 
     test('when data has augment items.', () => {
       wrapper = createWrapper('augment');
-      expect(wrapper.find('.title').text()).toBe('AUGMENTS');
+      expect(wrapper.find('.title').text()).toBe('EXTENDS');
     });
 
     test('when data has mix items.', () => {
@@ -56,23 +56,18 @@ describe('SubListGroups component', () => {
     });
 
     test('when data has static method items.', () => {
-      wrapper = createWrapper('static-function');
+      wrapper = createWrapper('static-method');
       expect(wrapper.find('.title').text()).toBe('STATIC METHODS');
     });
 
     test('when data has instance method items.', () => {
-      wrapper = createWrapper('instance-function');
+      wrapper = createWrapper('instance-method');
       expect(wrapper.find('.title').text()).toBe('INSTANCE METHODS');
     });
 
     test('when data has event items.', () => {
       wrapper = createWrapper('event');
       expect(wrapper.find('.title').text()).toBe('EVENTS');
-    });
-
-    test('when data has typedef items.', () => {
-      wrapper = createWrapper('typedef');
-      expect(wrapper.find('.title').text()).toBe('TYPEDEF');
     });
   });
 
@@ -86,7 +81,7 @@ describe('SubListGroups component', () => {
             url: ''
           },
           {
-            kind: 'instance-function',
+            kind: 'instance-method',
             name: 'bar',
             url: ''
           },

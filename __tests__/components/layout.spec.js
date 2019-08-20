@@ -1,10 +1,14 @@
 import React from 'react';
-import Layout from '../../src/components/layout';
+import {Layout} from '../../src/components/layout';
 
 describe('Layout component', () => {
   test('render children.', () => {
     const wrapper = shallow(
-      <Layout>
+      <Layout data={{
+        header: {},
+        footer: [],
+        useExample: true
+      }}>
         <div className="foo" />
       </Layout>
     );

@@ -10,7 +10,7 @@ import Resizable from '../components/Resizable';
 const LNB_WIDTH = 260;
 const LNB_MIN_WIDTH = 212;
 
-class Layout extends React.Component {
+export class Layout extends React.Component {
   constructor() {
     super();
 

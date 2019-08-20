@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'gatsby';
 import ListItem from '../../src/components/ListItem';
 import ToggleButton from '../../src/components/ToggleButton';
 import SubListGroups from '../../src/components/SubListGroups';
@@ -12,7 +11,7 @@ describe('ListItem component', () => {
       />
     );
 
-    expect(wrapper.find(Link).text()).toBe('foo');
+    expect(wrapper.find('a').text()).toBe('foo');
   });
 
   describe('when has no children,', () => {

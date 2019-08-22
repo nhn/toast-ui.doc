@@ -9,7 +9,7 @@ exports.onCreateWebpackConfig = ({
       rules: [
         {
           test: /\.jsx?$/,
-          exclude: /(node_modules(?!\/tui-doc)|bower_components(?!\/tui-doc))/,
+          exclude: /(node_modules(?!\/@toast-ui\/doc)|bower_components(?!\/@toast-ui\/doc))/,
           use: rules.js().use
         }
       ]

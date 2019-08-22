@@ -119,11 +119,13 @@ function circulateItems(items) {
 function addEachChildItem(name, parentPid, item) {
   const {
     kind,
-    scope
+    scope,
+    name: originName
   } = item;
 
   // add navigation data
   let navItem = navigationDataFactory.makeMemberItem({
+    originName,
     name,
     parentPid,
     kind,

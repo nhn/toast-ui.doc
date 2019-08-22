@@ -19,10 +19,10 @@ const {
 } = examples;
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
-const BUNDLE_FILES_PATH = path.resolve(pwd, `dist`);
-const LIB_FILES_PATH = path.resolve(pwd, `lib`);
 const COPY_FILES_PATH = path.resolve(__dirname, `../static`);
 const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/examplePage`);
+
+const extenralFolders = ['dist', 'lib'];
 
 const navItems = [];
 const searchItems = [];
@@ -146,29 +146,22 @@ function copyExampleFiles() {
 }
 
 /**
- * Copy bundle files of dist to static folder
+ * Copy external files to folder
  */
-function copyBundleFiles() {
-  copydir(BUNDLE_FILES_PATH, `${COPY_FILES_PATH}/dist`, err => {
-    if (err) {
-      throw err;
-    }
-  });
-}
+function copyExternalFiles() {
+  extenralFolders.forEach(folder => {
+    const copyPath = path.resolve(pwd, folder);
 
-/**
- * Copy library files on lib to static folder
- */
-function copyLibraryFiles() {
-  directoryExists(LIB_FILES_PATH, (error, result) => {
-    if (!result) {
-      return;
-    }
-
-    copydir(LIB_FILES_PATH, `${COPY_FILES_PATH}/lib`, err => {
-      if (err) {
-        throw err;
+    directoryExists(copyPath, (error, result) => {
+      if (!result) {
+        return;
       }
+
+      copydir(copyPath, `${COPY_FILES_PATH}/${folder}`, err => {
+        if (err) {
+          throw err;
+        }
+      });
     });
   });
 }
@@ -206,9 +199,8 @@ module.exports = {
     fs.emptyDirSync(COPY_FILES_PATH);
 
     if (examples) {
-      copyBundleFiles();
       copyExampleFiles();
-      copyLibraryFiles();
+      copyExternalFiles();
       makeNavAndSearchData();
     } else { // make dummy file for graphql
       makeExamplePageDataFile({

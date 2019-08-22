@@ -665,12 +665,14 @@ function makeApiPageDataFile(data) {
  * @param {Object} data - original doc-data
  * @returns {Object} custom item object
  */
-function makeMemberItem(data) {
+function makeMemberItem(data) { // eslint-disable-line complexity
   const {
+    name,
     scope,
     kind
   } = data;
-  const type = scope === 'instance' ? 'instance' : 'static';
+  const isExternal = !!(name.split('external:').length > 1);
+  const customScope = !scope && isExternal ? 'instance' : 'static';
 
   let item;
 
@@ -678,10 +680,10 @@ function makeMemberItem(data) {
     item = makeFunctionItem(data, `event`);
   } else if (kind === 'typedef') {
     item = makeFunctionItem(data, `typedef`);
-  } else if (kind === 'function') {
-    item = makeFunctionItem(data, `${type}-method`);
+  } else if (kind === 'function' || kind === 'method') {
+    item = makeFunctionItem(data, `${customScope}-method`);
   } else {
-    item = makePropertyItem(data, `${type}-property`);
+    item = makePropertyItem(data, `${customScope}-property`);
   }
 
   return item;

@@ -105,7 +105,7 @@ function makeStaticMemberData(name, parentPid, kind) {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
     name: name,
-    kind: kind === 'function' ? 'static-method' : 'static-property'
+    kind: kind === 'method' ? 'static-method' : 'static-property'
   };
 }
 
@@ -117,12 +117,10 @@ function makeStaticMemberData(name, parentPid, kind) {
  */
 function makeStaticMembersData(items, parent) {
   return items.map(item => {
-    const {
-      name,
-      kind
-    } = item;
+    const {name, kind} = item;
+    const customKind = kind === 'function' || kind === 'method' ? 'method' : 'property';
 
-    return makeStaticMemberData(name, parent.pid, kind || 'property');
+    return makeStaticMemberData(name, parent.pid, customKind);
   });
 }
 
@@ -138,7 +136,7 @@ function makeInstanceMemberData(name, parentPid, kind) {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
     name: name,
-    kind: kind === 'function' ? 'instance-method' : 'instance-property'
+    kind: kind === 'method' ? 'instance-method' : 'instance-property'
   };
 }
 
@@ -153,9 +151,10 @@ function makeInstanceMembersData(items, parent) {
 
   items.forEach(item => {
     const {kind} = item;
+    const customKind = kind === 'function' || kind === 'method' ? 'method' : 'property';
 
     if (kind) {
-      customItems.push(makeInstanceMemberData(item.name, parent.pid, kind));
+      customItems.push(makeInstanceMemberData(item.name, parent.pid, customKind));
     }
   });
 
@@ -191,25 +190,28 @@ function makeSubNavData(data, parent) {
  * @param {Object} data - original data
  * @returns {Object} customized data
  */
-function makeMemberItem(data) {
+function makeMemberItem(data) { // eslint-disable-line complexity
   const {
+    originName,
     name,
     parentPid,
     kind,
     scope
   } = data;
+  const isExternal = !!(originName.split('external:').length > 1);
 
   let item;
 
   if (kind === 'event') {
     item = makeEventData(name, parentPid);
   } else {
-    const type = kind === 'function' ? 'method' : 'property';
+    const customScope = !scope && isExternal ? 'instance' : 'static';
+    const customKind = kind === 'function' || kind === 'method' ? 'method' : 'property';
 
-    if (scope === 'instance') {
-      item = makeInstanceMemberData(name, parentPid, type);
+    if (customScope === 'instance') {
+      item = makeInstanceMemberData(name, parentPid, customKind);
     } else {
-      item = makeStaticMemberData(name, parentPid, type);
+      item = makeStaticMemberData(name, parentPid, customKind);
     }
   }
 

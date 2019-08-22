@@ -160,8 +160,8 @@ function createData() {
  */
 function build() {
   try {
-    let versionDir = path.resolve(pwd, `_${version}`);
     let latestDir = path.resolve(pwd, '_latest');
+    let versionDir = path.resolve(pwd, `_${version}`);
     let cmd;
 
     if (isDev) {
@@ -169,7 +169,7 @@ function build() {
     } else if (isServe) {
       cmd = `npm run clean && npm run build && npm run serve`;
     } else {
-      cmd = `npm run clean && npm run build:prefix && cp -r public ${latestDir} && `;
+      cmd = `npm run clean && npm run build:prefix latest && cp -r public ${latestDir} && `;
       cmd += `npm run clean && npm run build:prefix && cp -r public ${versionDir}`;
     }
 

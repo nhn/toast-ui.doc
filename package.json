@@ -1,7 +1,7 @@
 {
-  "name": "tui-doc",
-  "version": "0.0.1",
-  "description": "TOAST UI JavaScript Doumentation Tool",
+  "name": "@toast-ui/doc",
+  "version": "1.0.0-alpha.0",
+  "description": "TOAST UI Documentation Generator",
   "license": "MIT",
   "scripts": {
     "test": "jest",
@@ -19,27 +19,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.nhnent.com/fe/tui.doc.git"
+    "url": "https://github.com/nhn/toast-ui.doc"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-rc.3",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-rc.3",
-    "@babel/preset-env": "^7.0.0-rc.3",
-    "@babel/preset-react": "^7.0.0-rc.3",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.4.2",
-    "enzyme": "^3.4.4",
+    "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.2.0",
-    "eslint-config-jest-enzyme": "^6.0.3",
-    "eslint-config-tui": "^1.0.2",
-    "eslint-plugin-jest": "^21.21.0",
+    "eslint-config-jest-enzyme": "^7.1.0",
+    "eslint-config-tui": "^2.2.0",
+    "eslint-plugin-jest": "^22.15.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.5.0",
-    "react-test-renderer": "^16.4.2"
+    "jest": "^24.9.0"
   },
   "dependencies": {
-    "acorn": "^6.0.0",
     "cheerio": "^1.0.0-rc.2",
     "copy-dir": "^0.4.0",
     "directory-exists": "^2.0.1",

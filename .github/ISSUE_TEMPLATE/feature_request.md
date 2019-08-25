@@ -1,3 +1,12 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: ''
+labels: Enhancement, Need Discussion
+assignees: ''
+
+---
+
 <!--
 Thank you for your contribution.
 
@@ -13,7 +22,7 @@ And you can write template's contents in Korean also.
 <!-- Write the version that you are currently using. -->
 
 ## Development Environment
-<!-- Write the browser type, OS and so on. -->
+<!-- Write the browser type, OS and so on -->
 
 ## Current Behavior
 <!-- Write a description of the current operation. You can add sample code, 'CodePen' or 'jsfiddle' links. -->

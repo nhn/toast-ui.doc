@@ -246,9 +246,8 @@ PR을 요청하기 전 문제가 없는지 최종적으로 확인한다. 문제�
 
 * [Code of Conduct](https://github.com/nhn/toast-ui.doc/blob/master/CODE_OF_CONDUCT.md)
 * [Contributing guideline](https://github.com/nhn/toast-ui.doc/blob/master/CONTRIBUTING.md)
-* [Issue guideline](https://github.com/nhn/toast-ui.doc/blob/master/docs/ISSUE_TEMPLATE.md)
 * [Commit convention](https://github.com/nhn/toast-ui.doc/blob/master/docs/COMMIT_MESSAGE_CONVENTION.md)
-
+* [Issue guideline](https://github.com/nhn/toast-ui.doc/tree/master/.github/ISSUE_TEMPLATE)
 
 ## 📜 라이선스
 

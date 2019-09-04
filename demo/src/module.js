@@ -7,7 +7,11 @@
  * Utility functions
  * @module utils
  * @example
- * import {isUndefined, isNull, isExisty} from './module';
+ * import {
+ *   isUndefined,
+ *   isNull,
+ *   isExisty
+ * } from './module';
  * 
  * isUndefined();
  * isNull();

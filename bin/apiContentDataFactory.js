@@ -195,15 +195,13 @@ function makeUnionTypeNames(items = []) {
  * @link http://usejsdoc.org/tags-type.html
  */
 function makeTypes(data) { // eslint-disable-line complexity
-  data = data || {};
-
   const {
     type,
     name,
     expression,
     elements,
     applications
-  } = data;
+  } = data || {};
 
   let prefix = '';
   let names;
@@ -221,6 +219,8 @@ function makeTypes(data) { // eslint-disable-line complexity
     names = ['Object'];
   } else if (type === 'NameExpression') {
     names = [name];
+  } else if (type === 'AllLiteral') {
+    names = ['*'];
   }
 
   return {

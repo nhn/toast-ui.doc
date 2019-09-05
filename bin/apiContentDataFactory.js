@@ -253,7 +253,7 @@ function makeName(name, kind, params) { // eslint-disable-line complexity
   } else if (kind === 'event') {
     customName = name.split('#').pop();
   } else if (kind === 'typedef' || kind === 'namespace' ||
-    kind === 'module') {
+    kind === 'module' || kind === 'mixin') {
     customName = name;
   }
 

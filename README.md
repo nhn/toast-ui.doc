@@ -1,45 +1,39 @@
 # TOAST UI Doc
 
-> TOAST UI 제품에서 사용하는 문서화 도구로, TOAST UI Doc을 사용해 자바스크립트 라이브러리 문서를 쉽게 만들 수 있다.
+> TOAST UI Doc is a documenting tool used with TOAST UI products that allows you to create documentations for any JavaScript library easily. 
 
-[![GitHub release](https://img.shields.io/github/release/nhn/toast-ui.doc.svg)](https://github.com/nhn/toast-ui.doc/releases/latest) [![npm](https://img.shields.io/npm/v/@toast-ui/vue-doc.svg)](https://www.npmjs.com/package/@toast-ui/doc) [![GitHub license](https://img.shields.io/github/license/nhn/toast-ui.doc.svg)](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/tui.chart/pulls) [![code with hearth by NHN](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-NHN-ff1414.svg)](https://github.com/nhn)
+[![GitHub release](https://img.shields.io/github/v/release/nhn/toast-ui.doc?include_prereleases)](https://github.com/nhn/toast-ui.doc/releases/latest) [![npm](https://img.shields.io/npm/v/@toast-ui/doc)](https://www.npmjs.com/package/@toast-ui/doc) [![GitHub license](https://img.shields.io/github/license/nhn/toast-ui.doc.svg)](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/tui.chart/pulls) [![code with hearth by NHN](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-NHN-ff1414.svg)](https://github.com/nhn)
 
 ![toastui-doc](https://user-images.githubusercontent.com/18183560/63479557-bd9a7e00-c4c9-11e9-96d7-4a2cf694e1e7.png)
 
+## 🚩 Table of Contents
 
-## 🚩 목차
+* [What is TOAST UI Doc?](#-what-is-toast-ui-doc)
+* [Main Features](#-main-features)
+    * [API Page](#api-page)
+    * [Example Page](#example-page)
+    * [Search Feature](#search-feature)
+    * [Permalink](#permalink)
+    * [Customizable Layout Contents](#customizable-layout-contents)
+    * [Simple Builds](#simple-builds)
+* [Demo](#-demo)
+* [Usage](#-usage)
+    * [Install](#install)
+    * [Adding Config Files](#adding-config-files)
+    * [Setting Options in Config Files](#setting-options-in-config-files)
+    * [Running the Command](#running-the-command)
+* [Contributing](#-contributing)
+* [License](#-license)
 
-* TOAST UI Doc이란?
-* 주요 기능
-    * API 페이지
-    * Example 페이지
-    * 검색 기능
-    * 퍼머링크
-    * 레이아웃 콘텐츠 커스터마이징
-    * 간단한 빌드
-* 데모
-* 사용 방법
-    * 설치
-    * 설정 파일 추가
-    * 설정 파일 옵션 설정
-    * Examples 페이지 파일 설정
-    * 커맨드 실행
-* Pull Request 방법
-    * 설치
-    * 개발
-    * Pull Request
-* 컨트리뷰팅
-* 라이선스
+## 📑 What is TOAST UI Doc?
 
-## 📑 TOAST UI Doc이란?
+TOAST UI Doc is a documenting tool used with TOAST UI products, and is a module that creates a single documentation by combining the API document created by parsing the [JSDoc comments](https://jsdoc.app/) with the example page. TOAST UI Doc uses the [documentation.js](https://documentation.js.org) and [Gatsby](https://www.gatsbyjs.org). The layouts TOAST UI Doc is created with Gatsby to be a [React](https://reactjs.org/) component. Simply by configuring the options and running TOAST UI Doc, you can easily create documentations for any JavaScript library. 
 
-TOAST UI 제품에서 사용하는 문서화 도구로, [JSDoc](https://jsdoc.app/)을 파싱하여 API 문서를 생성하고 예제 페이지를 묶어 하나의 도큐먼트를 만들어주는 모듈이다. TOAST UI Doc은 [documentation.js](https://documentation.js.org)와 [Gatsby](https://www.gatsbyjs.org)를 사용한다. TOAST UI Doc 레이아웃은 Gatsby를 사용해 [리액트](https://reactjs.org/) 컴포넌트로 구성되어 있다. 옵션을 설정하고 TOAST UI Doc을 실행하기만 하면 자바스크립트 라이브러리를 위한 문서를 쉽게 만들어낼 수 있다.
+## 🎨 Main Features
 
-## 🎨 주요 기능
+### API Page
 
-### API 페이지
-
-자바스크립트 파일에 작성된 JSDoc을 파싱하여 타입별로 API 페이지를 생성해준다. API 페이지는 크게 7가지 타입으로 그룹화되어 LNB의 메뉴로 노출된다.
+TOAST UI Doc parses the JSDoc composed within the JavaScript file to create the API page. The API page can mainly be categorized into seven types, and is represented as a menu in the Local Navigation Bar (LNB). 
 
 * MODULES
 * EXTERNALS
@@ -48,54 +42,52 @@ TOAST UI 제품에서 사용하는 문서화 도구로, [JSDoc](https://jsdoc.ap
 * MIXINS
 * TYPEDEF
 
-또한 각 타입별로 서브 메뉴가 생성되며 상속 관계, 멤버(속성, 메서드) 및 커스텀 이벤트 API 정보를 한 눈에 확인할 수 있다.
+Furthermore, each type has a submenu, and you can easily check the inheritance or mixin relationship, member (property, method) and other custom event API information.
 
 * EXTENDS
+* MIXES
 * STATIC PROPERTIES
 * STATIC METHODS
 * INSTANCE METHODS
 * EVENTS
 
-### Examples 페이지
+### Examples Page
 
-HTML 파일을 읽어와 Examples 페이지로 생성해준다. 각 예제 페이지에 특정 셀렉터를 사용하면 자바스크립트, HTML 코드 스니펫을 보여줄 수 있다. 사용자가 직접 사용해볼 수 있는 데모 페이지와 각 코드 스니펫은 탭 형태로 제공된다.
+TOAST UI Doc reads the HTML file to directly create an Examples page. If you use appropriate selectors for each Example page, you can display HTML and JavaScript snippets within the page. The Try-it-yourself demos and each code snippet are provided as tabs. 
 
-### 검색 기능
+### Search Feature
 
-LNB 영역 상단에 노출된 검색바를 통해 도큐먼트에서 제공하는 API 및 예제 페이지를 검색할 수 있다. 검색어 자동 완성 기능을 제공하여 빠르게 API 및 예제 페이지로 이동할 수 있다.
+You can use the search bar in the top portion of the local navigation bar (LNB) to search for any API and Example pages provided by TOAST UI Doc. TOAST UI Doc also comes with auto-complete feature to facilitate faster transversals between API and Examples pages for users. 
 
-### 퍼머링크(Permalink)
+### Permalink
 
-[깃헙 퍼머링크](https://help.github.com/en/articles/getting-permanent-links-to-files)를 제공한다. 각 API 영역 오른쪽 상단에 노출되며, JSDoc이 작성된 파일 및 작성 위치를 깃헙 리포지터리로 링크해준다. API 코드를 확인하거나 JSDoc 작성 내용을 참조할 때 유용하다.
+TOAST UI Doc provides a [Github Permalink](https://help.github.com/en/articles/getting-permanent-links-to-files) feature. The permalinks can be found at the top right of each API area, and links the location where the JSDoc file is to the Github repository. Permalinks can be useful when directly accessing the API codes and JSDoc contents for reference. 
 
-### 레이아웃 콘텐츠 커스터마이징
+### Customizable Layout Contents
 
-TOAST UI Doc 레이아웃은 크게 헤더, 푸터, LNB, 콘텐츠(메인, API, Examples) 페이지로 나뉜다. 설정 파일을 사용하면 헤더, 푸터 영역에 들어가는 콘텐츠를 사용자가 원하는대로 수정할 수 있다. 또한 필요한 경우에 예제 페이지 노출 여부를 설정할 수도 있다.
+TOAST UI Doc layouts can mainly be categorized in Header, Footer, LNB, Contents (Main, API, and Examples). You can use the config file to readily customize which content goes in Header and Footer areas. Furthermore, if necessary, you can configure whether or not to expose the Examples page. 
 
-### 간단한 빌드
+### Simple Builds
 
-TOAST UI Doc은 Gatsby를 내장하고 있어 빌드를 실행하면 Gatsby 스크립트가 실행되면서 문서 파일을 묶어 폴더로 생성해준다. 생성된 폴더를 [깃헙 페이지](https://pages.github.com/) 또는 서버에 업로드하면 공개 API 페이지를 만들 수 있다.
+TOAST UI Doc comes with Gatsby built into it, so when the build takes place, Gatsby script runs automatically to compile documentation files into a folder. By uploading the created folder onto the [Github Pages](https://pages.github.com/) or onto a server, you can easily create your public API page. 
 
-아래 데모 페이지에서 주요 기능들을 확인해볼 수 있다.
-
-
-## 🐾 데모
+## 🐾 Demo
 
 * https://nhn.github.io/toast-ui.doc/latest/
 
-## 🔨 사용 방법
+## 🔨 Usage
 
-### 설치
+### Install
 
-npm을 사용하며 글로벌에 설치하여 사용한다.
+Use npm to install it globally. 
 
 ``` sh
 $ npm install -g @toast-ui/doc
 ```
 
-### 설정 파일 추가
+### Adding Config Files
 
-도큐먼트를 생성할 파일이 있는 프로젝트의 루트 경로에 설정 파일을 추가한다. `tuidoc.config.json` 이름으로 파일을 생성한다.
+Add your config files to the root of your working directory. The config file must be in the form of `tuidoc.config.json`. 
 
 ```
 project/
@@ -104,64 +96,66 @@ project/
 └─ tuidoc.config.json
 ```
 
-### 설정 파일 옵션 설정
+### Setting Options in Config Files
 
-`tuidoc.config.json`에서 사용할 수 있는 옵션은 다음과 같다. 옵션을 설정하여 생성할 도큐먼트를 커스터마이징할 수 있다. 전체 옵션 사용 방법은 [다음](https://github.com/nhn/toast-ui.doc/blob/master/tuidoc.config.json)을 참고한다.
+The `tuidoc.config.json` file can be used to configure following options, and such options can be customized to create more approprite documents. For a full explanation on using options, refer to [here](https://github.com/nhn/toast-ui.doc/blob/master/tuidoc.config.json).
 
-#### 헤더 영역 설정
 
-`[로고] / [텍스트] [버전]`을 순서대로 노출할 수 있다.
+#### Configuring the Header Area
 
-| 옵션명 | 타입 | 설명 |
+`[logo] / [text] [version]` can be exposed sequentially. 
+
+| Option | Type | Description |
 | --- | --- | --- |
-| `header.logo.src` | `string` | 로고 이미지 경로를 설정한다. |
-| `header.logo.linkUrl` | `?string` | 로고 이미지에 링크 URL을 설정한다. 기본값은 루트(`/`)로 설정된다. |
-| `header.title` | `object \| boolean` | 로고 이미지 오른쪽에 텍스트를 노출할지 여부와 세부 내용을 설정한다. |
-| `header.title.text` | `?string` | 텍스트를 노출할 때, 텍스트 값을 설정한다. 기본값은 `package.json`의 `name` 값으로 설정된다 . |
-| `header.title.linkUrl` | `?string` | 텍스트를 노출할 때, 텍스트에 링크 URL을 설정한다. 기본값은 `package.json`의 `github` 값으로 설정된다. |
-| `header.version` | `?boolean` | 모듈 버전을 노출할 수 있다. 기본값은 `true`이며 `package.json`의 `version` 값이 표시된다. |
+| `header.logo.src` | `string` | Configures the path for the logo image source. |
+| `header.logo.linkUrl` | `?string` | Embeds a URL link onto the logo image. The default is set to be the root (`/`).  |
+| `header.title` | `object \| boolean` | Determines whether or not to display a text to the right of the logo. |
+| `header.title.text` | `?string` | When displaying text, declares the value of the to be displayed text. The default is set to be the `name` value of the `package.json`.  |
+| `header.title.linkUrl` | `?string` | When displaying text, configures a URL link onto the text. The default is set to be the `github` value of `package.json`. |
+| `header.version` | `?boolean` | Determines whether or not to display the module version. The default is set to be `true`, and the `version` value of `package.json` will be displayed. |
 
-#### 푸터 영역 설정
+#### Configuring the Footer Area
 
-회사 정보 등 프로덕트와 관련된 링크 목록을 노출할 수 있다.
+A list of product related links including company information can be displayed. 
 
-| 옵션명 | 타입 | 설명 |
+| Option | Type | Description |
 | --- | --- | --- |
-| `footer[].title` | `string` | 링크 텍스트를 설정한다. |
-| `footer[].linkUrl` | `string` | 링크 URL을 설정한다. |
+| `footer[].title` | `string` | Configures the link text. |
+| `footer[].linkUrl` | `string` | Configures the link URL. |
 
-#### 메인 페이지 설정
+#### Configuring the Main Page
 
-| 옵션명 | 타입 | 설명 |
+| Option | Type | Description |
 | --- | --- | --- |
-| `main.filePath` | `string` | 메인 페이지에 노출될 파일 경로를 설정하며, 파일 형식은 마크다운(`*.md`)이어야 한다. 기본값은 프로젝트 폴더의 `README.md` 파일이다. |
+| `main.filePath` | `string` | Configures the file path to be displayed on the main page, and the file must be a markdown (`*.md`) file. The default is set to be the `README.md` file found in the project folder.  |
 
-#### API 페이지 설정
 
-| 옵션명 | 타입 | 설명 |
+#### Configuring the API Page
+
+| Option | Type | Description |
 | --- | --- | --- |
-| `api.filePath` | `string \| array` | API 페이지에 노출될 파일(jsdoc을 파싱할 파일)을 설정한다. 폴더 전체는 `string` 타입으로 설정하고, 개별 파일은 `array` 타입으로 설정할 수 있다. 자바스크립트(`*.js`) 파일만 파싱된다. |
-| `api.permalink` | `object \| boolean` | 퍼머링크 사용 여부를 설정한다. `false`로 설정할 경우, 퍼머링크가 노출되지 않는다. |
-| `api.permalink.repository` | `?string` | 퍼머링크를 사용할 때, 깃헙 리포지터리 URL을 설정한다. 기본값은 `package.json`의 `github` 값으로 설정된다. |
-| `api.permalink.ref` | `?string` | 퍼머링크를 사용할 때 참조할 브랜치 또는 태그를 설정한다. 특정 커밋 해쉬값을 지정할 수도 있다. 기본값은 `v{version}`으로 설정된다. |
+| `api.filePath` | `string \| array` | Configures the file path to be displayed on the API page (the file to be parsed using JSDoc). When declaring the path to be the entire folder, declare it as a `string`, and for individual files, use an `array`. Only JavaScript files (`*.js`) can be parsed.  |
+| `api.permalink` | `object \| boolean` | Determines whether or not to use permalinks. If set to `false`, permalinks are hidden. |
+| `api.permalink.repository` | `?string` | If using permalinks, configures the Github repository URL. The default is set to be the `github` value of `package.json`.  |
+| `api.permalink.ref` | `?string` | If using permalinks, configures the branch or the tag. This option can be used to declare the hash value of a specific commit. The default value is set to be `v{SemVer}`. |
 
-#### Examples 페이지 설정
+#### Configuring the Examples Page
 
-| 옵션명 | 타입 | 설명 |
+| Option | Type | Description |
 | --- | --- | --- |
-| `examples.filePath` | `string \| boolean` | Examples 페이지에 노출될 파일을 설정한다. 예제 파일이 있는 폴더를 `string` 타입으로 설정한다. `false`로 설정하면 LNB 영역에서 Examples 탭이 노출되지 않는다. |
-| `examples.titles` | `object` | 각 예제 파일과 LNB에 노출될 메뉴명을 맵핑한다. `{ [Example 파일명]: [LNB 메뉴명] }` 형식으로 설정한다. |
+| `examples` | `object \| boolean` | Configures options to use the Examples page. If set to `false`, the Examples tab is hidden from the local navigation bar. |
+| `examples.filePath` | `string` | Configures the file path to be displayed on the Examples page. Declare the folder with example files in `string` format. |
+| `examples.titles` | `object` | Maps each example file to the menu name to be displayed on the local navigation bar. The configuration should be made in `{ [Example File Name]: [LNB Menu Name]}` format. |
 
-#### 그 외
+#### Others
 
-| 옵션명 | 타입 | 설명 |
+| Option | Type | Description |
 | --- | --- | --- |
-| `pathPrefix` | `string` | 생성된 도큐먼트 파일이 깃헙 페이지 또는 서버의 루트 경로가 아닌 특정 경로에 위치할 때 사용하며, 특정 경로명을 설정한다. 설정하지 않을 경우, 도큐먼트 내에서 링크 참조 에러가 발생한다.
+| `pathPrefix` | `string` | Only used when the created documentation file exists at a location that is not the root of the Github repository or the server, and is used to declare the specific path. If not configured, the documentation may be prone to link reference error due to the lack of the resource file. |
 
+### Configuring the Files for Examples Page
 
-### Examples 페이지 파일 설정
-
-Examples 페이지의 각 탭 내용을 보여주기 위해 옵션 설정 외 추가 설정 작업이 필요하다. Result 탭에 노출되는 페이지는 `examples` 옵션에 설정된 파일이며 형식은 HTML이어야 한다. JavaScript 탭의 코드 스니펫은  `code-js`, HTML 탭의 코드 스니펫은 `code-html` 클래스 셀렉터로 지정하면 된다. 기본 템플릿은 [다음](https://github.nhnent.com/fe/tui.doc/blob/master/demo/examples/example01-default-template.html)을 참조한다.
+In order to display the tabular content in the Examples page, additional configuration is necessary besides managing the options. The page that is finally displayed on the Result tab is the file that has been configured using the `examples` option, and has to be of HTML format. The code snippets found in JavaScript tab and HTML tab must be declared to be `code-js` and `code-html` class, respectively. For the basic template, see [here](https://github.com/nhn/toast-ui.doc/blob/master/demo/examples/example01-default-template.html).
 
 ```html
 ...
@@ -175,21 +169,21 @@ Examples 페이지의 각 탭 내용을 보여주기 위해 옵션 설정 외 �
 ...
 ```
 
-### 커맨드 실행
+### Running the Command
 
-TOAST UI Doc은 `tuidoc` CLI를 제공하며, 다음 커맨드를 실행하면 위에서 설정한 환경 설정 파일을 기반으로 도큐먼트를 생성하기 위한 빌드가 실행된다. 랩핑하고 있는 Gatsby 빌드가 실행된다. `--serv` 옵션을 사용해 빌드하면 생성된 도큐먼트를 로컬에서 미리 확인할 수 있다.
+TOAST UI Doc provides a `tuidoc` CLI, and running the following command will allow you to build your documentation based on the environment settings that you have configured above. First, the Gatsby, wrapped by TOAST UI Doc, is executed, and the `--serv` flag can be used to preview the created documentation on your local machine. 
 
 ``` sh
 $ tuidoc --serv
 ```
 
-로컬 확인이 끝나고 `tuidoc` 커맨드를 실행하면 프로젝트 루트 경로 아래에 `_latest`, `_[semver]` 2개 폴더가 생성된다. 이 폴더를 서버에 업로드하여 사용한다.
+When you are done verifying the local product, running `tuidoc` command will create two folders, `_latest` and `_[SemVer]`, under the project root directory. These folders can be used to upload to a server. 
 
 ``` sh
 $ tuidoc
 ```
 
-또는 도큐먼트를 생성할 프로젝트의 `package.json` 파일에 스크립트를 추가해 실행할 수도 있다.
+Or, you can add the commands as scrtips to the project's `package.json` file. 
 
 ``` json
 {
@@ -200,13 +194,14 @@ $ tuidoc
 }
 ```
 
-## 🔧 Pull Request 방법
 
-TOAST UI 제품들은 오픈 소스로, 이슈를 수정하거나 기능을 추가 개발한 다음 Pull Request(PR)를 요청할 수 있다.
+## 🔧 Making a Pull Request
 
-### 설치
+All TOAST UI products are open source. A Pull Request (PR) can be made upon fixing an issue or developing additional features to be implemented. 
 
-`master` 브랜치를 개인 리포지터리로 포크한다. 포크한 리포지터리를 로컬에 클론한 다음 노드 모듈을 설치한다. 개발에 앞서 모듈이 정상적으로 동작하는지 확인해본다.
+### Install
+
+To install, first fork the `master` branch to your own personal repository. Then, clone the forked repository to your local machine, and install the following node module. Prior to development, first, make sure that the modules are properly installed. 
 
 ```sh
 $ git clone https://github.com/{your-personal-repo}/toast-ui.doc.git
@@ -215,21 +210,21 @@ $ npm install
 $ npm run test
 ```
 
-### 개발
+### Development
 
-로컬에서 개발을 한다. 개발 단계에서 2가지의 `tuidoc` 스크립트를 실행할 수 있으며, 개발 상황에 맞게 스크립트를 실행하면 된다.
+Use your local machine for the development process. During the development process, you can use two types of `tuidoc` scripts, and you can determine which script to use according to your situation.
 
-#### 데브 서버 실행
+#### Running the Dev Server
 
-스크립트를 실행하면 Gatsby에서 웹팩 데브 서버를 실행한다. `src` 경로 아래의 리액트 컴포넌트 파일을 수정할 때 실시간으로 수정 사항을 확인할 수 있다. `localhost:8000`으로 접속한다.
+When the script is run, Gatsby initiates a webpack dev server. You can preview the changes you have made to any react components under `src` folder in realtime. You can connect to the dev server by going to `localhost:8000`.
 
 ```sh
 $ npm run tuidoc:dev
 ```
 
-#### 빌드 상태 확인
+#### Checking the Build Status
 
-스크립트를 실행하면 Gatsby 빌드가 실행되고 생성된 도큐먼트가 정상 동작하는지 확인할 수 있도록 서버가 실행된다. 서버에 도큐먼트 폴더를 배포하기 전 상태를 확인할 수 있다. `localhost:9000`으로 접속한다.
+When the script is run, Gatsby begins the build as well as the server so that you can check that the created documentation performs properly. In order to check the status of the documentation before distribution, connect to `localhost:9000`. 
 
 ```sh
 $ npm run tuidoc:serve
@@ -237,18 +232,18 @@ $ npm run tuidoc:serve
 
 ### Pull Request
 
-PR을 요청하기 전 문제가 없는지 최종적으로 확인한다. 문제가 없으면 커밋하고 리포지터리에 푸시한다.
+Finally, perform a final check in order to make sure that there are no problems with your before making a pull request. If none are found, commit, and push it to the repository. 
 
-더 자세한 PR 방법은 아래 컨트리뷰팅 목차 링크를 참조한다.
+For more detailed explanation on making a PR, refer to the **Contributing** appendix below. 
 
-
-## 💬 컨트리뷰팅
+## 💬 Contributing
 
 * [Code of Conduct](https://github.com/nhn/toast-ui.doc/blob/master/CODE_OF_CONDUCT.md)
 * [Contributing guideline](https://github.com/nhn/toast-ui.doc/blob/master/CONTRIBUTING.md)
+* [Issue guideline](https://github.com/nhn/toast-ui.doc/blob/master/docs/ISSUE_TEMPLATE.md)
 * [Commit convention](https://github.com/nhn/toast-ui.doc/blob/master/docs/COMMIT_MESSAGE_CONVENTION.md)
-* [Issue guideline](https://github.com/nhn/toast-ui.doc/tree/master/.github/ISSUE_TEMPLATE)
 
-## 📜 라이선스
 
-이 소프트웨어는 [MIT](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE) 라이선스를 사용한다. © [NHN](https://github.com/nhn).
+## 📜 License
+
+This software is provided under [MIT License](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE). © [NHN](https://github.com/nhn).

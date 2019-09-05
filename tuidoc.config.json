@@ -21,7 +21,7 @@
     }
   ],
   "main": {
-    "filePath": "demo/README.md"
+    "filePath": "README.md"
   },
   "api": {
     "filePath": "demo/src",

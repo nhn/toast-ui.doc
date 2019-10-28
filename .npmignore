@@ -1,0 +1,9 @@
+# test
+__mocks__
+__tests__
+
+# documentations
+.github
+docs
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md

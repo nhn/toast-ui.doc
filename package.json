@@ -1,8 +1,25 @@
 {
   "name": "@toast-ui/doc",
-  "version": "1.0.0",
-  "description": "TOAST UI Documentation Generator",
+  "version": "1.0.1",
   "license": "MIT",
+  "description": "TOAST UI Documentation Generator",
+  "keywords": [
+    "toast-ui",
+    "tui",
+    "javascript",
+    "documentation",
+    "generator",
+    "docs",
+    "api",
+    "examples"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nhn/toast-ui.doc.git"
+  },
+  "bin": {
+    "tuidoc": "./bin/build.js"
+  },
   "scripts": {
     "test": "jest",
     "clean": "gatsby clean",
@@ -11,15 +28,9 @@
     "build:prefix": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "tuidoc:dev": "node ./bin/build --dev",
+    "tuidoc": "node ./bin/build",
     "tuidoc:serve": "node ./bin/build --serv",
-    "tuidoc": "node ./bin/build"
-  },
-  "bin": {
-    "tuidoc": "./bin/build.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nhn/toast-ui.doc"
+    "note": "tuie --tag=$(git describe --tags)"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
@@ -28,7 +39,8 @@
     "eslint-config-tui": "^2.2.0",
     "eslint-plugin-jest": "^22.15.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "tui-release-notes": "git+https://github.com/nhnent/tui.release-notes.git"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",

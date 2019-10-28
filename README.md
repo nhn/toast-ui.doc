@@ -1,8 +1,8 @@
 # TOAST UI Doc
 
-> TOAST UI Doc is a documenting tool used with TOAST UI products that allows you to create documentations for any JavaScript library easily. 
+> TOAST UI Doc is a documentation generator used with TOAST UI products that allows you to create documentations for any JavaScript library easily. 
 
-[![GitHub release](https://img.shields.io/github/v/release/nhn/toast-ui.doc?include_prereleases)](https://github.com/nhn/toast-ui.doc/releases/latest) [![npm](https://img.shields.io/npm/v/@toast-ui/doc)](https://www.npmjs.com/package/@toast-ui/doc) [![GitHub license](https://img.shields.io/github/license/nhn/toast-ui.doc.svg)](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/tui.chart/pulls) [![code with hearth by NHN](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-NHN-ff1414.svg)](https://github.com/nhn)
+[![GitHub release](https://img.shields.io/github/v/release/nhn/toast-ui.doc?include_prereleases)](https://github.com/nhn/toast-ui.doc/releases/latest) [![npm](https://img.shields.io/npm/v/@toast-ui/doc)](https://www.npmjs.com/package/@toast-ui/doc) [![GitHub license](https://img.shields.io/github/license/nhn/toast-ui.doc.svg)](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/toast-ui.doc/pulls) [![code with hearth by NHN](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-NHN-ff1414.svg)](https://github.com/nhn)
 
 ![toastui-doc](https://user-images.githubusercontent.com/18183560/63479557-bd9a7e00-c4c9-11e9-96d7-4a2cf694e1e7.png)
 
@@ -27,7 +27,7 @@
 
 ## 📑 What is TOAST UI Doc?
 
-TOAST UI Doc is a documenting tool used with TOAST UI products, and is a module that creates a single documentation by combining the API document created by parsing the [JSDoc comments](https://jsdoc.app/) with the example page. TOAST UI Doc uses the [documentation.js](https://documentation.js.org) and [Gatsby](https://www.gatsbyjs.org). The layouts TOAST UI Doc is created with Gatsby to be a [React](https://reactjs.org/) component. Simply by configuring the options and running TOAST UI Doc, you can easily create documentations for any JavaScript library. 
+TOAST UI Doc is a documentation generator used with TOAST UI products, and is a module that creates a single documentation by combining the API document created by parsing the [JSDoc comments](https://jsdoc.app/) with the example page. TOAST UI Doc uses the [documentation.js](https://documentation.js.org) and [Gatsby](https://www.gatsbyjs.org). The layouts TOAST UI Doc is created with Gatsby to be a [React](https://reactjs.org/) component. Simply by configuring the options and running TOAST UI Doc, you can easily create documentations for any JavaScript library. 
 
 ## 🎨 Main Features
 
@@ -240,7 +240,7 @@ For more detailed explanation on making a PR, refer to the **Contributing** appe
 
 * [Code of Conduct](https://github.com/nhn/toast-ui.doc/blob/master/CODE_OF_CONDUCT.md)
 * [Contributing guideline](https://github.com/nhn/toast-ui.doc/blob/master/CONTRIBUTING.md)
-* [Issue guideline](https://github.com/nhn/toast-ui.doc/blob/master/docs/ISSUE_TEMPLATE.md)
+* [Issue guideline](https://github.com/nhn/toast-ui.doc/tree/master/.github/ISSUE_TEMPLATE)
 * [Commit convention](https://github.com/nhn/toast-ui.doc/blob/master/docs/COMMIT_MESSAGE_CONVENTION.md)
 
 

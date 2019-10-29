@@ -183,7 +183,7 @@ When you are done verifying the local product, running `tuidoc` command will cre
 $ tuidoc
 ```
 
-Or, you can add the commands as scrtips to the project's `package.json` file. 
+Or, you can add the commands as scripts to the project's `package.json` file. 
 
 ``` json
 {

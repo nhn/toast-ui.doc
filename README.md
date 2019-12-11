@@ -11,7 +11,7 @@
 * [What is TOAST UI Doc?](#-what-is-toast-ui-doc)
 * [Main Features](#-main-features)
     * [API Page](#api-page)
-    * [Example Page](#example-page)
+    * [Examples Page](#examples-page)
     * [Search Feature](#search-feature)
     * [Permalink](#permalink)
     * [Customizable Layout Contents](#customizable-layout-contents)

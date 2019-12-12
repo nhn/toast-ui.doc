@@ -4,27 +4,26 @@ about: Create a question about grid
 title: ''
 labels: Question
 assignees: ''
-
 ---
 
 <!--
   To make it easier for us to help you, please include as much useful information as possible.
 
   Useful Links:
-  - tutorial: https://github.com/nhn/tui.grid/tree/master/docs
-  - API/Example: https://nhn.github.io/tui.grid/latest
+  - demo: https://nhn.github.io/toast-ui.doc/latest/
+  - demo source: https://github.com/nhn/toast-ui.doc/tree/master/demo
 
-  Before opening a new issue, please search existing issues https://github.com/nhn/tui.grid/issues
+  Before opening a new issue, please search existing issues https://github.com/nhn/toast-ui.doc/issues
 -->
 
-**Summary**
+## Summary
 A clear and concise description of what the question is.
 
-**Screenshots**
+## Screenshots
 If applicable, add screenshots to help explain your question.
 
-**Version**
+## Version
 Write the version of the grid you are currently using.
 
-**Additional context**
+## Additional context
 Add any other context about the problem here.

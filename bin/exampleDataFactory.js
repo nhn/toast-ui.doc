@@ -141,7 +141,29 @@ function copyExampleFiles() {
       throw err;
     }
 
+    injectScriptForErrorCatch();
     readExampleFiles();
+  });
+}
+
+/**
+ * Inject script for error catch
+ */
+function injectScriptForErrorCatch() {
+  const injectScriptString = '<script>var errorLogs=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};</script>';
+  const files = nodedir.files(COPY_FILES_PATH, {sync: true});
+
+  files.forEach(file => {
+    if (file.match(/.html$/)) {
+      fs.readFile(file, {encoding: 'utf-8'}, function(err, data) {
+        if (err) {
+          throw err;
+        }
+
+        const newData = data.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2${injectScriptString}$1$2$3`);
+        fs.writeFileSync(file, newData, {encoding: 'utf-8'});
+      });
+    }
   });
 }
 

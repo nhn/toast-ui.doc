@@ -113,10 +113,10 @@ function makeExamplePageDataFile(data) {
 }
 
 /**
- * Read example files
+ * Post processing for example files
  */
-function readExampleFiles() {
-  nodedir.readFiles(EXAMPLE_FILES_PATH, {
+function postProcessingOfExampleFiles() {
+  nodedir.readFiles(COPY_FILES_PATH, {
     match: /.html$/,
     recursive: true
   }, (err, content, filename, next) => {
@@ -128,6 +128,7 @@ function readExampleFiles() {
     const data = makeExamplePageData(parsedContent, filename);
 
     makeExamplePageDataFile(data);
+    injectScriptForErrorCatch(content, filename);
     next(); // read next file
   });
 }
@@ -141,30 +142,20 @@ function copyExampleFiles() {
       throw err;
     }
 
-    injectScriptForErrorCatch();
-    readExampleFiles();
+    postProcessingOfExampleFiles();
   });
 }
 
 /**
  * Inject script for error catch
+ * @param {string} content - example page html string
+ * @param {string} filename - exmaple page filename
  */
-function injectScriptForErrorCatch() {
+function injectScriptForErrorCatch(content, filename) {
   const injectScriptString = '<script>var errorLogs=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};</script>';
-  const files = nodedir.files(COPY_FILES_PATH, {sync: true});
+  const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2${injectScriptString}$1$2$3`);
 
-  files.forEach(file => {
-    if (file.match(/.html$/)) {
-      fs.readFile(file, {encoding: 'utf-8'}, function(err, data) {
-        if (err) {
-          throw err;
-        }
-
-        const newData = data.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2${injectScriptString}$1$2$3`);
-        fs.writeFileSync(file, newData, {encoding: 'utf-8'});
-      });
-    }
-  });
+  fs.writeFileSync(filename, newContent, {encoding: 'utf-8'});
 }
 
 /**

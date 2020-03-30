@@ -114,6 +114,7 @@ function makeExamplePageDataFile(data) {
 
 /**
  * Post processing for example files
+ * @param {boolean} isExampleErrorDetector - inject script into the example page.
  */
 function postProcessingOfExampleFiles(isExampleErrorDetector) {
   nodedir.readFiles(COPY_FILES_PATH, {
@@ -137,6 +138,7 @@ function postProcessingOfExampleFiles(isExampleErrorDetector) {
 
 /**
  * Copy example files to static folder
+ * @param {boolean} isExampleErrorDetector - inject script into the example page.
  */
 function copyExampleFiles(isExampleErrorDetector) {
   copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, err => {

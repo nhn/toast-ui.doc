@@ -115,7 +115,7 @@ function makeExamplePageDataFile(data) {
 /**
  * Post processing for example files
  */
-function postProcessingOfExampleFiles() {
+function postProcessingOfExampleFiles(isExampleErrorDetector) {
   nodedir.readFiles(COPY_FILES_PATH, {
     match: /.html$/,
     recursive: true
@@ -128,7 +128,9 @@ function postProcessingOfExampleFiles() {
     const data = makeExamplePageData(parsedContent, filename);
 
     makeExamplePageDataFile(data);
-    injectScriptForErrorCatch(content, filename);
+    if (isExampleErrorDetector) {
+      injectScriptForErrorCatch(content, filename);
+    }
     next(); // read next file
   });
 }
@@ -136,13 +138,13 @@ function postProcessingOfExampleFiles() {
 /**
  * Copy example files to static folder
  */
-function copyExampleFiles() {
+function copyExampleFiles(isExampleErrorDetector) {
   copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, err => {
     if (err) {
       throw err;
     }
 
-    postProcessingOfExampleFiles();
+    postProcessingOfExampleFiles(isExampleErrorDetector);
   });
 }
 
@@ -208,11 +210,11 @@ function makeNavAndSearchData() {
 }
 
 module.exports = {
-  createData: function() {
+  createData: function(isExampleErrorDetector) {
     fs.emptyDirSync(COPY_FILES_PATH);
 
     if (examples) {
-      copyExampleFiles();
+      copyExampleFiles(isExampleErrorDetector);
       copyExternalFiles();
       makeNavAndSearchData();
     } else { // make dummy file for graphql

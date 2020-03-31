@@ -15,7 +15,8 @@ const examples = config.examples || false;
 
 const {
   filePath,
-  titles
+  titles,
+  usePageErrorDetector = false
 } = examples;
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
@@ -114,9 +115,8 @@ function makeExamplePageDataFile(data) {
 
 /**
  * Post processing for example files
- * @param {boolean} isExampleErrorDetector - inject script into the example page.
  */
-function postProcessingOfExampleFiles(isExampleErrorDetector) {
+function postProcessingOfExampleFiles() {
   nodedir.readFiles(COPY_FILES_PATH, {
     match: /.html$/,
     recursive: true
@@ -129,7 +129,7 @@ function postProcessingOfExampleFiles(isExampleErrorDetector) {
     const data = makeExamplePageData(parsedContent, filename);
 
     makeExamplePageDataFile(data);
-    if (isExampleErrorDetector) {
+    if (usePageErrorDetector) {
       injectScriptForErrorCatch(content, filename);
     }
     next(); // read next file
@@ -138,15 +138,14 @@ function postProcessingOfExampleFiles(isExampleErrorDetector) {
 
 /**
  * Copy example files to static folder
- * @param {boolean} isExampleErrorDetector - inject script into the example page.
  */
-function copyExampleFiles(isExampleErrorDetector) {
+function copyExampleFiles() {
   copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, err => {
     if (err) {
       throw err;
     }
 
-    postProcessingOfExampleFiles(isExampleErrorDetector);
+    postProcessingOfExampleFiles();
   });
 }
 
@@ -212,11 +211,11 @@ function makeNavAndSearchData() {
 }
 
 module.exports = {
-  createData: function(isExampleErrorDetector) {
+  createData: function() {
     fs.emptyDirSync(COPY_FILES_PATH);
 
     if (examples) {
-      copyExampleFiles(isExampleErrorDetector);
+      copyExampleFiles();
       copyExternalFiles();
       makeNavAndSearchData();
     } else { // make dummy file for graphql

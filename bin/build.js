@@ -11,7 +11,6 @@ const exampleDataFactory = require('./exampleDataFactory.js');
 const pwd = process.cwd();
 const isDev = process.argv.indexOf('--dev') > -1;
 const isServe = process.argv.indexOf('--serv') > -1;
-const isExampleErrorDetector = process.argv.indexOf('--example-error-detector') > -1;
 
 const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tuidoc.config.json'));
@@ -113,7 +112,7 @@ function makeAllData() {
       let searchKeywords = [];
 
       const apiData = apiDataFactory.createData(JSON.parse(output));
-      const exampleData = exampleDataFactory.createData(isExampleErrorDetector);
+      const exampleData = exampleDataFactory.createData();
 
       const allNavData = navigation.concat(apiData.navigation)
         .concat(exampleData.navigation);

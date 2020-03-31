@@ -152,7 +152,7 @@ function copyExampleFiles() {
 /**
  * Inject script for error catch
  * @param {string} content - example page html string
- * @param {string} filename - exmaple page filename
+ * @param {string} filename - exmaple page's filename
  */
 function injectScriptForErrorCatch(content, filename) {
   const injectScriptString = '<script>var errorLogs=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};</script>';

@@ -16,7 +16,7 @@ const examples = config.examples || false;
 const {
   filePath,
   titles,
-  usePageErrorDetector = false
+  globalErrorLogVariable = false
 } = examples;
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
@@ -129,7 +129,8 @@ function postProcessingOfExampleFiles() {
     const data = makeExamplePageData(parsedContent, filename);
 
     makeExamplePageDataFile(data);
-    if (usePageErrorDetector) {
+
+    if (globalErrorLogVariable) {
       injectScriptForErrorCatch(content, filename);
     }
     next(); // read next file
@@ -155,8 +156,11 @@ function copyExampleFiles() {
  * @param {string} filename - exmaple page's filename
  */
 function injectScriptForErrorCatch(content, filename) {
-  const injectScriptString = '<script>var errorLogs=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};</script>';
-  const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2${injectScriptString}$1$2$3`);
+  const isValidVariable = typeof globalErrorLogVariable === 'string';
+  const injectVariable = isValidVariable ? globalErrorLogVariable : 'errorLogs';
+  const injectScriptString =
+    `var ${injectVariable}=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};`;
+  const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2<script>${injectScriptString}</script>$1$2$3`);
 
   fs.writeFileSync(filename, newContent, {encoding: 'utf-8'});
 }

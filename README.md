@@ -146,7 +146,7 @@ A list of product related links including company information can be displayed.
 | `examples` | `object \| boolean` | Configures options to use the Examples page. If set to `false`, the Examples tab is hidden from the local navigation bar. |
 | `examples.filePath` | `string` | Configures the file path to be displayed on the Examples page. Declare the folder with example files in `string` format. |
 | `examples.titles` | `object` | Maps each example file to the menu name to be displayed on the local navigation bar. The configuration should be made in `{ [Example File Name]: [LNB Menu Name]}` format. |
-| `examples.globalErrorLogVariable` | `?string \| ?boolean` | Automatically inserts the code snippet that puts the error in the example page into a global variable. Variable names can be set directly as strings. If set to true, the default `errorLogs` is used. |
+| `examples.globalErrorLogVariable` | `?string \| ?boolean` | Automatically inserts the code snippet that puts the error in the example page into a global variable. Variable names can be set directly as strings. If set to `true`, the default `errorLogs` is used. |
 
 #### Others
 

@@ -15,7 +15,8 @@ const examples = config.examples || false;
 
 const {
   filePath,
-  titles
+  titles,
+  globalErrorLogVariable = false
 } = examples;
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
@@ -113,10 +114,10 @@ function makeExamplePageDataFile(data) {
 }
 
 /**
- * Read example files
+ * Post processing for example files
  */
-function readExampleFiles() {
-  nodedir.readFiles(EXAMPLE_FILES_PATH, {
+function postProcessingOfExampleFiles() {
+  nodedir.readFiles(COPY_FILES_PATH, {
     match: /.html$/,
     recursive: true
   }, (err, content, filename, next) => {
@@ -128,6 +129,10 @@ function readExampleFiles() {
     const data = makeExamplePageData(parsedContent, filename);
 
     makeExamplePageDataFile(data);
+
+    if (globalErrorLogVariable) {
+      injectScriptForErrorCatch(content, filename);
+    }
     next(); // read next file
   });
 }
@@ -141,8 +146,22 @@ function copyExampleFiles() {
       throw err;
     }
 
-    readExampleFiles();
+    postProcessingOfExampleFiles();
   });
+}
+
+/**
+ * Inject script for error catch
+ * @param {string} content - example page html string
+ * @param {string} filename - exmaple page's filename
+ */
+function injectScriptForErrorCatch(content, filename) {
+  const injectVariable = typeof globalErrorLogVariable === 'string' ? globalErrorLogVariable : 'errorLogs';
+  const injectScriptString =
+    `var ${injectVariable}=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};`;
+  const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2<script>${injectScriptString}</script>$1$2$3`);
+
+  fs.writeFileSync(filename, newContent, {encoding: 'utf-8'});
 }
 
 /**

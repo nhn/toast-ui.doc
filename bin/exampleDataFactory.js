@@ -23,7 +23,7 @@ const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
 const COPY_FILES_PATH = path.resolve(__dirname, `../static`);
 const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/examplePage`);
 
-const extenralFolders = ['dist', 'lib'];
+const extenralFolders = ['dist'];
 
 const navItems = [];
 const searchItems = [];

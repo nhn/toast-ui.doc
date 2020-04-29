@@ -34,7 +34,8 @@
     "filePath": "demo/examples",
     "titles": {
       "example01-default-template": "1. Default Template"
-    }
+    },
+    "globalErrorLogVariable": false
   },
   "pathPrefix": "toast-ui.doc"
 }

@@ -158,7 +158,7 @@ function copyExampleFiles() {
 function injectScriptForErrorCatch(content, filename) {
   const injectVariable = typeof globalErrorLogVariable === 'string' ? globalErrorLogVariable : 'errorLogs';
   const injectScriptString =
-    `var ${injectVariable}=[];window.onerror=function(o,r,e,n){errorLogs.push({message:o,source:r,lineno:e,colno:n})};`;
+    `var ${injectVariable}=[];window.onerror=function(o,r,e,n){${injectVariable}.push({message:o,source:r,lineno:e,colno:n})};`;
   const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2<script>${injectScriptString}</script>$1$2$3`);
 
   fs.writeFileSync(filename, newContent, {encoding: 'utf-8'});

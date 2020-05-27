@@ -57,6 +57,14 @@ typings/
 # dotenv environment variables file
 .env
 
+# Window
+Thumbs.db
+Desktop.ini
+
+# MAC
+.DS_Store
+
+# Project
 .cache/
 public
 yarn-error.log

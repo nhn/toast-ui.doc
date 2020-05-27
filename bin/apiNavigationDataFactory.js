@@ -6,11 +6,7 @@ const helper = require('./apiDataFactoryHelper');
  * @returns {Object} customized data
  */
 function makeNavData(data) {
-  const {
-    pid,
-    name,
-    kind
-  } = data;
+  const { pid, name, kind } = data;
 
   return {
     pid,
@@ -46,7 +42,7 @@ function makeAugmentData(name, parentPid) {
   return {
     pid: name,
     parentPid,
-    name: name,
+    name,
     kind: 'augment'
   };
 }
@@ -58,7 +54,7 @@ function makeAugmentData(name, parentPid) {
  * @returns {Array.<Object>} customized data of augment items
  */
 function makeAugmentsData(items, parent) {
-  return items.map(item => {
+  return items.map((item) => {
     return makeAugmentData(item.name, parent.pid);
   });
 }
@@ -73,7 +69,7 @@ function makeMixData(name, parentPid) {
   return {
     pid: name,
     parentPid,
-    name: name,
+    name,
     kind: 'mix'
   };
 }
@@ -85,8 +81,8 @@ function makeMixData(name, parentPid) {
  * @returns {Array.<Object>} customized data of mix items
  */
 function makeMixesData(items, parent) {
-  return items.map(item => {
-    const {name} = item;
+  return items.map((item) => {
+    const { name } = item;
     const originalName = name.split('.').pop();
 
     return makeMixData(originalName, parent.pid);
@@ -104,7 +100,7 @@ function makeStaticMemberData(name, parentPid, kind) {
   return {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
-    name: name,
+    name,
     kind: kind === 'method' ? 'static-method' : 'static-property'
   };
 }
@@ -116,8 +112,8 @@ function makeStaticMemberData(name, parentPid, kind) {
  * @returns {Array.<Object>} customized data of static member items
  */
 function makeStaticMembersData(items, parent) {
-  return items.map(item => {
-    const {name, kind} = item;
+  return items.map((item) => {
+    const { name, kind } = item;
     const customKind = kind === 'function' || kind === 'method' ? 'method' : 'property';
 
     return makeStaticMemberData(name, parent.pid, customKind);
@@ -135,7 +131,7 @@ function makeInstanceMemberData(name, parentPid, kind) {
   return {
     pid: helper.makeChildPid(name, parentPid),
     parentPid,
-    name: name,
+    name,
     kind: kind === 'method' ? 'instance-method' : 'instance-property'
   };
 }
@@ -149,8 +145,8 @@ function makeInstanceMemberData(name, parentPid, kind) {
 function makeInstanceMembersData(items, parent) {
   const customItems = [];
 
-  items.forEach(item => {
-    const {kind} = item;
+  items.forEach((item) => {
+    const { kind } = item;
     const customKind = kind === 'function' || kind === 'method' ? 'method' : 'property';
 
     if (kind) {
@@ -168,18 +164,15 @@ function makeInstanceMembersData(items, parent) {
  * @returns {Object} customized data
  */
 function makeSubNavData(data, parent) {
-  const {
-    augments,
-    members,
-    tags
-  } = data;
+  const { augments, members, tags } = data;
   const augmentList = makeAugmentsData(augments, parent);
   const mixList = makeMixesData(helper.getMixesTag(tags), parent);
   const staticMemberList = makeStaticMembersData(members['static'], parent);
   const instanceMemberList = makeInstanceMembersData(members.instance, parent);
   const list = [];
 
-  return list.concat(augmentList)
+  return list
+    .concat(augmentList)
     .concat(mixList)
     .concat(staticMemberList)
     .concat(instanceMemberList);
@@ -190,14 +183,9 @@ function makeSubNavData(data, parent) {
  * @param {Object} data - original data
  * @returns {Object} customized data
  */
-function makeMemberItem(data) { // eslint-disable-line complexity
-  const {
-    originName,
-    name,
-    parentPid,
-    kind,
-    scope
-  } = data;
+// eslint-disable-next-line complexity
+function makeMemberItem(data) {
+  const { originName, name, parentPid, kind, scope } = data;
   const isExternal = !!(originName.split('external:').length > 1);
 
   let item;

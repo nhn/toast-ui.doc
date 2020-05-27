@@ -13,11 +13,7 @@ const pwd = process.cwd();
 const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 const examples = config.examples || false;
 
-const {
-  filePath,
-  titles,
-  globalErrorLogVariable = false
-} = examples;
+const { filePath, titles, globalErrorLogVariable = false } = examples;
 
 const EXAMPLE_FILES_PATH = path.resolve(pwd, filePath || '');
 const COPY_FILES_PATH = path.resolve(__dirname, `../static`);
@@ -83,10 +79,7 @@ function parseContent(content) {
  * @returns {object} data
  */
 function makeExamplePageData(parsedContent, longname) {
-  const {
-    js,
-    html
-  } = parsedContent;
+  const { js, html } = parsedContent;
 
   const codeJs = js ? Prism.highlight(js, Prism.languages.javascript, 'javascript') : '';
   const codeHtml = html ? Prism.highlight(html, Prism.languages.html, 'html') : '';
@@ -104,7 +97,7 @@ function makeExamplePageData(parsedContent, longname) {
  * @param {object} data - data to make file
  */
 function makeExamplePageDataFile(data) {
-  mkdirp(DATA_FILES_PATH, err => {
+  mkdirp(DATA_FILES_PATH, (err) => {
     if (err) {
       throw err;
     }
@@ -117,31 +110,35 @@ function makeExamplePageDataFile(data) {
  * Post processing for example files
  */
 function postProcessingOfExampleFiles() {
-  nodedir.readFiles(COPY_FILES_PATH, {
-    match: /.html$/,
-    recursive: true
-  }, (err, content, filename, next) => {
-    if (err) {
-      throw err;
+  nodedir.readFiles(
+    COPY_FILES_PATH,
+    {
+      match: /.html$/,
+      recursive: true
+    },
+    (err, content, filename, next) => {
+      if (err) {
+        throw err;
+      }
+
+      const parsedContent = parseContent(content);
+      const data = makeExamplePageData(parsedContent, filename);
+
+      makeExamplePageDataFile(data);
+
+      if (globalErrorLogVariable) {
+        injectScriptForErrorCatch(content, filename);
+      }
+      next(); // read next file
     }
-
-    const parsedContent = parseContent(content);
-    const data = makeExamplePageData(parsedContent, filename);
-
-    makeExamplePageDataFile(data);
-
-    if (globalErrorLogVariable) {
-      injectScriptForErrorCatch(content, filename);
-    }
-    next(); // read next file
-  });
+  );
 }
 
 /**
  * Copy example files to static folder
  */
 function copyExampleFiles() {
-  copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, err => {
+  copydir(EXAMPLE_FILES_PATH, `${COPY_FILES_PATH}/examples`, (err) => {
     if (err) {
       throw err;
     }
@@ -156,19 +153,22 @@ function copyExampleFiles() {
  * @param {string} filename - exmaple page's filename
  */
 function injectScriptForErrorCatch(content, filename) {
-  const injectVariable = typeof globalErrorLogVariable === 'string' ? globalErrorLogVariable : 'errorLogs';
-  const injectScriptString =
-    `var ${injectVariable}=[];window.onerror=function(o,r,e,n){${injectVariable}.push({message:o,source:r,lineno:e,colno:n})};`;
-  const newContent = content.replace(/(\n?)(\s*)(<\/head>)/i, `$1$2$2<script>${injectScriptString}</script>$1$2$3`);
+  const injectVariable =
+    typeof globalErrorLogVariable === 'string' ? globalErrorLogVariable : 'errorLogs';
+  const injectScriptString = `var ${injectVariable}=[];window.onerror=function(o,r,e,n){${injectVariable}.push({message:o,source:r,lineno:e,colno:n})};`;
+  const newContent = content.replace(
+    /(\n?)(\s*)(<\/head>)/i,
+    `$1$2$2<script>${injectScriptString}</script>$1$2$3`
+  );
 
-  fs.writeFileSync(filename, newContent, {encoding: 'utf-8'});
+  fs.writeFileSync(filename, newContent, { encoding: 'utf-8' });
 }
 
 /**
  * Copy external files to folder
  */
 function copyExternalFiles() {
-  extenralFolders.forEach(folder => {
+  extenralFolders.forEach((folder) => {
     const copyPath = path.resolve(pwd, folder);
 
     directoryExists(copyPath, (error, result) => {
@@ -176,7 +176,7 @@ function copyExternalFiles() {
         return;
       }
 
-      copydir(copyPath, `${COPY_FILES_PATH}/${folder}`, err => {
+      copydir(copyPath, `${COPY_FILES_PATH}/${folder}`, (err) => {
         if (err) {
           throw err;
         }
@@ -189,9 +189,9 @@ function copyExternalFiles() {
  * Make data of navigation and search keywords
  */
 function makeNavAndSearchData() {
-  const files = nodedir.files(EXAMPLE_FILES_PATH, {sync: true});
+  const files = nodedir.files(EXAMPLE_FILES_PATH, { sync: true });
 
-  files.forEach(file => {
+  files.forEach((file) => {
     if (file.match(/.html$/)) {
       const filename = getFileName(file);
       const pid = getPid(filename);
@@ -213,26 +213,29 @@ function makeNavAndSearchData() {
   });
 }
 
-module.exports = {
-  createData: function() {
-    fs.emptyDirSync(COPY_FILES_PATH);
+function createData() {
+  fs.emptyDirSync(COPY_FILES_PATH);
 
-    if (examples) {
-      copyExampleFiles();
-      copyExternalFiles();
-      makeNavAndSearchData();
-    } else { // make dummy file for graphql
-      makeExamplePageDataFile({
-        pid: 'tutorial-dummy',
-        title: '',
-        codeJs: '',
-        codeHtml: ''
-      });
-    }
-
-    return {
-      navigation: navItems,
-      searchKeywords: searchItems
-    };
+  if (examples) {
+    copyExampleFiles();
+    copyExternalFiles();
+    makeNavAndSearchData();
+  } else {
+    // make dummy file for graphql
+    makeExamplePageDataFile({
+      pid: 'tutorial-dummy',
+      title: '',
+      codeJs: '',
+      codeHtml: ''
+    });
   }
+
+  return {
+    navigation: navItems,
+    searchKeywords: searchItems
+  };
+}
+
+module.exports = {
+  createData
 };

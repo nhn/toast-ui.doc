@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 
 class SubListGroups extends React.Component {
   filter(kind) {
-    return this.props.items.filter(item => {
+    return this.props.items.filter((item) => {
       return item.kind === kind;
     });
   }
 
   getSubListGroupComponent(title, items) {
-    const {
-      selectedId
-    } = this.props;
+    const { selectedId } = this.props;
 
     if (items && items.length) {
       return (
@@ -20,21 +18,13 @@ class SubListGroups extends React.Component {
           <h3 className="title">{title}</h3>
           <ul>
             {items.map((item, index) => {
-              const {
-                pid,
-                name
-              } = item;
+              const { pid, name } = item;
 
               return (
                 <li key={`nav-item-${index}`}>
                   <p className={`nav-item${selectedId === pid ? ' selected' : ''}`}>
-                    <Link
-                      to={`/${pid}`}
-                      className="ellipsis"
-                    >
-                      <span>
-                        {name}
-                      </span>
+                    <Link to={`/${pid}`} className="ellipsis">
+                      <span>{name}</span>
                     </Link>
                   </p>
                 </li>
@@ -49,9 +39,7 @@ class SubListGroups extends React.Component {
   }
 
   render() {
-    const {
-      opened
-    } = this.props;
+    const { opened } = this.props;
 
     return (
       <div className={opened ? 'show' : 'hide'}>

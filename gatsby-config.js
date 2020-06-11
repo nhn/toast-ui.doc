@@ -1,8 +1,8 @@
 const path = require('path');
 const options = require(path.resolve(process.cwd(), 'src/data/layout.json'));
 
-const {header, pathPrefix} = options[0];
-const {version} = header;
+const [{ header, pathPrefix }] = options;
+const { version } = header;
 
 const isLatest = process.argv.indexOf('latest') > -1;
 const folderName = isLatest ? 'latest' : version;

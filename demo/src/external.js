@@ -15,7 +15,7 @@
  * @static
  * @example
  * const date = Date.now();
- * 
+ *
  * console.log(date); // 1566379209918
  */
 
@@ -25,6 +25,6 @@
  * @example
  * const birthday = new Date('August 19, 1975 23:15:30');
  * const date = birthday.getDate();
- * 
+ *
  * console.log(date); // 19
  */

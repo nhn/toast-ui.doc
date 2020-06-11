@@ -6,13 +6,7 @@ import Types from '../components/Types';
 class ParamsTable extends React.Component {
   getTableRows(parentProperties) {
     return parentProperties.map((item, index) => {
-      const {
-        name,
-        types,
-        defaultVal,
-        description,
-        properties
-      } = item;
+      const { name, types, defaultVal, description, properties } = item;
 
       let props;
 
@@ -27,16 +21,10 @@ class ParamsTable extends React.Component {
             <p className="name">{name}</p>
           </td>
           <td>
-            <Types
-              data={types}
-              defaultVal={defaultVal}
-            />
+            <Types data={types} defaultVal={defaultVal} />
           </td>
           <td>
-            <p
-              className="description"
-              dangerouslySetInnerHTML={{__html: description}}
-            />
+            <p className="description" dangerouslySetInnerHTML={{ __html: description }} />
             {props && <ParamsTable properties={props} isProperties={true} />}
           </td>
         </tr>
@@ -45,11 +33,7 @@ class ParamsTable extends React.Component {
   }
 
   render() {
-    const {
-      properties,
-      isProperties,
-      isPropertyTitle
-    } = this.props;
+    const { properties, isProperties, isPropertyTitle } = this.props;
 
     if (properties.length) {
       return (
@@ -68,9 +52,7 @@ class ParamsTable extends React.Component {
                 <th>Description</th>
               </tr>
             </thead>
-            <tbody>
-              {this.getTableRows(properties)}
-            </tbody>
+            <tbody>{this.getTableRows(properties)}</tbody>
           </table>
         </div>
       );

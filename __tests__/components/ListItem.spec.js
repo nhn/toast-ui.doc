@@ -5,11 +5,7 @@ import SubListGroups from '../../src/components/SubListGroups';
 
 describe('ListItem component', () => {
   test('is created with name.', () => {
-    const wrapper = shallow(
-      <ListItem
-        name="foo"
-      />
-    );
+    const wrapper = shallow(<ListItem name="foo" />);
 
     expect(wrapper.find('a').text()).toBe('foo');
   });
@@ -18,11 +14,7 @@ describe('ListItem component', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = shallow(
-        <ListItem
-          name="foo"
-        />
-      );
+      wrapper = shallow(<ListItem name="foo" />);
     });
 
     test('has toggle button.', () => {
@@ -38,12 +30,7 @@ describe('ListItem component', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = shallow(
-        <ListItem
-          name="foo"
-          childNodes={[{}]}
-        />
-      );
+      wrapper = shallow(<ListItem name="foo" childNodes={[{}]} />);
     });
 
     test('has toggle button.', () => {

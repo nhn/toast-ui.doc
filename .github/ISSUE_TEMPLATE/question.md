@@ -17,13 +17,17 @@ assignees: ''
 -->
 
 ## Summary
+
 A clear and concise description of what the question is.
 
 ## Screenshots
+
 If applicable, add screenshots to help explain your question.
 
 ## Version
+
 Write the version of the grid you are currently using.
 
 ## Additional context
+
 Add any other context about the problem here.

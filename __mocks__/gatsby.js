@@ -1,3 +1,3 @@
 const gatsby = jest.requireActual('gatsby');
 
-module.exports = {...gatsby, graphql: jest.fn(), Link: 'Link'};
+module.exports = { ...gatsby, graphql: jest.fn(), Link: 'Link' };

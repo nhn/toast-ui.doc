@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StaticQuery, graphql, navigate} from 'gatsby';
+import { StaticQuery, graphql, navigate } from 'gatsby';
 
 import SearchList from '../components/SearchList';
 
@@ -11,8 +11,10 @@ const KEY_CODE_DOWN = 40;
 const SEARCH_BAR_CLASSNAME = 'search-container';
 
 const hasClass = (element, className) => {
-  const elClassName = element && element.getAttribute &&
-      (element.getAttribute('class') || element.getAttribute('className') || '');
+  const elClassName =
+    element &&
+    element.getAttribute &&
+    (element.getAttribute('class') || element.getAttribute('className') || '');
 
   return elClassName.indexOf(className) > -1;
 };
@@ -49,18 +51,14 @@ class SearchBar extends React.Component {
   }
 
   handleKeyDown(ev) {
-    const {
-      keyCode
-    } = ev;
+    const { keyCode } = ev;
 
     this.setState((prevState) => {
       let index = prevState.movedIndex;
 
-      if (keyCode === KEY_CODE_UP &&
-        index > 0) {
+      if (keyCode === KEY_CODE_UP && index > 0) {
         index -= 1;
-      } else if (keyCode === KEY_CODE_DOWN &&
-        index < this.state.result.length - 1) {
+      } else if (keyCode === KEY_CODE_DOWN && index < this.state.result.length - 1) {
         index += 1;
       }
 
@@ -71,23 +69,15 @@ class SearchBar extends React.Component {
   }
 
   handleKeyUp(ev) {
-    const {
-      keyCode,
-      target
-    } = ev;
+    const { keyCode, target } = ev;
 
-    const {
-      result,
-      movedIndex
-    } = this.state;
+    const { result, movedIndex } = this.state;
 
-    if (keyCode === KEY_CODE_UP ||
-      keyCode === KEY_CODE_DOWN) {
+    if (keyCode === KEY_CODE_UP || keyCode === KEY_CODE_DOWN) {
       return;
     }
 
-    if (keyCode === KEY_CODE_ENTER &&
-      result.length && movedIndex > -1) {
+    if (keyCode === KEY_CODE_ENTER && result.length && movedIndex > -1) {
       let url = `/${result[movedIndex].node.pid}`;
       this.moveToPage(url);
     } else {
@@ -96,9 +86,7 @@ class SearchBar extends React.Component {
   }
 
   handleFocus(ev) {
-    const {
-      value
-    } = ev.target;
+    const { value } = ev.target;
 
     this.attachEvent();
 
@@ -128,10 +116,10 @@ class SearchBar extends React.Component {
   }
 
   findMatchingValues(value) {
-    return this.props.data.filter(item => {
+    return this.props.data.filter((item) => {
       const foundValue = toLowerCase(item.node.name);
 
-      return (value !== '' && foundValue.indexOf(toLowerCase(value)) > -1);
+      return value !== '' && foundValue.indexOf(toLowerCase(value)) > -1;
     });
   }
 
@@ -155,12 +143,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const {
-      searching,
-      value,
-      result,
-      movedIndex
-    } = this.state;
+    const { searching, value, result, movedIndex } = this.state;
 
     return (
       <div className={`search-container${searching ? ' searching' : ''}`}>
@@ -180,12 +163,7 @@ class SearchBar extends React.Component {
           />
         </div>
         <hr className={`line ${searching ? 'show' : 'hide'}`} />
-        <SearchList
-          searching={searching}
-          value={value}
-          result={result}
-          movedIndex={movedIndex}
-        />
+        <SearchList searching={searching} value={value} result={result} movedIndex={movedIndex} />
       </div>
     );
   }
@@ -206,7 +184,7 @@ const SearchBarWrapper = () => (
         }
       }
     `}
-    render={data => <SearchBar data={data.allSearchKeywordsJson.edges} />}
+    render={(data) => <SearchBar data={data.allSearchKeywordsJson.edges} />}
   />
 );
 

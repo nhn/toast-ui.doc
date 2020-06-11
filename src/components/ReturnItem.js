@@ -8,13 +8,10 @@ const CLOSE_BRACE = '}';
 
 class ReturnItem extends React.Component {
   render() {
-    const {data} = this.props;
+    const { data } = this.props;
 
     if (data) {
-      const {
-        types,
-        description
-      } = data;
+      const { types, description } = data;
 
       const desc = description ? ` - ${description}` : '';
 
@@ -22,7 +19,8 @@ class ReturnItem extends React.Component {
         <div className="returns">
           <h5 className="title">RETURNS:</h5>
           <span className="description">
-            {OPEN_BRACE} <Types data={types} /> {CLOSE_BRACE}{desc}
+            {OPEN_BRACE} <Types data={types} /> {CLOSE_BRACE}
+            {desc}
           </span>
         </div>
       );

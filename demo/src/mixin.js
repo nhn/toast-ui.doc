@@ -14,7 +14,7 @@ var Eventful = {
    * @param {string} eventName - Name of the event.
    * @param {function} handler - The handler to call.
    */
-  on: function(eventName, handler) {
+  on: function (eventName, handler) {
     // code...
   },
 
@@ -23,7 +23,7 @@ var Eventful = {
    * @param {string} eventName - Name of the event.
    * @param {Object} eventData - The data provided to each handler.
    */
-  fire: function(eventName, eventData) {
+  fire: function (eventName, eventData) {
     // code...
   }
 };
@@ -34,12 +34,12 @@ var Eventful = {
  */
 function ReleaseAlbum() {
   // code...
-};
+}
 
 /**
  * Open release album and fire custom event.
  */
-ReleaseAlbum.prototype.open = function() {
+ReleaseAlbum.prototype.open = function () {
   this.fire('open', {});
 };
 

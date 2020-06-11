@@ -17,9 +17,7 @@ class Tabs extends React.Component {
   }
 
   render() {
-    const {
-      children
-    } = this.props;
+    const { children } = this.props;
 
     return (
       <div className="tabs">
@@ -30,7 +28,7 @@ class Tabs extends React.Component {
                 <button
                   key={`tab-${index}`}
                   className={`tab${this.state.selected === index ? ' selected' : ''}`}
-                  onClick={() => (this.selectTab(index))}
+                  onClick={() => this.selectTab(index)}
                 >
                   {child.props.name}
                 </button>

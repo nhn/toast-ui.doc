@@ -15,8 +15,10 @@ const isServe = process.argv.indexOf('--serv') > -1;
 const pkg = require(path.resolve(pwd, 'package.json'));
 const config = require(path.resolve(pwd, 'tuidoc.config.json'));
 
-const {version} = pkg || '1.0.0';
-const {main: {filePath: main}} = config;
+const { version } = pkg || '1.0.0';
+const {
+  main: { filePath: main }
+} = config;
 
 // path of data files
 const BASE_DATA_PATH = path.resolve(__dirname, '../src/data');
@@ -42,7 +44,7 @@ function makeLayoutData() {
   const {
     header,
     footer,
-    api: {permalink},
+    api: { permalink },
     examples,
     pathPrefix // using for gatsby-config.js
   } = config;
@@ -89,13 +91,15 @@ function makeMainPageData() {
  * @returns {string} file path
  */
 function makeParsingFilePath() {
-  const {api: {filePath}} = config;
+  const {
+    api: { filePath }
+  } = config;
 
   if (typeof filePath === 'string') {
     return path.resolve(pwd, filePath);
   }
 
-  return filePath.map(file => path.resolve(pwd, file));
+  return filePath.map((file) => path.resolve(pwd, file));
 }
 
 /**
@@ -104,19 +108,21 @@ function makeParsingFilePath() {
 function makeAllData() {
   const filePath = makeParsingFilePath();
 
-  documentation.build(filePath, {
-    shallow: true
-  }).then(documentation.formats.json)
-    .then(output => {
-      let navigation = [];
-      let searchKeywords = [];
+  documentation
+    .build(filePath, {
+      shallow: true
+    })
+    .then(documentation.formats.json)
+    .then((output) => {
+      const navigation = [];
+      const searchKeywords = [];
 
       const apiData = apiDataFactory.createData(JSON.parse(output));
       const exampleData = exampleDataFactory.createData();
 
-      const allNavData = navigation.concat(apiData.navigation)
-        .concat(exampleData.navigation);
-      const allSearchData = searchKeywords.concat(apiData.searchKeywords)
+      const allNavData = navigation.concat(apiData.navigation).concat(exampleData.navigation);
+      const allSearchData = searchKeywords
+        .concat(apiData.searchKeywords)
         .concat(exampleData.searchKeywords);
 
       makeJsonFile(NAV_DATA_PATH, allNavData);
@@ -131,7 +137,7 @@ function makeAllData() {
  * Init
  */
 function init() {
-  fs.emptyDir(PUBLIC_FOLDER_PATH, err => {
+  fs.emptyDir(PUBLIC_FOLDER_PATH, (err) => {
     if (err) {
       throw err;
     }
@@ -144,7 +150,7 @@ function init() {
  * Create data
  */
 function createData() {
-  fs.emptyDir(BASE_DATA_PATH, err => {
+  fs.emptyDir(BASE_DATA_PATH, (err) => {
     if (err) {
       throw err;
     }
@@ -160,8 +166,8 @@ function createData() {
  */
 function build() {
   try {
-    let latestDir = path.resolve(pwd, '_latest');
-    let versionDir = path.resolve(pwd, `_${version}`);
+    const latestDir = path.resolve(pwd, '_latest');
+    const versionDir = path.resolve(pwd, `_${version}`);
     let cmd;
 
     if (isDev) {

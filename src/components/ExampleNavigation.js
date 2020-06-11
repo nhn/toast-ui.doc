@@ -1,22 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StaticQuery, graphql} from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 import ListGroup from '../components/ListGroup';
 
 class ExampleNavigation extends React.Component {
   render() {
-    const {
-      selectedId,
-      items
-    } = this.props;
+    const { selectedId, items } = this.props;
 
     return (
       <div className="nav nav-example">
-        <ListGroup
-          selectedId={selectedId}
-          items={items}
-        />
+        <ListGroup selectedId={selectedId} items={items} />
       </div>
     );
   }
@@ -26,7 +20,7 @@ const NavigationWrapper = (props) => (
   <StaticQuery
     query={graphql`
       query {
-        allNavigationJson(filter: {type: {eq: "example"}}) {
+        allNavigationJson(filter: { type: { eq: "example" } }) {
           edges {
             node {
               pid
@@ -36,7 +30,7 @@ const NavigationWrapper = (props) => (
         }
       }
     `}
-    render={data => <ExampleNavigation items={data.allNavigationJson.edges} {...props} />}
+    render={(data) => <ExampleNavigation items={data.allNavigationJson.edges} {...props} />}
   />
 );
 

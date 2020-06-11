@@ -3,11 +3,11 @@ const contentDataFactory = require('./apiContentDataFactory');
 const helper = require('./apiDataFactoryHelper');
 
 let navItems = [];
-let searchItems = [];
-let etcItems = [];
+const searchItems = [];
+const etcItems = [];
 
-let navMap = {};
-let contentMap = {};
+const navMap = {};
+const contentMap = {};
 
 /**
  * Make of base date
@@ -31,11 +31,7 @@ function makeName(name, kind) {
  * @returns {Object} base data
  */
 function makeBaseData(item) {
-  const {
-    name,
-    kind,
-    memberof
-  } = item;
+  const { name, kind, memberof } = item;
   const replacedName = makeName(name, kind, memberof);
   const pid = helper.makePid(replacedName);
 
@@ -78,10 +74,7 @@ function addSubNavItems(item, parent) {
  * @param {Object} data - base data
  */
 function addContentItem(item, data) {
-  const {
-    pid,
-    kind
-  } = data;
+  const { pid, kind } = data;
   const customItem = contentDataFactory.makeContentData(pid, kind, item);
 
   contentMap[pid] = customItem;
@@ -92,19 +85,26 @@ function addContentItem(item, data) {
  * @param {Array.<Object>} items - doc-data list
  */
 function circulateItems(items) {
-  items.forEach(item => { // eslint-disable-line complexity
-    const {kind} = item;
+  // eslint-disable-next-line complexity
+  items.forEach((item) => {
+    const { kind } = item;
 
-    if (kind === 'module' || kind === 'external' ||
-      kind === 'class' || kind === 'namespace' ||
-      kind === 'mixin' || kind === 'global' ||
-      kind === 'typedef') {
+    if (
+      kind === 'module' ||
+      kind === 'external' ||
+      kind === 'class' ||
+      kind === 'namespace' ||
+      kind === 'mixin' ||
+      kind === 'global' ||
+      kind === 'typedef'
+    ) {
       const data = makeBaseData(item);
 
       addNavItem(data);
       addSubNavItems(item, data);
       addContentItem(item, data);
-    } else { // module item, external item, typedef, event
+    } else {
+      // module item, external item, typedef, event
       etcItems.push(item);
     }
   });
@@ -117,14 +117,10 @@ function circulateItems(items) {
  * @param {Array.<Object>} item - current doc-data
  */
 function addEachChildItem(name, parentPid, item) {
-  const {
-    kind,
-    scope,
-    name: originName
-  } = item;
+  const { kind, scope, name: originName } = item;
 
   // add navigation data
-  let navItem = navigationDataFactory.makeMemberItem({
+  const navItem = navigationDataFactory.makeMemberItem({
     originName,
     name,
     parentPid,
@@ -139,7 +135,7 @@ function addEachChildItem(name, parentPid, item) {
   navMap[parentPid].push(navItem);
 
   // add content data
-  let contentItem = contentDataFactory.makeMemberItem(item);
+  const contentItem = contentDataFactory.makeMemberItem(item);
 
   if (!contentMap[parentPid]) {
     contentMap[parentPid] = {
@@ -160,12 +156,9 @@ function addEachChildItem(name, parentPid, item) {
  * Post proccessing using etc items
  */
 function postProccessing() {
-  etcItems.forEach(item => { // eslint-disable-line complexity
-    const {
-      name,
-      kind,
-      memberof
-    } = item;
+  // eslint-disable-next-line complexity
+  etcItems.forEach((item) => {
+    const { name, kind, memberof } = item;
     const isModule = !!(memberof && memberof.split('module:').length > 1);
     const isExternal = !!(name && name.split('external:').length > 1);
     const isEvent = kind === 'event';
@@ -179,14 +172,12 @@ function postProccessing() {
       addEachChildItem(itemName, parentPid, item);
     } else if (isExternal) {
       const splitedName = name.split('external:').pop().split('#');
-      const parentPid = splitedName[0];
-      const itemName = splitedName[1];
+      const [parentPid, itemName] = splitedName;
 
       addEachChildItem(itemName, parentPid, item);
     } else if (isEvent) {
       const splitedName = name.split('#');
-      const parentPid = splitedName[0];
-      const itemName = splitedName[1];
+      const [parentPid, itemName] = splitedName;
 
       addEachChildItem(itemName, parentPid, item);
     } else if (isTypedef) {
@@ -201,8 +192,8 @@ function postProccessing() {
  * Make data of search keywords
  */
 function makeNavigationData() {
-  navItems.forEach(item => {
-    const {pid} = item;
+  navItems.forEach((item) => {
+    const { pid } = item;
 
     if (navMap[pid]) {
       item.childNodes = helper.sort(navMap[pid]);
@@ -229,13 +220,8 @@ function makeNavigationData() {
 function makeSearchData(items) {
   items = items || navItems;
 
-  items.forEach(item => {
-    const {
-      pid,
-      name,
-      parentPid,
-      childNodes
-    } = item;
+  items.forEach((item) => {
+    const { pid, name, parentPid, childNodes } = item;
 
     if (childNodes && childNodes.length) {
       makeSearchData(childNodes);
@@ -253,7 +239,7 @@ function makeSearchData(items) {
  * Make data using in api page
  */
 function makeContentData() {
-  for (let pid in contentMap) {
+  for (const pid in contentMap) {
     if ({}.hasOwnProperty.call(contentMap, pid)) {
       contentMap[pid].items = helper.sort(contentMap[pid].items);
       contentDataFactory.makeApiPageDataFile(contentMap[pid]);
@@ -262,7 +248,7 @@ function makeContentData() {
 }
 
 module.exports = {
-  createData: function(items) {
+  createData: (items) => {
     circulateItems(items);
     postProccessing();
 

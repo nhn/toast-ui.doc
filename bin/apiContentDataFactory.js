@@ -17,7 +17,7 @@ const DATA_FILES_PATH = path.resolve(__dirname, `../src/data/apiPage`);
  */
 function makeGithubLink() {
   const {
-    api: {permalink}
+    api: { permalink }
   } = config;
 
   if (permalink === false) {
@@ -27,18 +27,12 @@ function makeGithubLink() {
   let baseRepo, customRef;
 
   if (typeof permalink === 'undefined' || permalink === true) {
-    const {
-      repository,
-      version
-    } = pkg;
+    const { repository, version } = pkg;
 
     baseRepo = (repository.url || repository).replace('.git', '');
     customRef = `v${version}`;
   } else {
-    const {
-      repository,
-      ref
-    } = permalink;
+    const { repository, ref } = permalink;
 
     baseRepo = repository;
     customRef = ref;
@@ -53,7 +47,7 @@ function makeGithubLink() {
  * @returns {string} prefix string
  */
 function makeTypePrefix(data) {
-  const {type} = data;
+  const { type } = data;
 
   let prefix = '';
 
@@ -76,16 +70,12 @@ function makeTypePrefix(data) {
  * @returns {Array.<String>} name list
  */
 function makeExpressionNames(data) {
-  const {
-    elements,
-    expression,
-    name
-  } = data;
+  const { elements, expression, name } = data;
 
   let names;
 
   if (elements) {
-    names = elements.map(item => {
+    names = elements.map((item) => {
       let itemName;
 
       if (item.type === 'TypeApplication') {
@@ -112,40 +102,44 @@ function makeExpressionNames(data) {
  * @returns {string} name
  */
 function makeTypeApplicationName(items, expression) {
-  let joinedNames = items.map(item => {
-    let customName;
+  const joinedNames = items
+    .map((item) => {
+      let customName;
 
-    if (item.fields) {
-      const fullStr = item.fields.map(field => {
-        const {key, value} = field;
-        const {name} = value;
+      if (item.fields) {
+        const fullStr = item.fields
+          .map((field) => {
+            const { key, value } = field;
+            const { name } = value;
 
-        let customValue = value;
+            let customValue = value;
 
-        if (value.prefix) {
-          const prefix = makeTypePrefix(value);
+            if (value.prefix) {
+              const prefix = makeTypePrefix(value);
 
-          customValue = `${prefix}${value.expression.name}`;
-        } else {
-          customValue = name;
-        }
+              customValue = `${prefix}${value.expression.name}`;
+            } else {
+              customValue = name;
+            }
 
-        return `${key}: ${customValue}`;
-      }).join(', ');
+            return `${key}: ${customValue}`;
+          })
+          .join(', ');
 
-      customName = `{${fullStr}}`;
-    } else if (item.applications) {
-      const types = makeUnionTypeNames(item.applications[0].elements);
+        customName = `{${fullStr}}`;
+      } else if (item.applications) {
+        const types = makeUnionTypeNames(item.applications[0].elements);
 
-      customName = `${item.expression.name}.${types.join('|')}`;
-    } else if (item.elements) {
-      customName = makeUnionTypeNames(item.elements).join('|');
-    } else {
-      customName = item.name || 'undefined';
-    }
+        customName = `${item.expression.name}.${types.join('|')}`;
+      } else if (item.elements) {
+        customName = makeUnionTypeNames(item.elements).join('|');
+      } else {
+        customName = item.name || 'undefined';
+      }
 
-    return customName;
-  }).join('|');
+      return customName;
+    })
+    .join('|');
 
   return `${expression.name}.${joinedNames}`;
 }
@@ -156,13 +150,8 @@ function makeTypeApplicationName(items, expression) {
  * @returns {Array.<String>} name list
  */
 function makeUnionTypeNames(items = []) {
-  return items.map(item => {
-    const {
-      expression,
-      applications,
-      fields,
-      type
-    } = item;
+  return items.map((item) => {
+    const { expression, applications, fields, type } = item;
 
     if (applications) {
       return makeTypeApplicationName(applications, expression);
@@ -172,19 +161,19 @@ function makeUnionTypeNames(items = []) {
       return 'Object';
     }
 
-    let name;
+    let customName;
 
     if (type === 'NameExpression') {
-      name = item.name;
+      customName = item.name;
     } else if (type === 'StringLiteralType') {
-      name = `'${item.value}'`;
+      customName = `'${item.value}'`;
     } else if (type === 'NullLiteral') {
-      name = 'null';
+      customName = 'null';
     } else {
-      name = 'undefined';
+      customName = 'undefined';
     }
 
-    return name;
+    return customName;
   });
 }
 
@@ -194,14 +183,9 @@ function makeUnionTypeNames(items = []) {
  * @returns {object} type information
  * @link http://usejsdoc.org/tags-type.html
  */
-function makeTypes(data) { // eslint-disable-line complexity
-  const {
-    type,
-    name,
-    expression,
-    elements,
-    applications
-  } = data || {};
+// eslint-disable-next-line complexity
+function makeTypes(data) {
+  const { type, name, expression, elements, applications } = data || {};
 
   let prefix = '';
   let names;
@@ -237,12 +221,13 @@ function makeTypes(data) { // eslint-disable-line complexity
  * @param {Array.<Object>} params - list of @param
  * @returns {string} function formatted name
  */
-function makeName(name, kind, params) { // eslint-disable-line complexity
+// eslint-disable-next-line complexity
+function makeName(name, kind, params) {
   const customParams = params.slice();
 
   customParams.pop();
 
-  let joinedParams = customParams.map((param) => param.name).join(', ');
+  const joinedParams = customParams.map((param) => param.name).join(', ');
   let customName = `${name}(${joinedParams})`;
 
   if (kind === 'class') {
@@ -252,8 +237,7 @@ function makeName(name, kind, params) { // eslint-disable-line complexity
     customName = `${name}(${joinedParams})`;
   } else if (kind === 'event') {
     customName = name.split('#').pop();
-  } else if (kind === 'typedef' || kind === 'namespace' ||
-    kind === 'module' || kind === 'mixin') {
+  } else if (kind === 'typedef' || kind === 'namespace' || kind === 'module' || kind === 'mixin') {
     customName = name;
   }
 
@@ -282,25 +266,21 @@ function makePid(name, kind) {
  * @returns {string} description
  */
 function makeDescription(data) {
-  if (data.children && data.children.length &&
-    data.children[0].children) {
-    return data.children[0].children.map(child => {
-      const {
-        type,
-        value,
-        url,
-        children
-      } = child;
-      let text = '';
+  if (data.children && data.children.length && data.children[0].children) {
+    return data.children[0].children
+      .map((child) => {
+        const { type, value, url, children } = child;
+        let text = '';
 
-      if (type === 'text') {
-        text = value;
-      } else if (type === 'link' || type === 'linkReference') {
-        text = `<a href="${url}">${children[0].value}</a>`;
-      }
+        if (type === 'text') {
+          text = value;
+        } else if (type === 'link' || type === 'linkReference') {
+          text = `<a href="${url}">${children[0].value}</a>`;
+        }
 
-      return text.replace(/\n/g, '<br>');
-    }).join('');
+        return text.replace(/\n/g, '<br>');
+      })
+      .join('');
   }
 
   return '';
@@ -312,10 +292,7 @@ function makeDescription(data) {
  * @returns {object} code information
  */
 function makeCodeInfo(context) {
-  const {
-    file,
-    loc
-  } = context;
+  const { file, loc } = context;
   const githubPath = file.split(`${pwd}/`).pop();
   const filename = file.split(`/`).pop();
   const lineNum = loc.start.line;
@@ -333,7 +310,7 @@ function makeCodeInfo(context) {
  * @returns {Array.<Object>} view data list
  */
 function makeSeeItems(items) {
-  let customItems = items.map(item => makeDescription(item));
+  const customItems = items.map((item) => makeDescription(item));
 
   customItems.push('');
 
@@ -346,7 +323,7 @@ function makeSeeItems(items) {
  * @returns {Array.<Object>} view data list
  */
 function makeAugmentItems(items) {
-  let customItems = items.map(item => item.name);
+  const customItems = items.map((item) => item.name);
 
   customItems.push('');
 
@@ -359,7 +336,7 @@ function makeAugmentItems(items) {
  * @returns {Array.<Object>} view data
  */
 function makeTodoItems(items) {
-  let customItems = items.map(item => makeDescription(item));
+  const customItems = items.map((item) => makeDescription(item));
 
   customItems.push('');
 
@@ -372,13 +349,8 @@ function makeTodoItems(items) {
  * @returns {Array.<Object>} view data list
  */
 function makeParams(items) {
-  let customParams = items.map(item => {
-    const {
-      name,
-      type,
-      description,
-      properties
-    } = item;
+  const customParams = items.map((item) => {
+    const { name, type, description, properties } = item;
     const defaultValue = item['default'];
 
     return {
@@ -402,12 +374,8 @@ function makeParams(items) {
  * @returns {Array.<Object>} view data list
  */
 function makeProperties(properties, tags) {
-  let customProperites = properties.map(item => {
-    const {
-      name,
-      type,
-      description
-    } = item;
+  const customProperites = properties.map((item) => {
+    const { name, type, description } = item;
     const defaultValue = findDefaultValueInTags(tags, name);
 
     return {
@@ -430,14 +398,12 @@ function makeProperties(properties, tags) {
  * @returns {string} default value string
  */
 function findDefaultValueInTags(tags, foundName) {
-  const found = tags.find(tag => {
-    const {
-      title = '',
-      name = ''
-    } = tag;
+  const found =
+    tags.find((tag) => {
+      const { title = '', name = '' } = tag;
 
-    return (title === 'property' && name === foundName);
-  }) || {};
+      return title === 'property' && name === foundName;
+    }) || {};
 
   return found['default'] || '';
 }
@@ -448,11 +414,8 @@ function findDefaultValueInTags(tags, foundName) {
  * @returns {Array.<Object>} view data list
  */
 function makeReturnItems(items) {
-  const customItems = items.map(item => {
-    const {
-      type,
-      description
-    } = item;
+  const customItems = items.map((item) => {
+    const { type, description } = item;
 
     return {
       types: makeTypes(type),
@@ -474,11 +437,8 @@ function makeReturnItems(items) {
  * @returns {Array.<Object>} view data list
  */
 function makeExampleItems(items) {
-  const customItems = items.map(item => {
-    const {
-      caption,
-      description
-    } = item;
+  const customItems = items.map((item) => {
+    const { caption, description } = item;
 
     return {
       description: caption ? makeDescription(caption) : '',
@@ -521,7 +481,7 @@ function makePropertyItem(data, itemType) {
     pid: name,
     override: !!override,
     deprecated: !!deprecated,
-    name: name,
+    name,
     types: makeTypes(type),
     description: makeDescription(description),
     codeInfo: makeCodeInfo(context),
@@ -590,8 +550,8 @@ function makeFunctionItem(data, itemType) {
  * @returns {Array.<Object>} view data list
  */
 function makeStaticItems(items) {
-  return items.map(item => {
-    const {kind} = item;
+  return items.map((item) => {
+    const { kind } = item;
 
     let custumItem;
 
@@ -613,7 +573,7 @@ function makeStaticItems(items) {
 function makeInstanceItems(items) {
   const functionItems = [];
 
-  items.forEach(item => {
+  items.forEach((item) => {
     if (item.kind === 'function') {
       functionItems.push(makeFunctionItem(item, 'instance-method'));
     }
@@ -630,7 +590,7 @@ function makeInstanceItems(items) {
  * @returns {Object} customizing content data
  */
 function makeContentData(pid, parentPid, item) {
-  const {members} = item;
+  const { members } = item;
   const overview = makeFunctionItem(item, 'overview');
   const staticMethods = makeStaticItems(members['static']);
   const instanceMethods = makeInstanceItems(members.instance);
@@ -651,7 +611,7 @@ function makeContentData(pid, parentPid, item) {
  * @param {object} data - data to make file
  */
 function makeApiPageDataFile(data) {
-  mkdirp(DATA_FILES_PATH, err => {
+  mkdirp(DATA_FILES_PATH, (err) => {
     if (err) {
       throw err;
     }
@@ -665,21 +625,18 @@ function makeApiPageDataFile(data) {
  * @param {Object} data - original doc-data
  * @returns {Object} custom item object
  */
-function makeMemberItem(data) { // eslint-disable-line complexity
-  const {
-    name,
-    scope,
-    kind
-  } = data;
+// eslint-disable-next-line complexity
+function makeMemberItem(data) {
+  const { name, scope, kind } = data;
   const isExternal = !!(name.split('external:').length > 1);
   const customScope = !scope && isExternal ? 'instance' : 'static';
 
   let item;
 
   if (kind === 'event') {
-    item = makeFunctionItem(data, `event`);
+    item = makeFunctionItem(data, kind);
   } else if (kind === 'typedef') {
-    item = makeFunctionItem(data, `typedef`);
+    item = makeFunctionItem(data, kind);
   } else if (kind === 'function' || kind === 'method') {
     item = makeFunctionItem(data, `${customScope}-method`);
   } else {

@@ -6,21 +6,11 @@ class Footer extends React.Component {
     return (
       <footer className="footer">
         {this.props.infoList.map((item, index) => {
-          const {
-            linkUrl,
-            title
-          } = item;
+          const { linkUrl, title } = item;
 
           return (
-            <span
-              className="info"
-              key={`footer-info-${index}`}
-            >
-              <a
-                href={linkUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
+            <span className="info" key={`footer-info-${index}`}>
+              <a href={linkUrl} target="_blank" rel="noreferrer noopener">
                 {title}
               </a>
             </span>

@@ -18,7 +18,7 @@ const TYPE_NAME = [
 const getClassName = (name) => {
   let replacedName = name.toLowerCase();
 
-  return (TYPE_NAME.indexOf(replacedName) > -1 ? replacedName : 'etc');
+  return TYPE_NAME.indexOf(replacedName) > -1 ? replacedName : 'etc';
 };
 
 class Types extends React.Component {
@@ -26,10 +26,7 @@ class Types extends React.Component {
     const className = getClassName(name);
 
     return (
-      <span
-        key={`type-${index}`}
-        className={`type ${className}`}
-      >
+      <span key={`type-${index}`} className={`type ${className}`}>
         {name}
       </span>
     );
@@ -55,17 +52,13 @@ class Types extends React.Component {
 
     if (matrix) {
       component = (
-        <span
-          className="type"
-          key={`type-${index}`}>
+        <span className="type" key={`type-${index}`}>
           {prefix}.&lt;{subPrefix}.&lt;{joinedName}&gt;&gt;
         </span>
       );
     } else {
       component = (
-        <span
-          className="type"
-          key={`type-${index}`}>
+        <span className="type" key={`type-${index}`}>
           {prefix}.&lt;{joinedName}&gt;
         </span>
       );
@@ -75,14 +68,8 @@ class Types extends React.Component {
   }
 
   makeOptionalType(types) {
-    const {
-      defaultVal,
-      data
-    } = this.props;
-    const {
-      prefix,
-      isOptional
-    } = data;
+    const { defaultVal, data } = this.props;
+    const { prefix, isOptional } = data;
     const defaultValue = defaultVal ? ` = ${this.props.defaultVal}` : '';
 
     let wrapperComponent;
@@ -90,14 +77,16 @@ class Types extends React.Component {
     if (isOptional) {
       wrapperComponent = (
         <span className="types-wrapper">
-          [ {prefix}{types} ]
-          {defaultValue}
+          [ {prefix}
+          {types} ]{defaultValue}
         </span>
       );
     } else {
       wrapperComponent = (
         <span className="types-wrapper">
-          {prefix}{types}{defaultValue}
+          {prefix}
+          {types}
+          {defaultValue}
         </span>
       );
     }
@@ -106,7 +95,7 @@ class Types extends React.Component {
   }
 
   render() {
-    const {names} = this.props.data;
+    const { names } = this.props.data;
 
     if (names) {
       const types = names.map((name, index) => {
@@ -117,11 +106,7 @@ class Types extends React.Component {
         return this.makeType(name, index);
       });
 
-      return (
-        <p className="types">
-          {this.makeOptionalType(types)}
-        </p>
-      );
+      return <p className="types">{this.makeOptionalType(types)}</p>;
     }
 
     return null;
@@ -130,10 +115,7 @@ class Types extends React.Component {
 
 Types.propTypes = {
   data: PropTypes.object.isRequired,
-  defaultVal: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string
-  ])
+  defaultVal: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 export default Types;

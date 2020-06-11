@@ -6,12 +6,7 @@ import CodeInfo from '../components/CodeInfo';
 
 class PropertyTerm extends React.Component {
   render() {
-    const {
-      deprecated,
-      name,
-      types,
-      codeInfo
-    } = this.props;
+    const { deprecated, name, types, codeInfo } = this.props;
 
     return (
       <h4 className="title">

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
 const TYPE_MAP = {
-  'class': 'CLASSES',
-  'namespace': 'NAMESAPCES',
-  'module': 'MODULES',
-  'external': 'EXTERNALS',
-  'mixin': 'MIXINS',
-  'global': 'GLOBALS',
-  'example': 'Examples'
+  class: 'CLASSES',
+  namespace: 'NAMESAPCES',
+  module: 'MODULES',
+  external: 'EXTERNALS',
+  mixin: 'MIXINS',
+  global: 'GLOBALS',
+  example: 'Examples'
 };
 
 const REPLACED_PATTERN = /[-[\]/{}()*+?.\\^$|]/g;
@@ -25,57 +25,33 @@ class SearchList extends React.Component {
       return `<strong>${text}</strong>`;
     });
 
-    return (
-      <span dangerouslySetInnerHTML={{__html: joined}} />
-    );
+    return <span dangerouslySetInnerHTML={{ __html: joined }} />;
   }
 
   getListItemComponent(item, index) {
-    const {
-      movedIndex
-    } = this.props;
+    const { movedIndex } = this.props;
 
-    const {
-      pid,
-      name,
-      parentPid
-    } = item.node;
+    const { pid, name, parentPid } = item.node;
 
     return (
-      <li
-        className={`item${movedIndex === index ? ' selected' : ''}`}
-        key={`search-item-${index}`}
-      >
-        <Link
-          to={`/${pid}`}
-          className="ellipsis"
-        >
+      <li className={`item${movedIndex === index ? ' selected' : ''}`} key={`search-item-${index}`}>
+        <Link to={`/${pid}`} className="ellipsis">
           {this.hightliging(name)}
-          <span className="nav-group-title">
-            {TYPE_MAP[parentPid] || parentPid}
-          </span>
+          <span className="nav-group-title">{TYPE_MAP[parentPid] || parentPid}</span>
         </Link>
       </li>
     );
   }
 
   getResultComponent() {
-    const {
-      result
-    } = this.props;
+    const { result } = this.props;
 
     let component;
 
     if (result.length) {
-      component = (
-        <ul>
-          {result.map((item, index) => this.getListItemComponent(item, index))}
-        </ul>
-      );
+      component = <ul>{result.map((item, index) => this.getListItemComponent(item, index))}</ul>;
     } else {
-      component = (
-        <p className="no-result">No Result</p>
-      );
+      component = <p className="no-result">No Result</p>;
     }
 
     return component;
@@ -83,11 +59,7 @@ class SearchList extends React.Component {
 
   render() {
     if (this.props.searching) {
-      return (
-        <div className="search-list">
-          {this.getResultComponent()}
-        </div>
-      );
+      return <div className="search-list">{this.getResultComponent()}</div>;
     }
 
     return null;

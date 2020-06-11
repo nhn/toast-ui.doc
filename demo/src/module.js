@@ -12,7 +12,7 @@
  *   isNull,
  *   isExisty
  * } from './module';
- * 
+ *
  * isUndefined();
  * isNull();
  * isExisty();

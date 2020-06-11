@@ -3,22 +3,13 @@ import SubListGroups from '../../src/components/SubListGroups';
 
 describe('SubListGroups component', () => {
   test('is hidden by default.', () => {
-    const wrapper = shallow(
-      <SubListGroups
-        items={[{}]}
-      />
-    );
+    const wrapper = shallow(<SubListGroups items={[{}]} />);
 
     expect(wrapper.find('.hide')).toHaveLength(1);
   });
 
   test('is shown.', () => {
-    const wrapper = shallow(
-      <SubListGroups
-        items={[{}]}
-        opened={true}
-      />
-    );
+    const wrapper = shallow(<SubListGroups items={[{}]} opened={true} />);
 
     expect(wrapper.find('.show')).toHaveLength(1);
   });

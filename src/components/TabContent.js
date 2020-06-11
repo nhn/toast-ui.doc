@@ -3,16 +3,9 @@ import PropTypes from 'prop-types';
 
 class TabContent extends React.Component {
   render() {
-    const {
-      hasIframe,
-      children
-    } = this.props;
+    const { hasIframe, children } = this.props;
 
-    return (
-      <div className={`tab-content${hasIframe ? ' iframe' : ''}`}>
-        {children}
-      </div>
-    );
+    return <div className={`tab-content${hasIframe ? ' iframe' : ''}`}>{children}</div>;
   }
 }
 

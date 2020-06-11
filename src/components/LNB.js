@@ -9,35 +9,23 @@ import ExampleNavigation from '../components/ExampleNavigation';
 
 class LNB extends React.Component {
   render() {
-    const {
-      useExample,
-      tabIndex,
-      selectedNavItemId,
-      width
-    } = this.props;
+    const { useExample, tabIndex, selectedNavItemId, width } = this.props;
 
     return (
-      <aside
-        className="lnb"
-        style={{width}}
-      >
+      <aside className="lnb" style={{ width }}>
         <SearchBar />
-        {useExample ?
+        {useExample ? (
           <Tabs tabIndex={tabIndex}>
             <TabContent name="API">
-              <ApiNavigation
-                selectedId={selectedNavItemId}
-              />
+              <ApiNavigation selectedId={selectedNavItemId} />
             </TabContent>
             <TabContent name="Examples">
-              <ExampleNavigation
-                selectedId={selectedNavItemId}
-              />
+              <ExampleNavigation selectedId={selectedNavItemId} />
             </TabContent>
-          </Tabs> :
-          <ApiNavigation
-            selectedId={selectedNavItemId}
-          />}
+          </Tabs>
+        ) : (
+          <ApiNavigation selectedId={selectedNavItemId} />
+        )}
       </aside>
     );
   }

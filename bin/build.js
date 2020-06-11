@@ -175,8 +175,8 @@ function build() {
     } else if (isServe) {
       cmd = `npm run clean && npm run build && npm run serve`;
     } else {
-      cmd = `npm run clean && npm run build:prefix latest && cp -r public ${latestDir} && `;
-      cmd += `npm run clean && npm run build:prefix && cp -r public ${versionDir}`;
+      cmd = `npm run clean && npm run build:latest && cp -r public ${latestDir} && `;
+      cmd += `npm run clean && npm run build:semver && cp -r public ${versionDir}`;
     }
 
     process.chdir(path.resolve(__dirname, '../')); // change working directory

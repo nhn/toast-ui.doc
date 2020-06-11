@@ -1,14 +1,23 @@
 const path = require('path');
 const options = require(path.resolve(process.cwd(), 'src/data/layout.json'));
 
-const [{ header, pathPrefix }] = options;
-const { version } = header;
+const activeEnv = process.env.GATSBY_ACTIVE_ENV;
+let pathPrefix;
 
-const isLatest = process.argv.indexOf('latest') > -1;
-const folderName = isLatest ? 'latest' : version;
+if (activeEnv) {
+  const [
+    {
+      header: { version },
+      pathPrefix: optPathPrefix
+    }
+  ] = options;
+  const folderName = activeEnv.indexOf('latest') > -1 ? 'latest' : version;
+
+  pathPrefix = `/${optPathPrefix}/${folderName}`;
+}
 
 module.exports = {
-  pathPrefix: `/${pathPrefix}/${folderName}`,
+  pathPrefix,
   plugins: [
     `gatsby-plugin-sass`,
     {

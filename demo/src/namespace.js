@@ -12,7 +12,7 @@
  *   isNull,
  *   isExisty
  * } = toastui.utils;
- * 
+ *
  * isUndefined();
  * isNull();
  * isExisty();
@@ -51,8 +51,4 @@ const isExisty = (param) => {
   return !isUndefined(param) && !isNull(param);
 };
 
-export {
-  isUndefined,
-  isNull,
-  isExisty
-};
+export { isUndefined, isNull, isExisty };

@@ -6,7 +6,7 @@ import CodeInfo from '../components/CodeInfo';
 class FunctionTerm extends React.Component {
   getFunctionNameComponent(name) {
     return name.replace(/\((.*?)\)/g, (value, params) => {
-      const replacedName = params.split(',').map(param => {
+      const replacedName = params.split(',').map((param) => {
         return `<span class="param">${param}</span>`;
       });
 
@@ -15,12 +15,7 @@ class FunctionTerm extends React.Component {
   }
 
   render() {
-    const {
-      deprecated,
-      override,
-      name,
-      codeInfo
-    } = this.props;
+    const { deprecated, override, name, codeInfo } = this.props;
 
     return (
       <h4 className="title">
@@ -28,7 +23,7 @@ class FunctionTerm extends React.Component {
         {override ? <span className="signiture override">override</span> : null}
         <span
           className="name"
-          dangerouslySetInnerHTML={{__html: this.getFunctionNameComponent(name)}}
+          dangerouslySetInnerHTML={{ __html: this.getFunctionNameComponent(name) }}
         />
         <CodeInfo data={codeInfo} />
       </h4>

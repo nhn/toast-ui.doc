@@ -8,9 +8,7 @@ import ExampleItems from '../components/ExampleItems';
 
 class PropertyItem extends React.Component {
   render() {
-    const {
-      data
-    } = this.props;
+    const { data } = this.props;
     const {
       pid,
       override,
@@ -28,10 +26,7 @@ class PropertyItem extends React.Component {
     properties.pop();
 
     return (
-      <div
-        id={pid}
-        className="definition-list"
-      >
+      <div id={pid} className="definition-list">
         <dl>
           <dt className="subsection-term">
             <h4 className="title">
@@ -43,10 +38,7 @@ class PropertyItem extends React.Component {
           </dt>
           <dd className="subsection-description">
             <p className="description">{description}</p>
-            <ParamsTable
-              properties={properties}
-              isPropertyTitle={true}
-            />
+            <ParamsTable properties={properties} isPropertyTitle={true} />
             <ExampleItems items={examples} />
           </dd>
         </dl>

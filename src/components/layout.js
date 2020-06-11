@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StaticQuery, graphql} from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -30,39 +30,22 @@ export class Layout extends React.Component {
   }
 
   render() {
-    const {
-      data,
-      tabIndex,
-      selectedNavItemId,
-      children
-    } = this.props;
-    const {
-      header,
-      footer,
-      useExample
-    } = data;
+    const { data, tabIndex, selectedNavItemId, children } = this.props;
+    const { header, footer, useExample } = data;
     const lnbWidth = this.state.width;
 
     return (
       <div className="wrapper">
         <Header data={header} />
-        <main
-          className="body"
-          style={{paddingLeft: lnbWidth}}
-        >
+        <main className="body" style={{ paddingLeft: lnbWidth }}>
           <LNB
             useExample={useExample}
             tabIndex={tabIndex}
             selectedNavItemId={selectedNavItemId}
             width={lnbWidth}
           />
-          <section className="content">
-            {children}
-          </section>
-          <Resizable
-            left={lnbWidth}
-            handleMouseMove={this.handleMouseMove}
-          />
+          <section className="content">{children}</section>
+          <Resizable left={lnbWidth} handleMouseMove={this.handleMouseMove} />
         </main>
         <Footer infoList={footer} />
       </div>
@@ -98,7 +81,7 @@ const LayoutWrapper = (props) => (
         }
       }
     `}
-    render={data => <Layout data={data.allLayoutJson.edges[0].node} {...props} />}
+    render={(data) => <Layout data={data.allLayoutJson.edges[0].node} {...props} />}
   />
 );
 
@@ -106,10 +89,7 @@ Layout.propTypes = {
   data: PropTypes.object,
   tabIndex: PropTypes.number,
   selectedNavItemId: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ])
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 
 export default LayoutWrapper;

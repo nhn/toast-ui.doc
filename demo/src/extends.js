@@ -17,7 +17,7 @@ import Album from './class';
  *     @param {string} options.artist.name - Name of artist
  *     @param {string} [options.artist.type] - Type of artist
  *     @param {string} [options.artist.debut] - Debut daofte of artist
- *   @param {object} [options.company] - Company of album 
+ *   @param {object} [options.company] - Company of album
  *     @param {string} [options.company.agency] - Agency name of album
  *     @param {string} [options.company.distributor] - Distributor name of album
  *   @param {number} [options.rank=999] - Rank of album
@@ -39,7 +39,7 @@ import Album from './class';
  *   rank: 1
  * };
  * const instance = new ChartAlbum(options);
- * 
+ *
  * console.log(instance);
  */
 class ChartAlbum extends Album {
@@ -69,7 +69,7 @@ class ChartAlbum extends Album {
    *   title: 'bar',
    *   rank: 99
    * });
-   * 
+   *
    * Album.getDescription(album1); // "The rank of "foo" album is 10."
    * Album.getDescription(album2); // "The rank of "bar" album is 99."
    */

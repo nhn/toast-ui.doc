@@ -1,9 +1,6 @@
 const path = require('path');
 
-exports.onCreateWebpackConfig = ({
-  rules,
-  actions
-}) => {
+exports.onCreateWebpackConfig = ({ rules, actions }) => {
   actions.setWebpackConfig({
     module: {
       rules: [
@@ -17,11 +14,8 @@ exports.onCreateWebpackConfig = ({
   });
 };
 
-exports.createPages = ({
-  graphql,
-  actions
-}) => {
-  const {createPage} = actions;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
 
   return new Promise((resolve) => {
     graphql(`
@@ -35,16 +29,14 @@ exports.createPages = ({
           }
         }
       }
-    `).then(result => {
-      result.data.allNavigationJson.edges.forEach(({node}) => {
-        const {
-          pid,
-          type
-        } = node;
+    `).then((result) => {
+      result.data.allNavigationJson.edges.forEach(({ node }) => {
+        const { pid, type } = node;
 
         let filename = '';
 
-        if (type === 'example') { // for static file using in iframe
+        if (type === 'example') {
+          // for static file using in iframe
           filename = pid.replace('tutorial-', '');
         }
 

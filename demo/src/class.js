@@ -14,7 +14,7 @@
  *     @param {string} options.artist.name - Name of artist
  *     @param {string} [options.artist.type] - Type of artist
  *     @param {string} [options.artist.debut] - Debut daofte of artist
- *   @param {object} [options.company] - Company of album 
+ *   @param {object} [options.company] - Company of album
  *     @param {string} [options.company.agency] - Agency name of album
  *     @param {string} [options.company.distributor] - Distributor name of album
  * @example
@@ -34,19 +34,12 @@
  *   }
  * };
  * const instance = new Album(options);
- * 
+ *
  * console.log(instance);
  */
 class Album {
   constructor(options) {
-    const {
-      title,
-      genres = [],
-      playTime = 0,
-      active = true,
-      artist = {},
-      company
-    } = options;
+    const { title, genres = [], playTime = 0, active = true, artist = {}, company } = options;
 
     /**
      * @type {string}
@@ -100,7 +93,7 @@ class Album {
    *   title: 'bar',
    *   playTime: 60
    * });
-   * 
+   *
    * Album.getDescription(album1); // "The total play time of "foo" album is 00:00:20."
    * Album.getDescription(album2); // "The total play time of "bar" album is 00:01:00."
    */
@@ -154,7 +147,7 @@ class Album {
    *   // ...
    *   genre: ['Pop', 'Jazz']
    * });
-   * 
+   *
    * instance.getGenres(); // "Pop,Jazz"
    */
   getGenres() {
@@ -163,19 +156,19 @@ class Album {
 
   /**
    * Returns play time of all songs.
-   * @param {boolean} formatted - Whether use formatted play time or not 
+   * @param {boolean} formatted - Whether use formatted play time or not
    * @returns {number|string} Play time
    * @example
    * const instance = new Album({
    *   // ...
    *   playTime: 3600
    * });
-   * 
+   *
    * instance.getPlayTime(); // 3600
    * instance.getPlayTime(true); // "01:00:00"
    */
   getPlayTime(formatted) {
-    let {playTime} = this;
+    let { playTime } = this;
 
     if (formatted) {
       return this.getFormattedTime(playTime);

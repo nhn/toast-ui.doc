@@ -18,12 +18,15 @@ And you can write template's contents in Korean also.
 <!-- TEMPLATE -->
 
 ## Version
+
 Write the version that you are currently using.
 
 ## Development Environment
+
 Write the browser type, OS and so on.
 
 ## Current Behavior
+
 Write a description of the current operation. You can add sample code, 'CodePen' or 'jsfiddle' links.
 
 ```js
@@ -31,4 +34,5 @@ Write a description of the current operation. You can add sample code, 'CodePen'
 ```
 
 ## Expected Behavior
+
 Write a description of the future action.

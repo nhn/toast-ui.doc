@@ -5,11 +5,7 @@ import ListItem from '../components/ListItem';
 
 class ListGroup extends React.Component {
   render() {
-    const {
-      selectedId,
-      title,
-      items
-    } = this.props;
+    const { selectedId, title, items } = this.props;
 
     if (items.length) {
       return (
@@ -17,11 +13,7 @@ class ListGroup extends React.Component {
           {title && <h2 className="title">{title}</h2>}
           <ul>
             {items.map((item, index) => {
-              const {
-                pid,
-                name,
-                childNodes
-              } = item.node;
+              const { pid, name, childNodes } = item.node;
 
               return (
                 <ListItem

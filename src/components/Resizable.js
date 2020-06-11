@@ -25,7 +25,7 @@ class Resizable extends React.Component {
       <div
         className="resize-handle"
         onMouseDown={this.handleMouseDown}
-        style={{left: this.props.left}}
+        style={{ left: this.props.left }}
       >
         Resizable
       </div>

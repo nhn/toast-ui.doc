@@ -8,11 +8,7 @@ class NormalList extends React.Component {
         <h5 className="title">{this.props.title}</h5>
         <ul className="items">
           {this.props.items.map((item, index) => (
-            <li
-              key={`list-${index}`}
-              className="item"
-              dangerouslySetInnerHTML={{__html: item}}
-            />
+            <li key={`list-${index}`} className="item" dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </ul>
       </div>

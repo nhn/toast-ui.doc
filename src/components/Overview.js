@@ -9,63 +9,28 @@ import NormalList from '../components/NormalList';
 
 class Overview extends React.Component {
   getTitleComponent(isTypedef) {
-    const {
-      deprecated,
-      name,
-      types,
-      codeInfo
-    } = this.props.data;
+    const { deprecated, name, types, codeInfo } = this.props.data;
 
     let component = null;
 
     if (isTypedef) {
       component = (
-        <PropertyTerm
-          deprecated={deprecated}
-          name={name}
-          types={types}
-          codeInfo={codeInfo}
-        />
+        <PropertyTerm deprecated={deprecated} name={name} types={types} codeInfo={codeInfo} />
       );
     } else {
-      component = (
-        <FunctionTerm
-          deprecated={deprecated}
-          name={name}
-          codeInfo={codeInfo}
-        />
-      );
+      component = <FunctionTerm deprecated={deprecated} name={name} codeInfo={codeInfo} />;
     }
 
     return component;
   }
 
   render() {
-    const {
-      parentPid,
-      data,
-      hasProperties
-    } = this.props;
-    const {
-      deprecated,
-      name,
-      description,
-      codeInfo,
-      examples,
-      sees,
-      todos,
-      augments,
-      params
-    } = data;
+    const { parentPid, data, hasProperties } = this.props;
+    const { description, examples, sees, todos, augments, params } = data;
 
-    const popItems = [
-      sees.slice(),
-      todos.slice(),
-      augments.slice(),
-      params.slice()
-    ];
+    const popItems = [sees.slice(), todos.slice(), augments.slice(), params.slice()];
 
-    popItems.forEach(items => {
+    popItems.forEach((items) => {
       if (items.length) {
         items.pop(); // remove default item
       }
@@ -75,35 +40,14 @@ class Overview extends React.Component {
       <div className="overview">
         <div className="subsection">
           <dl>
-            <dt className="subsection-term">
-              {this.getTitleComponent(parentPid === 'typedef')}
-            </dt>
+            <dt className="subsection-term">{this.getTitleComponent(parentPid === 'typedef')}</dt>
             <dd className="subsection-description">
-              <p
-                className="description"
-                dangerouslySetInnerHTML={{__html: description}}
-              />
-              {popItems[0].length ?
-                <NormalList
-                  title={'SEES'}
-                  items={popItems[0]}
-                /> : null}
-              {popItems[1].length ?
-                <NormalList
-                  title={'TODOS'}
-                  items={popItems[1]}
-                /> : null}
-              {popItems[2].length ?
-                <NormalList
-                  title={'EXTENDS'}
-                  items={popItems[2]}
-                /> : null}
-              <ParamsTable
-                properties={popItems[3]}
-                isPropertyTitle={hasProperties}
-              />
-              {examples.length ?
-                <ExampleItems items={examples} /> : null}
+              <p className="description" dangerouslySetInnerHTML={{ __html: description }} />
+              {popItems[0].length ? <NormalList title={'SEES'} items={popItems[0]} /> : null}
+              {popItems[1].length ? <NormalList title={'TODOS'} items={popItems[1]} /> : null}
+              {popItems[2].length ? <NormalList title={'EXTENDS'} items={popItems[2]} /> : null}
+              <ParamsTable properties={popItems[3]} isPropertyTitle={hasProperties} />
+              {examples.length ? <ExampleItems items={examples} /> : null}
             </dd>
           </dl>
         </div>

@@ -14,12 +14,12 @@
  *   // ...
  *   title: 'foo'
  * });
- * 
+ *
  * instance.setActive(false);
- * 
+ *
  * instance.on('active', (ev) => {
  *   const { title, active } = ev;
- * 
+ *
  *   console.log(title); // "foo"
  *   console.log(active); // false
  * });

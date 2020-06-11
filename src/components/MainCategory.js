@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 
 class MainCategory extends React.Component {
   render() {
-    const {
-      title,
-      children
-    } = this.props;
+    const { title, children } = this.props;
 
     return (
       <div className="subsection main-category">

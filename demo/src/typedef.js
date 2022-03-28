@@ -1,6 +1,5 @@
 /**
- * @author NHN Ent. FE Development Team <dl_javascript@nhnent.com>
- * @fileoverview Example for using typedef
+  * @fileoverview Example for using typedef
  */
 
 /**

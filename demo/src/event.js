@@ -1,5 +1,4 @@
 /**
- * @author NHN. FE Development Team <dl_javascript@nhn.com>
  * @fileoverview Example for using event
  */
 

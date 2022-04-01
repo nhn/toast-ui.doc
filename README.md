@@ -243,4 +243,4 @@ For more detailed explanation on making a PR, refer to the **Contributing** appe
 
 ## 📜 License
 
-This software is provided under [MIT License](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE). © [NHN](https://github.com/nhn).
+This software is provided under [MIT License](https://github.com/nhn/toast-ui.doc/blob/master/LICENSE). © [NHN Cloud](https://github.com/nhn).

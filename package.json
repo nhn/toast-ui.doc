@@ -61,7 +61,7 @@
     "gatsby-remark-prismjs": "^3.0.0",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-json": "^2.1.1",
-    "gatsby-transformer-remark": "^2.1.1",
+    "gatsby-transformer-remark": "^5.25.1",
     "mkdirp": "^0.5.1",
     "node-dir": "^0.1.17",
     "node-sass": "^4.9.2",
